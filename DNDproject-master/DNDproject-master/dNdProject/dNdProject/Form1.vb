@@ -1,4 +1,8 @@
-﻿Imports System.Data.SQLite
+﻿Option Explicit On
+Option Strict On
+
+Imports System.Data.SQLite
+
 Public Class Form1
     Private dbCommand As String = ""
     Private bindingSrc As BindingSource
@@ -30,7 +34,14 @@ Public Class Form1
         'End If
     End Sub
 
+    Private Sub streangthTextBox_TextChanged(sender As Object, e As EventArgs) Handles streangthTextBox.TextChanged
+        Dim modifer As Integer
+        modifer = Convert.ToInt32(streangthTextBox.Text)
+        modifer = (modifer - 10) \ 2
+        strengthLabel.Text = Convert.ToString(modifer)
+    End Sub
 
+    Private Sub strengthLabel_Click(sender As Object, e As EventArgs) Handles strengthLabel.Click
 
-
+    End Sub
 End Class
