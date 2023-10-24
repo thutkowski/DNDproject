@@ -2,46 +2,273 @@
 Option Strict On
 
 Imports System.Data.SQLite
+Imports System.Security.Cryptography
 
 Public Class Form1
-    Private dbCommand As String = ""
-    Private bindingSrc As BindingSource
+    'Private dbCommand As String = ""
+    'Private bindingSrc As BindingSource
 
-    Private dbName As String = "DND.db"
-    Private dbPath As String = Application.StartupPath & "\" & dbName
-    Private consString As String = "Data Source=" & dbPath & ";Version=3"
+    'Private dbName As String = "DND.db"
+    'Private dbPath As String = Application.StartupPath & "\" & dbName
+    'Private consString As String = "Data Source=" & dbPath & ";Version=3"
 
-    Private connection As New SQLiteConnection(consString)
-    Private command As New SQLiteCommand("", connection)
+    'Private connection As New SQLiteConnection(consString)
+    'Private command As New SQLiteCommand("", connection)
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        connection.Open()
+    'Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    '   connection.Open()
 
-        command.Connection = connection
-        command.CommandText = "Select * from tbl1"
+    '  command.Connection = connection
+    ' command.CommandText = "Select * from tbl1"
 
-        Dim rdr As SQLiteDataReader = command.ExecuteReader
-        Using rdr
-            While (rdr.Read())
-                MsgBox((rdr.GetInt32(0) & rdr.GetString(1) & rdr.GetInt32(2)))
-            End While
+    'Dim rdr As SQLiteDataReader = command.ExecuteReader
+    'Using rdr
+    'While (rdr.Read())
+    '           MsgBox((rdr.GetInt32(0) & rdr.GetString(1) & rdr.GetInt32(2)))
+    'End While
 
-        End Using
+    'End Using
 
-        connection.Close()
-        'If connection.State = ConnectionState.Open Then
-        '    MsgBox("The connection is: " & connection.State.ToString)
-        'End If
-    End Sub
-
-    Private Sub streangthTextBox_TextChanged(sender As Object, e As EventArgs) Handles streangthTextBox.TextChanged
+    '   connection.Close()
+    'If connection.State = ConnectionState.Open Then
+    '    MsgBox("The connection is: " & connection.State.ToString)
+    'End If
+    'End Sub
+    Private profBonus As Integer
+    'Skill Scores to update modifer scores
+    Private Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(streangthTextBox.Text)
+        modifer = Convert.ToInt32(strenTextBox.Text)
         modifer = (modifer - 10) \ 2
-        strengthLabel.Text = Convert.ToString(modifer)
+        strenModiferLabel.Text = Convert.ToString(modifer)
+    End Sub
+    Private Sub dexTextBox_TextChanged(sender As Object, e As EventArgs) Handles dexTextBox.TextChanged
+        Dim modifer As Integer
+        modifer = Convert.ToInt32(dexTextBox.Text)
+        modifer = (modifer - 10) \ 2
+        dexModiferLabel.Text = Convert.ToString(modifer)
+    End Sub
+    Private Sub conTextBox_TextChanged(sender As Object, e As EventArgs) Handles conTextBox.TextChanged
+        Dim modifer As Integer
+        modifer = Convert.ToInt32(conTextBox.Text)
+        modifer = (modifer - 10) \ 2
+        conModiferLabel.Text = Convert.ToString(modifer)
+    End Sub
+    Private Sub intelTextBox_TextChanged(sender As Object, e As EventArgs) Handles intelTextBox.TextChanged
+        Dim modifer As Integer
+        modifer = Convert.ToInt32(intelTextBox.Text)
+        modifer = (modifer - 10) \ 2
+        intelModiferLabel.Text = Convert.ToString(modifer)
+    End Sub
+    Private Sub wisdomTextBox_TextChanged(sender As Object, e As EventArgs) Handles wisdomTextBox.TextChanged
+        Dim modifer As Integer
+        modifer = Convert.ToInt32(wisdomTextBox.Text)
+        modifer = (modifer - 10) \ 2
+        wisdomModiferLabel.Text = Convert.ToString(modifer)
+    End Sub
+    Private Sub charTextBox_TextChanged(sender As Object, e As EventArgs) Handles charTextBox.TextChanged
+        Dim modifer As Integer
+        modifer = Convert.ToInt32(charTextBox.Text)
+        modifer = (modifer - 10) \ 2
+        charModiferLabel.Text = Convert.ToString(modifer)
+    End Sub
+    'Dice Roll w/Modifer
+    Public Function dexD20roll() As Integer
+
+        Dim roll As Integer
+        roll = Convert.ToInt32(Rnd() * 20)
+        roll = Convert.ToInt32(dexModiferLabel.Text) + roll
+        Return roll
+
+    End Function
+    Public Function wisomD20roll() As Integer
+
+        Dim roll As Integer
+        roll = Convert.ToInt32(Rnd() * 20)
+        roll = Convert.ToInt32(wisdomModiferLabel.Text) + roll
+        Return roll
+
+    End Function
+    Public Function intelD20roll() As Integer
+
+        Dim roll As Integer
+        roll = Convert.ToInt32(Rnd() * 20)
+        roll = Convert.ToInt32(intelModiferLabel.Text) + roll
+        Return roll
+
+    End Function
+    Public Function strenD20roll() As Integer
+
+        Dim roll As Integer
+        roll = Convert.ToInt32(Rnd() * 20)
+        roll = Convert.ToInt32(strenModiferLabel.Text) + roll
+        Return roll
+
+    End Function
+    Public Function charD20roll() As Integer
+
+        Dim roll As Integer
+        roll = Convert.ToInt32(Rnd() * 20)
+        roll = Convert.ToInt32(charModiferLabel.Text) + roll
+        Return roll
+
+    End Function
+    'Profiency Bonus
+    Private Sub profTextBox_TextChanged(sender As Object, e As EventArgs)
+        profBonus = Convert.ToInt32(profTextBox.Text)
+    End Sub
+    'Skill Checks
+    Private Sub acrobacticsButton_Click(sender As Object, e As EventArgs) Handles acrobacticsButton.Click
+        Dim roll As Integer = dexD20roll()
+
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+    Private Sub animalButton_Click(sender As Object, e As EventArgs) Handles animalButton.Click
+        Dim roll As Integer = wisomD20roll()
+
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+    Private Sub arcanaButton_Click(sender As Object, e As EventArgs) Handles arcanaButton.Click
+        Dim roll As Integer = intelD20roll()
+
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
     End Sub
 
-    Private Sub strengthLabel_Click(sender As Object, e As EventArgs) Handles strengthLabel.Click
+    Private Sub athleticsButton_Click(sender As Object, e As EventArgs) Handles athleticsButton.Click
+        Dim roll As Integer = strenD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
 
+    Private Sub deceptionButton_Click(sender As Object, e As EventArgs) Handles deceptionButton.Click
+        Dim roll As Integer = charD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub historyButton_Click(sender As Object, e As EventArgs) Handles historyButton.Click
+        Dim roll As Integer = intelD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub intimidationButton_Click(sender As Object, e As EventArgs) Handles intimidationButton.Click
+        Dim roll As Integer = charD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub investigationButton_Click(sender As Object, e As EventArgs) Handles investigationButton.Click
+        Dim roll As Integer = intelD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub medicineButton_Click(sender As Object, e As EventArgs) Handles medicineButton.Click
+        Dim roll As Integer = wisomD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub natureButton_Click(sender As Object, e As EventArgs) Handles natureButton.Click
+        Dim roll As Integer = intelD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub perceptionButton_Click(sender As Object, e As EventArgs) Handles perceptionButton.Click
+        Dim roll As Integer = wisomD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub performanceButton_Click(sender As Object, e As EventArgs) Handles performanceButton.Click
+        Dim roll As Integer = charD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub persuasionButton_Click(sender As Object, e As EventArgs) Handles persuasionButton.Click
+        Dim roll As Integer = charD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub religiomButton_Click(sender As Object, e As EventArgs) Handles religiomButton.Click
+        Dim roll As Integer = intelD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub sleightButton_Click(sender As Object, e As EventArgs) Handles sleightButton.Click
+        Dim roll As Integer = dexD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub Buttonstealth_Click(sender As Object, e As EventArgs) Handles Buttonstealth.Click
+        Dim roll As Integer = dexD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
+    End Sub
+
+    Private Sub survivalButton_Click(sender As Object, e As EventArgs) Handles survivalButton.Click
+        Dim roll As Integer = wisomD20roll()
+        If acrobacticsCheckBox.Checked = True Then
+            rollTextBox.Text = Convert.ToString(roll + profBonus)
+        Else
+            rollTextBox.Text = Convert.ToString(roll)
+        End If
     End Sub
 End Class
