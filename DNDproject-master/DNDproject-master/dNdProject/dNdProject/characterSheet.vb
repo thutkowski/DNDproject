@@ -1,10 +1,11 @@
 ﻿Option Explicit On
 Option Strict On
 
+Imports System.Data.OleDb
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
 
-Public Class Form1
+Public Class characterSheet
     'Private dbCommand As String = ""
     'Private bindingSrc As BindingSource
 
@@ -36,39 +37,124 @@ Public Class Form1
     'End Sub
     Private profBonus As Integer
     'Skill Scores to update modifer scores
+
     Private Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(strenTextBox.Text)
+
+        If strenTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            modifer = Convert.ToInt32(strenTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
+
         modifer = (modifer - 10) \ 2
         strenModiferLabel.Text = Convert.ToString(modifer)
     End Sub
     Private Sub dexTextBox_TextChanged(sender As Object, e As EventArgs) Handles dexTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(dexTextBox.Text)
+
+        If dexTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            modifer = Convert.ToInt32(dexTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
+
         modifer = (modifer - 10) \ 2
         dexModiferLabel.Text = Convert.ToString(modifer)
     End Sub
     Private Sub conTextBox_TextChanged(sender As Object, e As EventArgs) Handles conTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(conTextBox.Text)
+
+        If conTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            modifer = Convert.ToInt32(conTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
+
         modifer = (modifer - 10) \ 2
         conModiferLabel.Text = Convert.ToString(modifer)
     End Sub
     Private Sub intelTextBox_TextChanged(sender As Object, e As EventArgs) Handles intelTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(intelTextBox.Text)
+
+        If intelTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            modifer = Convert.ToInt32(intelTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
+
         modifer = (modifer - 10) \ 2
         intelModiferLabel.Text = Convert.ToString(modifer)
     End Sub
     Private Sub wisdomTextBox_TextChanged(sender As Object, e As EventArgs) Handles wisdomTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(wisdomTextBox.Text)
+
+        If wisdomTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            modifer = Convert.ToInt32(wisdomTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
+
         modifer = (modifer - 10) \ 2
         wisdomModiferLabel.Text = Convert.ToString(modifer)
     End Sub
     Private Sub charTextBox_TextChanged(sender As Object, e As EventArgs) Handles charTextBox.TextChanged
         Dim modifer As Integer
-        modifer = Convert.ToInt32(charTextBox.Text)
+
+        If charTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            modifer = Convert.ToInt32(charTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
+
         modifer = (modifer - 10) \ 2
         charModiferLabel.Text = Convert.ToString(modifer)
     End Sub
@@ -76,7 +162,8 @@ Public Class Form1
     Public Function dexD20roll() As Integer
 
         Dim roll As Integer
-        roll = Convert.ToInt32(Rnd() * 20)
+        Dim rnd As New Random
+        roll = rnd.Next(1, 21)
         roll = Convert.ToInt32(dexModiferLabel.Text) + roll
         Return roll
 
@@ -84,7 +171,8 @@ Public Class Form1
     Public Function wisomD20roll() As Integer
 
         Dim roll As Integer
-        roll = Convert.ToInt32(Rnd() * 20)
+        Dim rnd As New Random
+        roll = rnd.Next(0, 21)
         roll = Convert.ToInt32(wisdomModiferLabel.Text) + roll
         Return roll
 
@@ -92,7 +180,8 @@ Public Class Form1
     Public Function intelD20roll() As Integer
 
         Dim roll As Integer
-        roll = Convert.ToInt32(Rnd() * 20)
+        Dim rnd As New Random
+        roll = rnd.Next(0, 21)
         roll = Convert.ToInt32(intelModiferLabel.Text) + roll
         Return roll
 
@@ -100,7 +189,8 @@ Public Class Form1
     Public Function strenD20roll() As Integer
 
         Dim roll As Integer
-        roll = Convert.ToInt32(Rnd() * 20)
+        Dim rnd As New Random
+        roll = rnd.Next(0, 21)
         roll = Convert.ToInt32(strenModiferLabel.Text) + roll
         Return roll
 
@@ -108,7 +198,8 @@ Public Class Form1
     Public Function charD20roll() As Integer
 
         Dim roll As Integer
-        roll = Convert.ToInt32(Rnd() * 20)
+        Dim rnd As New Random
+        roll = rnd.Next(0, 21)
         roll = Convert.ToInt32(charModiferLabel.Text) + roll
         Return roll
 
@@ -270,5 +361,27 @@ Public Class Form1
         Else
             rollTextBox.Text = Convert.ToString(roll)
         End If
+    End Sub
+
+    Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Database2.accdb")
+        conn.Open()
+
+        ' Create a new OleDbCommand object and set the CommandType property to Text.
+        Dim cmd As New OleDbCommand("SELECT * FROM characters WHERE characterName", conn)
+
+        ' Create a new OleDbDataReader object and execute the OleDbCommand object.
+        Dim reader As OleDbDataReader = cmd.ExecuteReader()
+
+        ' Read the data from the OleDbDataReader object.
+        While reader.Read()
+            ' Do something with the data.
+            ' For example, you could display the data in a textbox.
+            TextBox1.Text = reader("TextBoxValue").ToString()
+        End While
+
+        ' Close the OleDbDataReader object and the OleDbConnection object.
+        reader.Close()
+        conn.Close()
     End Sub
 End Class

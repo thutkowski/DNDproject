@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class characterSheet
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -734,10 +734,11 @@ Partial Class Form1
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "Roll"
         '
-        'Form1
+        'characterSheet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(978, 718)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TextBox2)
@@ -754,8 +755,8 @@ Partial Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Name = "characterSheet"
+        Me.Text = "Character Sheet"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
