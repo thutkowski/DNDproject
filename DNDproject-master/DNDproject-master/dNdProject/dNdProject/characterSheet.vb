@@ -1,9 +1,12 @@
 ﻿Option Explicit On
 Option Strict On
 
-Imports System.Data.OleDb
+Imports System.Data.SqlClient
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
+
+
+
 
 Public Class characterSheet
     'Private dbCommand As String = ""
@@ -35,9 +38,15 @@ Public Class characterSheet
     '    MsgBox("The connection is: " & connection.State.ToString)
     'End If
     'End Sub
-    Private profBonus As Integer
-    'Skill Scores to update modifer scores
 
+    Private myConn As SqlConnection
+    Private myCmd As SqlCommand
+    Private myReader As SqlDataReader
+    Private results As String
+
+    Private profBonus As Integer
+
+    'Skill Scores to update modifer scores
     Private Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
         Dim modifer As Integer
 
@@ -364,24 +373,15 @@ Public Class characterSheet
     End Sub
 
     Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Database2.accdb")
-        conn.Open()
+        'Create a Connection object.
+        myConn = New SqlConnection("Initial Catalog=tim;" &
+        "server=DESKTOP-QBAILSD\SQLEXPRESS;Integrated Security=SSPI;")
 
-        ' Create a new OleDbCommand object and set the CommandType property to Text.
-        Dim cmd As New OleDbCommand("SELECT * FROM characters WHERE characterName", conn)
+        'Create a Command object.
+        myCmd = myConn.CreateCommand
+        myCmd.CommandText = "SELECT * FROM characters WHERE characterName=" & characterUser
 
-        ' Create a new OleDbDataReader object and execute the OleDbCommand object.
-        Dim reader As OleDbDataReader = cmd.ExecuteReader()
-
-        ' Read the data from the OleDbDataReader object.
-        While reader.Read()
-            ' Do something with the data.
-            ' For example, you could display the data in a textbox.
-            TextBox1.Text = reader("TextBoxValue").ToString()
-        End While
-
-        ' Close the OleDbDataReader object and the OleDbConnection object.
-        reader.Close()
-        conn.Close()
+        'Open the connection.
+        myConn.Open()
     End Sub
 End Class
