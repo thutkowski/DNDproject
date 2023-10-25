@@ -23,10 +23,10 @@ Partial Class login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.loginButton = New System.Windows.Forms.Button()
         Me.characterTextBox = New System.Windows.Forms.TextBox()
         Me.createUserButton = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.loginActionButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -38,15 +38,6 @@ Partial Class login
         Me.Label1.Size = New System.Drawing.Size(191, 22)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Enter Character Name:"
-        '
-        'loginButton
-        '
-        Me.loginButton.Location = New System.Drawing.Point(257, 84)
-        Me.loginButton.Name = "loginButton"
-        Me.loginButton.Size = New System.Drawing.Size(86, 58)
-        Me.loginButton.TabIndex = 1
-        Me.loginButton.Text = "Login"
-        Me.loginButton.UseVisualStyleBackColor = True
         '
         'characterTextBox
         '
@@ -72,15 +63,24 @@ Partial Class login
         Me.Label2.Size = New System.Drawing.Size(0, 22)
         Me.Label2.TabIndex = 4
         '
+        'loginActionButton
+        '
+        Me.loginActionButton.Location = New System.Drawing.Point(262, 95)
+        Me.loginActionButton.Name = "loginActionButton"
+        Me.loginActionButton.Size = New System.Drawing.Size(87, 47)
+        Me.loginActionButton.TabIndex = 5
+        Me.loginActionButton.Text = "Login"
+        Me.loginActionButton.UseVisualStyleBackColor = True
+        '
         'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(613, 241)
+        Me.Controls.Add(Me.loginActionButton)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.createUserButton)
         Me.Controls.Add(Me.characterTextBox)
-        Me.Controls.Add(Me.loginButton)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
@@ -92,8 +92,8 @@ Partial Class login
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents loginButton As Button
     Friend WithEvents characterTextBox As TextBox
     Friend WithEvents createUserButton As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents loginActionButton As Button
 End Class

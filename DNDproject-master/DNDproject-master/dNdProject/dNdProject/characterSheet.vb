@@ -5,9 +5,6 @@ Imports System.Data.SqlClient
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
 
-
-
-
 Public Class characterSheet
     'Private dbCommand As String = ""
     'Private bindingSrc As BindingSource
@@ -38,11 +35,6 @@ Public Class characterSheet
     '    MsgBox("The connection is: " & connection.State.ToString)
     'End If
     'End Sub
-
-    Private myConn As SqlConnection
-    Private myCmd As SqlCommand
-    Private myReader As SqlDataReader
-    Private results As String
 
     Private profBonus As Integer
 

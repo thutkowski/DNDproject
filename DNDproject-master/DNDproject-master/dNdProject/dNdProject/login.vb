@@ -1,11 +1,9 @@
 ﻿Option Explicit On
 Option Strict On
-
+Imports System.Data.SqlClient
 
 Public Class login
-    Private Sub loginButton_Click(sender As Object, e As EventArgs) Handles MyBaseButton.Click
-        characterUser = characterTextBox.Text
-    End Sub
+
 
     Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Create a Connection object.
@@ -18,5 +16,9 @@ Public Class login
 
         'Open the connection.
         myConn.Open()
+    End Sub
+
+    Private Sub loginActionButton_Click(sender As Object, e As EventArgs) Handles loginActionButton.Click
+        characterUser = characterTextBox.Text
     End Sub
 End Class
