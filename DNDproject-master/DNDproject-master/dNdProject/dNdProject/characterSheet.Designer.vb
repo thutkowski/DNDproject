@@ -32,7 +32,7 @@ Partial Class characterSheet
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.charModiferLabel = New System.Windows.Forms.Label()
-        Me.charTextBox = New System.Windows.Forms.TextBox()
+        Me.charismaTextBox = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.intelModiferLabel = New System.Windows.Forms.Label()
@@ -105,7 +105,7 @@ Partial Class characterSheet
         Me.Label1.Location = New System.Drawing.Point(21, 4)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(74, 22)
+        Me.Label1.Size = New System.Drawing.Size(55, 16)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Strength"
         '
@@ -113,7 +113,7 @@ Partial Class characterSheet
         '
         Me.strenTextBox.Location = New System.Drawing.Point(38, 29)
         Me.strenTextBox.Name = "strenTextBox"
-        Me.strenTextBox.Size = New System.Drawing.Size(40, 30)
+        Me.strenTextBox.Size = New System.Drawing.Size(40, 23)
         Me.strenTextBox.TabIndex = 1
         '
         'Panel1
@@ -132,7 +132,7 @@ Partial Class characterSheet
         Me.strenModiferLabel.AutoSize = True
         Me.strenModiferLabel.Location = New System.Drawing.Point(49, 61)
         Me.strenModiferLabel.Name = "strenModiferLabel"
-        Me.strenModiferLabel.Size = New System.Drawing.Size(20, 22)
+        Me.strenModiferLabel.Size = New System.Drawing.Size(14, 16)
         Me.strenModiferLabel.TabIndex = 2
         Me.strenModiferLabel.Text = "4"
         '
@@ -152,7 +152,7 @@ Partial Class characterSheet
         Me.conModiferLabel.AutoSize = True
         Me.conModiferLabel.Location = New System.Drawing.Point(49, 61)
         Me.conModiferLabel.Name = "conModiferLabel"
-        Me.conModiferLabel.Size = New System.Drawing.Size(20, 22)
+        Me.conModiferLabel.Size = New System.Drawing.Size(14, 16)
         Me.conModiferLabel.TabIndex = 2
         Me.conModiferLabel.Text = "4"
         '
@@ -160,7 +160,7 @@ Partial Class characterSheet
         '
         Me.conTextBox.Location = New System.Drawing.Point(38, 29)
         Me.conTextBox.Name = "conTextBox"
-        Me.conTextBox.Size = New System.Drawing.Size(40, 30)
+        Me.conTextBox.Size = New System.Drawing.Size(40, 23)
         Me.conTextBox.TabIndex = 1
         '
         'Label3
@@ -169,7 +169,7 @@ Partial Class characterSheet
         Me.Label3.Location = New System.Drawing.Point(6, 4)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(105, 22)
+        Me.Label3.Size = New System.Drawing.Size(75, 16)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Constitution"
         '
@@ -177,7 +177,7 @@ Partial Class characterSheet
         '
         Me.Panel3.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.Panel3.Controls.Add(Me.charModiferLabel)
-        Me.Panel3.Controls.Add(Me.charTextBox)
+        Me.Panel3.Controls.Add(Me.charismaTextBox)
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Location = New System.Drawing.Point(12, 492)
         Me.Panel3.Name = "Panel3"
@@ -189,16 +189,16 @@ Partial Class characterSheet
         Me.charModiferLabel.AutoSize = True
         Me.charModiferLabel.Location = New System.Drawing.Point(49, 61)
         Me.charModiferLabel.Name = "charModiferLabel"
-        Me.charModiferLabel.Size = New System.Drawing.Size(20, 22)
+        Me.charModiferLabel.Size = New System.Drawing.Size(14, 16)
         Me.charModiferLabel.TabIndex = 2
         Me.charModiferLabel.Text = "4"
         '
-        'charTextBox
+        'charismaTextBox
         '
-        Me.charTextBox.Location = New System.Drawing.Point(38, 29)
-        Me.charTextBox.Name = "charTextBox"
-        Me.charTextBox.Size = New System.Drawing.Size(40, 30)
-        Me.charTextBox.TabIndex = 1
+        Me.charismaTextBox.Location = New System.Drawing.Point(38, 29)
+        Me.charismaTextBox.Name = "charismaTextBox"
+        Me.charismaTextBox.Size = New System.Drawing.Size(40, 23)
+        Me.charismaTextBox.TabIndex = 1
         '
         'Label5
         '
@@ -206,7 +206,7 @@ Partial Class characterSheet
         Me.Label5.Location = New System.Drawing.Point(17, 4)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(85, 22)
+        Me.Label5.Size = New System.Drawing.Size(60, 16)
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Charisma"
         '
@@ -226,7 +226,7 @@ Partial Class characterSheet
         Me.intelModiferLabel.AutoSize = True
         Me.intelModiferLabel.Location = New System.Drawing.Point(49, 61)
         Me.intelModiferLabel.Name = "intelModiferLabel"
-        Me.intelModiferLabel.Size = New System.Drawing.Size(20, 22)
+        Me.intelModiferLabel.Size = New System.Drawing.Size(14, 16)
         Me.intelModiferLabel.TabIndex = 2
         Me.intelModiferLabel.Text = "4"
         '
@@ -234,7 +234,7 @@ Partial Class characterSheet
         '
         Me.intelTextBox.Location = New System.Drawing.Point(38, 29)
         Me.intelTextBox.Name = "intelTextBox"
-        Me.intelTextBox.Size = New System.Drawing.Size(40, 30)
+        Me.intelTextBox.Size = New System.Drawing.Size(40, 23)
         Me.intelTextBox.TabIndex = 1
         '
         'Label7
@@ -243,7 +243,7 @@ Partial Class characterSheet
         Me.Label7.Location = New System.Drawing.Point(6, 4)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(102, 22)
+        Me.Label7.Size = New System.Drawing.Size(71, 16)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Intelligence"
         '
@@ -263,7 +263,7 @@ Partial Class characterSheet
         Me.wisdomModiferLabel.AutoSize = True
         Me.wisdomModiferLabel.Location = New System.Drawing.Point(49, 61)
         Me.wisdomModiferLabel.Name = "wisdomModiferLabel"
-        Me.wisdomModiferLabel.Size = New System.Drawing.Size(20, 22)
+        Me.wisdomModiferLabel.Size = New System.Drawing.Size(14, 16)
         Me.wisdomModiferLabel.TabIndex = 2
         Me.wisdomModiferLabel.Text = "4"
         '
@@ -271,7 +271,7 @@ Partial Class characterSheet
         '
         Me.wisdomTextBox.Location = New System.Drawing.Point(38, 29)
         Me.wisdomTextBox.Name = "wisdomTextBox"
-        Me.wisdomTextBox.Size = New System.Drawing.Size(40, 30)
+        Me.wisdomTextBox.Size = New System.Drawing.Size(40, 23)
         Me.wisdomTextBox.TabIndex = 1
         '
         'Label
@@ -280,7 +280,7 @@ Partial Class characterSheet
         Me.Label.Location = New System.Drawing.Point(20, 4)
         Me.Label.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label.Name = "Label"
-        Me.Label.Size = New System.Drawing.Size(75, 22)
+        Me.Label.Size = New System.Drawing.Size(53, 16)
         Me.Label.TabIndex = 0
         Me.Label.Text = "Wisdom"
         '
@@ -300,7 +300,7 @@ Partial Class characterSheet
         Me.dexModiferLabel.AutoSize = True
         Me.dexModiferLabel.Location = New System.Drawing.Point(49, 61)
         Me.dexModiferLabel.Name = "dexModiferLabel"
-        Me.dexModiferLabel.Size = New System.Drawing.Size(20, 22)
+        Me.dexModiferLabel.Size = New System.Drawing.Size(14, 16)
         Me.dexModiferLabel.TabIndex = 2
         Me.dexModiferLabel.Text = "4"
         '
@@ -308,7 +308,7 @@ Partial Class characterSheet
         '
         Me.dexTextBox.Location = New System.Drawing.Point(38, 29)
         Me.dexTextBox.Name = "dexTextBox"
-        Me.dexTextBox.Size = New System.Drawing.Size(40, 30)
+        Me.dexTextBox.Size = New System.Drawing.Size(40, 23)
         Me.dexTextBox.TabIndex = 1
         '
         'Label11
@@ -317,7 +317,7 @@ Partial Class characterSheet
         Me.Label11.Location = New System.Drawing.Point(14, 4)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(83, 22)
+        Me.Label11.Size = New System.Drawing.Size(59, 16)
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "Dexterity"
         '
@@ -504,7 +504,7 @@ Partial Class characterSheet
         Me.survivalCheckBox.AutoSize = True
         Me.survivalCheckBox.Location = New System.Drawing.Point(18, 524)
         Me.survivalCheckBox.Name = "survivalCheckBox"
-        Me.survivalCheckBox.Size = New System.Drawing.Size(104, 26)
+        Me.survivalCheckBox.Size = New System.Drawing.Size(72, 20)
         Me.survivalCheckBox.TabIndex = 16
         Me.survivalCheckBox.Text = "Survival"
         Me.survivalCheckBox.UseVisualStyleBackColor = True
@@ -514,7 +514,7 @@ Partial Class characterSheet
         Me.stealthCheckBox.AutoSize = True
         Me.stealthCheckBox.Location = New System.Drawing.Point(18, 492)
         Me.stealthCheckBox.Name = "stealthCheckBox"
-        Me.stealthCheckBox.Size = New System.Drawing.Size(90, 26)
+        Me.stealthCheckBox.Size = New System.Drawing.Size(64, 20)
         Me.stealthCheckBox.TabIndex = 15
         Me.stealthCheckBox.Text = "Stealth"
         Me.stealthCheckBox.UseVisualStyleBackColor = True
@@ -524,7 +524,7 @@ Partial Class characterSheet
         Me.sleightCheckBox.AutoSize = True
         Me.sleightCheckBox.Location = New System.Drawing.Point(18, 460)
         Me.sleightCheckBox.Name = "sleightCheckBox"
-        Me.sleightCheckBox.Size = New System.Drawing.Size(159, 26)
+        Me.sleightCheckBox.Size = New System.Drawing.Size(113, 20)
         Me.sleightCheckBox.TabIndex = 14
         Me.sleightCheckBox.Text = "Sleight of Hand"
         Me.sleightCheckBox.UseVisualStyleBackColor = True
@@ -534,7 +534,7 @@ Partial Class characterSheet
         Me.religionCheckBox.AutoSize = True
         Me.religionCheckBox.Location = New System.Drawing.Point(18, 428)
         Me.religionCheckBox.Name = "religionCheckBox"
-        Me.religionCheckBox.Size = New System.Drawing.Size(104, 26)
+        Me.religionCheckBox.Size = New System.Drawing.Size(71, 20)
         Me.religionCheckBox.TabIndex = 13
         Me.religionCheckBox.Text = "Religion"
         Me.religionCheckBox.UseVisualStyleBackColor = True
@@ -544,7 +544,7 @@ Partial Class characterSheet
         Me.persuasionCheckBox.AutoSize = True
         Me.persuasionCheckBox.Location = New System.Drawing.Point(18, 396)
         Me.persuasionCheckBox.Name = "persuasionCheckBox"
-        Me.persuasionCheckBox.Size = New System.Drawing.Size(122, 26)
+        Me.persuasionCheckBox.Size = New System.Drawing.Size(87, 20)
         Me.persuasionCheckBox.TabIndex = 12
         Me.persuasionCheckBox.Text = "Persuasion"
         Me.persuasionCheckBox.UseVisualStyleBackColor = True
@@ -554,7 +554,7 @@ Partial Class characterSheet
         Me.performanceCheckBox.AutoSize = True
         Me.performanceCheckBox.Location = New System.Drawing.Point(18, 366)
         Me.performanceCheckBox.Name = "performanceCheckBox"
-        Me.performanceCheckBox.Size = New System.Drawing.Size(136, 26)
+        Me.performanceCheckBox.Size = New System.Drawing.Size(99, 20)
         Me.performanceCheckBox.TabIndex = 11
         Me.performanceCheckBox.Text = "Performance"
         Me.performanceCheckBox.UseVisualStyleBackColor = True
@@ -564,7 +564,7 @@ Partial Class characterSheet
         Me.perceptionCheckBox.AutoSize = True
         Me.perceptionCheckBox.Location = New System.Drawing.Point(18, 334)
         Me.perceptionCheckBox.Name = "perceptionCheckBox"
-        Me.perceptionCheckBox.Size = New System.Drawing.Size(121, 26)
+        Me.perceptionCheckBox.Size = New System.Drawing.Size(86, 20)
         Me.perceptionCheckBox.TabIndex = 10
         Me.perceptionCheckBox.Text = "Perception"
         Me.perceptionCheckBox.UseVisualStyleBackColor = True
@@ -574,7 +574,7 @@ Partial Class characterSheet
         Me.natureCheckBox.AutoSize = True
         Me.natureCheckBox.Location = New System.Drawing.Point(18, 302)
         Me.natureCheckBox.Name = "natureCheckBox"
-        Me.natureCheckBox.Size = New System.Drawing.Size(89, 26)
+        Me.natureCheckBox.Size = New System.Drawing.Size(64, 20)
         Me.natureCheckBox.TabIndex = 9
         Me.natureCheckBox.Text = "Nature"
         Me.natureCheckBox.UseVisualStyleBackColor = True
@@ -584,7 +584,7 @@ Partial Class characterSheet
         Me.medicineCheckBox.AutoSize = True
         Me.medicineCheckBox.Location = New System.Drawing.Point(18, 270)
         Me.medicineCheckBox.Name = "medicineCheckBox"
-        Me.medicineCheckBox.Size = New System.Drawing.Size(111, 26)
+        Me.medicineCheckBox.Size = New System.Drawing.Size(77, 20)
         Me.medicineCheckBox.TabIndex = 8
         Me.medicineCheckBox.Text = "Medicine"
         Me.medicineCheckBox.UseVisualStyleBackColor = True
@@ -594,7 +594,7 @@ Partial Class characterSheet
         Me.investigationCheckBox.AutoSize = True
         Me.investigationCheckBox.Location = New System.Drawing.Point(18, 238)
         Me.investigationCheckBox.Name = "investigationCheckBox"
-        Me.investigationCheckBox.Size = New System.Drawing.Size(137, 26)
+        Me.investigationCheckBox.Size = New System.Drawing.Size(98, 20)
         Me.investigationCheckBox.TabIndex = 7
         Me.investigationCheckBox.Text = "Investigation"
         Me.investigationCheckBox.UseVisualStyleBackColor = True
@@ -604,7 +604,7 @@ Partial Class characterSheet
         Me.intimidationCheckBox.AutoSize = True
         Me.intimidationCheckBox.Location = New System.Drawing.Point(18, 206)
         Me.intimidationCheckBox.Name = "intimidationCheckBox"
-        Me.intimidationCheckBox.Size = New System.Drawing.Size(131, 26)
+        Me.intimidationCheckBox.Size = New System.Drawing.Size(93, 20)
         Me.intimidationCheckBox.TabIndex = 6
         Me.intimidationCheckBox.Text = "Intimidation"
         Me.intimidationCheckBox.UseVisualStyleBackColor = True
@@ -614,7 +614,7 @@ Partial Class characterSheet
         Me.historyCheckBox.AutoSize = True
         Me.historyCheckBox.Location = New System.Drawing.Point(18, 174)
         Me.historyCheckBox.Name = "historyCheckBox"
-        Me.historyCheckBox.Size = New System.Drawing.Size(95, 26)
+        Me.historyCheckBox.Size = New System.Drawing.Size(67, 20)
         Me.historyCheckBox.TabIndex = 5
         Me.historyCheckBox.Text = "History"
         Me.historyCheckBox.UseVisualStyleBackColor = True
@@ -624,7 +624,7 @@ Partial Class characterSheet
         Me.deceptionCheckBox.AutoSize = True
         Me.deceptionCheckBox.Location = New System.Drawing.Point(18, 142)
         Me.deceptionCheckBox.Name = "deceptionCheckBox"
-        Me.deceptionCheckBox.Size = New System.Drawing.Size(117, 26)
+        Me.deceptionCheckBox.Size = New System.Drawing.Size(83, 20)
         Me.deceptionCheckBox.TabIndex = 4
         Me.deceptionCheckBox.Text = "Deception"
         Me.deceptionCheckBox.UseVisualStyleBackColor = True
@@ -634,7 +634,7 @@ Partial Class characterSheet
         Me.athleticsCheckBox.AutoSize = True
         Me.athleticsCheckBox.Location = New System.Drawing.Point(18, 110)
         Me.athleticsCheckBox.Name = "athleticsCheckBox"
-        Me.athleticsCheckBox.Size = New System.Drawing.Size(107, 26)
+        Me.athleticsCheckBox.Size = New System.Drawing.Size(75, 20)
         Me.athleticsCheckBox.TabIndex = 3
         Me.athleticsCheckBox.Text = "Athletics"
         Me.athleticsCheckBox.UseVisualStyleBackColor = True
@@ -644,7 +644,7 @@ Partial Class characterSheet
         Me.arcanaCheckBox.AutoSize = True
         Me.arcanaCheckBox.Location = New System.Drawing.Point(18, 78)
         Me.arcanaCheckBox.Name = "arcanaCheckBox"
-        Me.arcanaCheckBox.Size = New System.Drawing.Size(93, 26)
+        Me.arcanaCheckBox.Size = New System.Drawing.Size(66, 20)
         Me.arcanaCheckBox.TabIndex = 2
         Me.arcanaCheckBox.Text = "Arcana"
         Me.arcanaCheckBox.UseVisualStyleBackColor = True
@@ -654,7 +654,7 @@ Partial Class characterSheet
         Me.animalCheckBox.AutoSize = True
         Me.animalCheckBox.Location = New System.Drawing.Point(18, 46)
         Me.animalCheckBox.Name = "animalCheckBox"
-        Me.animalCheckBox.Size = New System.Drawing.Size(171, 26)
+        Me.animalCheckBox.Size = New System.Drawing.Size(118, 20)
         Me.animalCheckBox.TabIndex = 1
         Me.animalCheckBox.Text = "Animal Handling"
         Me.animalCheckBox.UseVisualStyleBackColor = True
@@ -664,7 +664,7 @@ Partial Class characterSheet
         Me.acrobacticsCheckBox.AutoSize = True
         Me.acrobacticsCheckBox.Location = New System.Drawing.Point(18, 14)
         Me.acrobacticsCheckBox.Name = "acrobacticsCheckBox"
-        Me.acrobacticsCheckBox.Size = New System.Drawing.Size(132, 26)
+        Me.acrobacticsCheckBox.Size = New System.Drawing.Size(94, 20)
         Me.acrobacticsCheckBox.TabIndex = 0
         Me.acrobacticsCheckBox.Text = "Acrobactics"
         Me.acrobacticsCheckBox.UseVisualStyleBackColor = True
@@ -673,7 +673,7 @@ Partial Class characterSheet
         '
         Me.rollTextBox.Location = New System.Drawing.Point(580, 491)
         Me.rollTextBox.Name = "rollTextBox"
-        Me.rollTextBox.Size = New System.Drawing.Size(105, 30)
+        Me.rollTextBox.Size = New System.Drawing.Size(105, 23)
         Me.rollTextBox.TabIndex = 7
         '
         'Panel8
@@ -690,7 +690,7 @@ Partial Class characterSheet
         '
         Me.profTextBox.Location = New System.Drawing.Point(34, 29)
         Me.profTextBox.Name = "profTextBox"
-        Me.profTextBox.Size = New System.Drawing.Size(40, 30)
+        Me.profTextBox.Size = New System.Drawing.Size(40, 23)
         Me.profTextBox.TabIndex = 2
         '
         'Label2
@@ -698,7 +698,7 @@ Partial Class characterSheet
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(4, 4)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(101, 22)
+        Me.Label2.Size = New System.Drawing.Size(72, 16)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Proficiency"
         '
@@ -715,14 +715,14 @@ Partial Class characterSheet
         '
         Me.TextBox1.Location = New System.Drawing.Point(758, 355)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 30)
+        Me.TextBox1.Size = New System.Drawing.Size(100, 23)
         Me.TextBox1.TabIndex = 12
         '
         'TextBox2
         '
         Me.TextBox2.Location = New System.Drawing.Point(791, 441)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 30)
+        Me.TextBox2.Size = New System.Drawing.Size(100, 23)
         Me.TextBox2.TabIndex = 13
         '
         'Label4
@@ -730,13 +730,13 @@ Partial Class characterSheet
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(591, 465)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(45, 22)
+        Me.Label4.Size = New System.Drawing.Size(29, 16)
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "Roll"
         '
         'characterSheet
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(978, 718)
@@ -788,7 +788,7 @@ Partial Class characterSheet
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents charModiferLabel As Label
-    Friend WithEvents charTextBox As TextBox
+    Friend WithEvents charismaTextBox As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Panel4 As Panel
     Friend WithEvents intelModiferLabel As Label

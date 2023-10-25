@@ -6,36 +6,6 @@ Imports System.Data.SQLite
 Imports System.Security.Cryptography
 
 Public Class characterSheet
-    'Private dbCommand As String = ""
-    'Private bindingSrc As BindingSource
-
-    'Private dbName As String = "DND.db"
-    'Private dbPath As String = Application.StartupPath & "\" & dbName
-    'Private consString As String = "Data Source=" & dbPath & ";Version=3"
-
-    'Private connection As New SQLiteConnection(consString)
-    'Private command As New SQLiteCommand("", connection)
-
-    'Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    '   connection.Open()
-
-    '  command.Connection = connection
-    ' command.CommandText = "Select * from tbl1"
-
-    'Dim rdr As SQLiteDataReader = command.ExecuteReader
-    'Using rdr
-    'While (rdr.Read())
-    '           MsgBox((rdr.GetInt32(0) & rdr.GetString(1) & rdr.GetInt32(2)))
-    'End While
-
-    'End Using
-
-    '   connection.Close()
-    'If connection.State = ConnectionState.Open Then
-    '    MsgBox("The connection is: " & connection.State.ToString)
-    'End If
-    'End Sub
-
     Private profBonus As Integer
 
     'Skill Scores to update modifer scores
@@ -139,15 +109,15 @@ Public Class characterSheet
         modifer = (modifer - 10) \ 2
         wisdomModiferLabel.Text = Convert.ToString(modifer)
     End Sub
-    Private Sub charTextBox_TextChanged(sender As Object, e As EventArgs) Handles charTextBox.TextChanged
+    Private Sub charismaTextBox_TextChanged(sender As Object, e As EventArgs) Handles charismaTextBox.TextChanged
         Dim modifer As Integer
 
-        If charTextBox.Text = "" Then
+        If charismaTextBox.Text = "" Then
             Exit Sub
         End If
 
         Try
-            modifer = Convert.ToInt32(charTextBox.Text)
+            modifer = Convert.ToInt32(charismaTextBox.Text)
         Catch fe As FormatException
             MessageBox.Show("Invalid format enter only integers")
             Exit Sub
@@ -160,6 +130,15 @@ Public Class characterSheet
         charModiferLabel.Text = Convert.ToString(modifer)
     End Sub
     'Dice Roll w/Modifer
+    Public Function strenD20roll() As Integer
+
+        Dim roll As Integer
+        Dim rnd As New Random
+        roll = rnd.Next(0, 21)
+        roll = Convert.ToInt32(strenModiferLabel.Text) + roll
+        Return roll
+
+    End Function
     Public Function dexD20roll() As Integer
 
         Dim roll As Integer
@@ -184,15 +163,6 @@ Public Class characterSheet
         Dim rnd As New Random
         roll = rnd.Next(0, 21)
         roll = Convert.ToInt32(intelModiferLabel.Text) + roll
-        Return roll
-
-    End Function
-    Public Function strenD20roll() As Integer
-
-        Dim roll As Integer
-        Dim rnd As New Random
-        roll = rnd.Next(0, 21)
-        roll = Convert.ToInt32(strenModiferLabel.Text) + roll
         Return roll
 
     End Function
@@ -237,7 +207,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub athleticsButton_Click(sender As Object, e As EventArgs) Handles athleticsButton.Click
         Dim roll As Integer = strenD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -246,7 +215,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub deceptionButton_Click(sender As Object, e As EventArgs) Handles deceptionButton.Click
         Dim roll As Integer = charD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -255,7 +223,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub historyButton_Click(sender As Object, e As EventArgs) Handles historyButton.Click
         Dim roll As Integer = intelD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -264,7 +231,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub intimidationButton_Click(sender As Object, e As EventArgs) Handles intimidationButton.Click
         Dim roll As Integer = charD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -273,7 +239,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub investigationButton_Click(sender As Object, e As EventArgs) Handles investigationButton.Click
         Dim roll As Integer = intelD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -282,7 +247,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub medicineButton_Click(sender As Object, e As EventArgs) Handles medicineButton.Click
         Dim roll As Integer = wisomD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -291,7 +255,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub natureButton_Click(sender As Object, e As EventArgs) Handles natureButton.Click
         Dim roll As Integer = intelD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -300,7 +263,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub perceptionButton_Click(sender As Object, e As EventArgs) Handles perceptionButton.Click
         Dim roll As Integer = wisomD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -309,7 +271,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub performanceButton_Click(sender As Object, e As EventArgs) Handles performanceButton.Click
         Dim roll As Integer = charD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -318,7 +279,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub persuasionButton_Click(sender As Object, e As EventArgs) Handles persuasionButton.Click
         Dim roll As Integer = charD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -327,7 +287,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub religiomButton_Click(sender As Object, e As EventArgs) Handles religiomButton.Click
         Dim roll As Integer = intelD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -336,7 +295,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub sleightButton_Click(sender As Object, e As EventArgs) Handles sleightButton.Click
         Dim roll As Integer = dexD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -345,7 +303,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub Buttonstealth_Click(sender As Object, e As EventArgs) Handles Buttonstealth.Click
         Dim roll As Integer = dexD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -354,7 +311,6 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
-
     Private Sub survivalButton_Click(sender As Object, e As EventArgs) Handles survivalButton.Click
         Dim roll As Integer = wisomD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -365,15 +321,12 @@ Public Class characterSheet
     End Sub
 
     Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Create a Connection object.
-        myConn = New SqlConnection("Initial Catalog=tim;" &
-        "server=DESKTOP-QBAILSD\SQLEXPRESS;Integrated Security=SSPI;")
-
-        'Create a Command object.
-        myCmd = myConn.CreateCommand
-        myCmd.CommandText = "SELECT * FROM characters WHERE characterName=" & characterUser
-
-        'Open the connection.
-        myConn.Open()
+        strenTextBox.Text = rdr.GetInt32(2).ToString
+        dexTextBox.Text = rdr.GetInt32(3).ToString
+        conTextBox.Text = rdr.GetInt32(4).ToString
+        intelTextBox.Text = rdr.GetInt32(5).ToString
+        wisdomTextBox.Text = rdr.GetInt32(6).ToString
+        charismaTextBox.Text = rdr.GetInt32(7).ToString
+        rdr.Close()
     End Sub
 End Class
