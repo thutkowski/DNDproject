@@ -35,7 +35,7 @@ Partial Class login
         Me.Label1.Location = New System.Drawing.Point(59, 51)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(191, 22)
+        Me.Label1.Size = New System.Drawing.Size(136, 16)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Enter Character Name:"
         '
@@ -43,7 +43,7 @@ Partial Class login
         '
         Me.characterTextBox.Location = New System.Drawing.Point(257, 48)
         Me.characterTextBox.Name = "characterTextBox"
-        Me.characterTextBox.Size = New System.Drawing.Size(218, 30)
+        Me.characterTextBox.Size = New System.Drawing.Size(218, 23)
         Me.characterTextBox.TabIndex = 2
         '
         'createUserButton
@@ -60,7 +60,7 @@ Partial Class login
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(72, 21)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(0, 22)
+        Me.Label2.Size = New System.Drawing.Size(0, 16)
         Me.Label2.TabIndex = 4
         '
         'loginActionButton
@@ -74,7 +74,7 @@ Partial Class login
         '
         'login
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(613, 241)
         Me.Controls.Add(Me.loginActionButton)
