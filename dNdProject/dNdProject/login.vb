@@ -3,6 +3,7 @@ Option Strict On
 Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
 Imports System.Data.SQLite
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class login
 
@@ -10,26 +11,23 @@ Public Class login
         characterUser = characterTextBox.Text
         connection.Open()
 
-        command.Connection = connection
-        command.CommandText = "SELECT * FROM characters WHERE characterName =@characterUser"
-        command.Parameters.AddWithValue("@characterUser", characterTextBox.Text)
+        command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
 
-
+        command.Parameters.AddWithValue("@Username", characterUser)
 
         rdr = command.ExecuteReader()
-        'Using rdr
-        '    While (rdr.Read())
-        '        ((rdr.GetInt32(0) & rdr.GetString(1) & rdr.GetInt32(2)))
-        '    End While
-        'End Using
+
         If rdr.Read() Then
             characterSheet.Show()
         Else
             MessageBox.Show("That character does not exist")
         End If
+        rdr.Close()
         connection.Close()
-        If connection.State = ConnectionState.Open Then
-            MsgBox("The connection is: " & connection.State.ToString)
-        End If
     End Sub
+
+    Private Sub createUserButton_Click(sender As Object, e As EventArgs) Handles createUserButton.Click
+        characterSheetNew.Show()
+    End Sub
+
 End Class

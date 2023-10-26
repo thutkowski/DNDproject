@@ -13,4 +13,22 @@ Module codeModule
     Public connection As New SQLiteConnection(consString)
     Public command As New SQLiteCommand("", connection)
     Public rdr As SQLiteDataReader
+
+    Public Function loginFunction(username As String) As Boolean
+        connection.Open()
+
+        command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
+
+        command.Parameters.AddWithValue("@Username", username)
+
+        rdr = command.ExecuteReader()
+
+        If rdr.Read() Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+
 End Module

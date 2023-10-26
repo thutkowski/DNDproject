@@ -100,6 +100,12 @@
       <DependentUpon>characterSheet.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="characterSheetNew.Designer.vb">
+      <DependentUpon>characterSheetNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="characterSheetNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="codeModule.vb" />
     <Compile Include="Database2DataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -132,6 +138,9 @@
   <ItemGroup>
     <EmbeddedResource Include="characterSheet.resx">
       <DependentUpon>characterSheet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="characterSheetNew.resx">
+      <DependentUpon>characterSheetNew.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.vb</DependentUpon>

@@ -4,11 +4,10 @@ Option Strict On
 Imports System.Data.SqlClient
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
-Public Class characterSheet
+Public Class characterSheetNew
     Private profBonus As Integer
-    Private characterID As Integer
+
     'Skill Scores to update modifer scores
     Private Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
         Dim modifer As Integer
@@ -322,8 +321,6 @@ Public Class characterSheet
     End Sub
 
     Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        characterID = rdr.GetInt32(0)
-        characterNameTextBox.Text = rdr.GetString(1)
         strenTextBox.Text = rdr.GetInt32(2).ToString
         dexTextBox.Text = rdr.GetInt32(3).ToString
         conTextBox.Text = rdr.GetInt32(4).ToString
@@ -331,47 +328,5 @@ Public Class characterSheet
         wisdomTextBox.Text = rdr.GetInt32(6).ToString
         charismaTextBox.Text = rdr.GetInt32(7).ToString
         rdr.Close()
-        connection.Close()
-    End Sub
-
-    Private Sub characterSheet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        Dim stren, dex, con, intel, wisdom, charisma As Integer
-        Dim characterName As String
-        stren = Convert.ToInt16(strenTextBox.Text)
-        wisdom = Convert.ToInt16(wisdomTextBox.Text)
-        dex = Convert.ToInt16(dexTextBox.Text)
-        con = Convert.ToInt16(conTextBox.Text)
-        intel = Convert.ToInt16(intelTextBox.Text)
-        charisma = Convert.ToInt16(charismaTextBox.Text)
-        characterName = characterNameTextBox.Text
-
-        connection.Open()
-
-        command.CommandText = "SELECT * FROM characters WHERE characterName = @characterName"
-
-        command.Parameters.AddWithValue("@characterName", characterName)
-
-        If command.ExecuteScalar() Is Nothing Then
-            command.CommandText = "INSERT INTO characters (characterName,stren,dex,con,intel,wisdom,charisma) VALUES (@characterName,@stren,@dex,@con,@intel,@wisdom,@charisma)"
-            command.Parameters.AddWithValue("@characterName", characterName)
-            command.Parameters.AddWithValue("@stren", stren)
-            command.Parameters.AddWithValue("@dex", dex)
-            command.Parameters.AddWithValue("@con", con)
-            command.Parameters.AddWithValue("@intel", intel)
-            command.Parameters.AddWithValue("@wisdom", wisdom)
-            command.Parameters.AddWithValue("@charisma", charisma)
-            command.ExecuteNonQuery()
-        Else
-            command.CommandText = "UPDATE characters SET characterName = @characterName,stren=@stren,dex=@dex,con=@con,intel=@intel,wisdom=@wisdom,charisma=@charisma WHERE characterID=@characterID"
-            command.Parameters.AddWithValue("@characterName", characterName)
-            command.Parameters.AddWithValue("@stren", stren)
-            command.Parameters.AddWithValue("@dex", dex)
-            command.Parameters.AddWithValue("@con", con)
-            command.Parameters.AddWithValue("@intel", intel)
-            command.Parameters.AddWithValue("@wisdom", wisdom)
-            command.Parameters.AddWithValue("@charisma", charisma)
-            command.Parameters.AddWithValue("@characterID", characterID)
-            command.ExecuteNonQuery()
-        End If
     End Sub
 End Class
