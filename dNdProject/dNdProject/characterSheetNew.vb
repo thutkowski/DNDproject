@@ -321,12 +321,6 @@ Public Class characterSheetNew
     End Sub
 
     Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        strenTextBox.Text = rdr.GetInt32(2).ToString
-        dexTextBox.Text = rdr.GetInt32(3).ToString
-        conTextBox.Text = rdr.GetInt32(4).ToString
-        intelTextBox.Text = rdr.GetInt32(5).ToString
-        wisdomTextBox.Text = rdr.GetInt32(6).ToString
-        charismaTextBox.Text = rdr.GetInt32(7).ToString
-        rdr.Close()
+
     End Sub
 End Class

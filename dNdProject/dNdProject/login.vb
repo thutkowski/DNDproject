@@ -30,4 +30,21 @@ Public Class login
         characterSheetNew.Show()
     End Sub
 
+    Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection.Open()
+        command.CommandText = " CREATE TABLE IF NOT EXISTS characters(ID INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT)"
+        command.ExecuteNonQuery()
+        command.CommandText = "SELECT * FROM characters"
+
+
+        rdr = command.ExecuteReader()
+
+        If rdr.Read() Then
+            loginActionButton.Enabled = True
+
+
+        End If
+        rdr.Close()
+        connection.Close()
+    End Sub
 End Class
