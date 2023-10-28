@@ -177,8 +177,20 @@ Public Class characterSheet
 
     End Function
     'Profiency Bonus
-    Private Sub profTextBox_TextChanged(sender As Object, e As EventArgs)
-        profBonus = Convert.ToInt32(profTextBox.Text)
+    Private Sub profTextBox_TextChanged(sender As Object, e As EventArgs) Handles profTextBox.TextChanged
+        If profTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            profBonus = Convert.ToInt32(profTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
     End Sub
     'Skill Checks
     Private Sub acrobacticsButton_Click(sender As Object, e As EventArgs) Handles acrobacticsButton.Click
@@ -322,6 +334,11 @@ Public Class characterSheet
     End Sub
 
     Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection.Open()
+        command.CommandText = "SELECT * from characters WHERE characterName = @characterUser"
+        command.Parameters.AddWithValue("@characterUser", characterUser)
+        rdr = command.ExecuteReader
+        rdr.Read()
         characterID = rdr.GetInt32(0)
         characterNameTextBox.Text = rdr.GetString(1)
         strenTextBox.Text = rdr.GetInt32(2).ToString
@@ -332,6 +349,17 @@ Public Class characterSheet
         charismaTextBox.Text = rdr.GetInt32(7).ToString
         rdr.Close()
         connection.Close()
+
+        'characterID = rdr.GetInt32(0)
+        'characterNameTextBox.Text = rdr.GetString(1)
+        'strenTextBox.Text = rdr.GetInt32(2).ToString
+        'dexTextBox.Text = rdr.GetInt32(3).ToString
+        'conTextBox.Text = rdr.GetInt32(4).ToString
+        'intelTextBox.Text = rdr.GetInt32(5).ToString
+        'wisdomTextBox.Text = rdr.GetInt32(6).ToString
+        'charismaTextBox.Text = rdr.GetInt32(7).ToString
+        'rdr.Close()
+        'connection.Close()
     End Sub
 
     Private Sub characterSheet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -373,5 +401,9 @@ Public Class characterSheet
             command.Parameters.AddWithValue("@characterID", characterID)
             command.ExecuteNonQuery()
         End If
+    End Sub
+
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs)
+
     End Sub
 End Class

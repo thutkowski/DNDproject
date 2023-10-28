@@ -320,7 +320,7 @@ Public Class characterSheetNew
         End If
     End Sub
 
-    Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub characterSheetNew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MessageBox.Show("Hi")
     End Sub
 End Class
