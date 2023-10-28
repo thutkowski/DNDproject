@@ -171,3 +171,4 @@ C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.xml
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.pdb
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheetNew.resources
+C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellSheet.resources

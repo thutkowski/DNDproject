@@ -401,9 +401,14 @@ Public Class characterSheet
             command.Parameters.AddWithValue("@characterID", characterID)
             command.ExecuteNonQuery()
         End If
+        connection.Close()
     End Sub
 
     Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        spellSheet.Show()
     End Sub
 End Class

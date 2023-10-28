@@ -83,10 +83,10 @@ Partial Class characterSheet
         Me.animalCheckBox = New System.Windows.Forms.CheckBox()
         Me.acrobacticsCheckBox = New System.Windows.Forms.CheckBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.profTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.characterNameTextBox = New System.Windows.Forms.TextBox()
-        Me.profTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.classTextBox = New System.Windows.Forms.TextBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
@@ -94,18 +94,19 @@ Partial Class characterSheet
         Me.alignmentTextBox = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.iniativeTextBox = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.armorClassTextBox = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.currentHpTextBox = New System.Windows.Forms.TextBox()
         Me.hpMaxTextBox = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.iniativeTextBox = New System.Windows.Forms.TextBox()
-        Me.armorClassTextBox = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -760,6 +761,13 @@ Partial Class characterSheet
         Me.Panel8.Size = New System.Drawing.Size(86, 60)
         Me.Panel8.TabIndex = 10
         '
+        'profTextBox
+        '
+        Me.profTextBox.Location = New System.Drawing.Point(25, 27)
+        Me.profTextBox.Name = "profTextBox"
+        Me.profTextBox.Size = New System.Drawing.Size(50, 23)
+        Me.profTextBox.TabIndex = 1
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -786,13 +794,6 @@ Partial Class characterSheet
         Me.characterNameTextBox.Name = "characterNameTextBox"
         Me.characterNameTextBox.Size = New System.Drawing.Size(75, 21)
         Me.characterNameTextBox.TabIndex = 16
-        '
-        'profTextBox
-        '
-        Me.profTextBox.Location = New System.Drawing.Point(25, 27)
-        Me.profTextBox.Name = "profTextBox"
-        Me.profTextBox.Size = New System.Drawing.Size(50, 23)
-        Me.profTextBox.TabIndex = 1
         '
         'Label4
         '
@@ -868,6 +869,42 @@ Partial Class characterSheet
         Me.Label9.TabIndex = 19
         Me.Label9.Text = "Alignment:"
         '
+        'iniativeTextBox
+        '
+        Me.iniativeTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        Me.iniativeTextBox.Location = New System.Drawing.Point(396, 33)
+        Me.iniativeTextBox.Name = "iniativeTextBox"
+        Me.iniativeTextBox.Size = New System.Drawing.Size(42, 21)
+        Me.iniativeTextBox.TabIndex = 18
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        Me.Label13.Location = New System.Drawing.Point(332, 35)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(46, 15)
+        Me.Label13.TabIndex = 17
+        Me.Label13.Text = "Iniative:"
+        '
+        'armorClassTextBox
+        '
+        Me.armorClassTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        Me.armorClassTextBox.Location = New System.Drawing.Point(405, 8)
+        Me.armorClassTextBox.Name = "armorClassTextBox"
+        Me.armorClassTextBox.Size = New System.Drawing.Size(44, 21)
+        Me.armorClassTextBox.TabIndex = 16
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Times New Roman", 9.0!)
+        Me.Label14.Location = New System.Drawing.Point(332, 10)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(71, 15)
+        Me.Label14.TabIndex = 15
+        Me.Label14.Text = "Armor Class:"
+        '
         'Panel10
         '
         Me.Panel10.BackColor = System.Drawing.Color.DarkSalmon
@@ -916,42 +953,6 @@ Partial Class characterSheet
         Me.Label12.TabIndex = 19
         Me.Label12.Text = "HP Max:"
         '
-        'iniativeTextBox
-        '
-        Me.iniativeTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        Me.iniativeTextBox.Location = New System.Drawing.Point(396, 33)
-        Me.iniativeTextBox.Name = "iniativeTextBox"
-        Me.iniativeTextBox.Size = New System.Drawing.Size(42, 21)
-        Me.iniativeTextBox.TabIndex = 18
-        '
-        'armorClassTextBox
-        '
-        Me.armorClassTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        Me.armorClassTextBox.Location = New System.Drawing.Point(405, 8)
-        Me.armorClassTextBox.Name = "armorClassTextBox"
-        Me.armorClassTextBox.Size = New System.Drawing.Size(44, 21)
-        Me.armorClassTextBox.TabIndex = 16
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        Me.Label13.Location = New System.Drawing.Point(332, 35)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(46, 15)
-        Me.Label13.TabIndex = 17
-        Me.Label13.Text = "Iniative:"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        Me.Label14.Location = New System.Drawing.Point(332, 10)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(71, 15)
-        Me.Label14.TabIndex = 15
-        Me.Label14.Text = "Armor Class:"
-        '
         'Panel11
         '
         Me.Panel11.BackColor = System.Drawing.Color.PeachPuff
@@ -978,12 +979,22 @@ Partial Class characterSheet
         Me.Label15.TabIndex = 0
         Me.Label15.Text = "Speed"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(706, 265)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 22
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'characterSheet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1077, 590)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel11)
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.Panel9)
@@ -1109,4 +1120,5 @@ Partial Class characterSheet
     Friend WithEvents Panel11 As Panel
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label15 As Label
+    Friend WithEvents Button1 As Button
 End Class
