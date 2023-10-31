@@ -350,16 +350,6 @@ Public Class characterSheet
         rdr.Close()
         connection.Close()
 
-        'characterID = rdr.GetInt32(0)
-        'characterNameTextBox.Text = rdr.GetString(1)
-        'strenTextBox.Text = rdr.GetInt32(2).ToString
-        'dexTextBox.Text = rdr.GetInt32(3).ToString
-        'conTextBox.Text = rdr.GetInt32(4).ToString
-        'intelTextBox.Text = rdr.GetInt32(5).ToString
-        'wisdomTextBox.Text = rdr.GetInt32(6).ToString
-        'charismaTextBox.Text = rdr.GetInt32(7).ToString
-        'rdr.Close()
-        'connection.Close()
     End Sub
 
     Private Sub characterSheet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -402,10 +392,6 @@ Public Class characterSheet
             command.ExecuteNonQuery()
         End If
         connection.Close()
-    End Sub
-
-    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

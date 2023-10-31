@@ -11,7 +11,7 @@ Public Class spellSheet
             );"
 
         command.ExecuteNonQuery()
-        command.CommandText = "SELECT * FROM spells"
+        command.CommandText = "SELECT spellName as Spell, spellAttackType as 'Attack Type' FROM spells"
         Dim da As New SQLiteDataAdapter()
 
         da.SelectCommand = command
@@ -21,5 +21,13 @@ Public Class spellSheet
         spellDataGridView.DataSource = dt
         spellDataGridView.AutoGenerateColumns = True
         connection.Close()
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        spellAttackBonusTextBox.Text = ComboBox1.SelectedItem
     End Sub
 End Class
