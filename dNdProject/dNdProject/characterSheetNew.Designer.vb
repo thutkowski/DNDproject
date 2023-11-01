@@ -107,6 +107,7 @@ Partial Class characterSheetNew
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -988,12 +989,22 @@ Partial Class characterSheetNew
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'characterSheet
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(827, 245)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(51, 16)
+        Me.Label16.TabIndex = 23
+        Me.Label16.Text = "Label16"
+        '
+        'characterSheetNew
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1077, 590)
+        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel11)
         Me.Controls.Add(Me.Panel10)
@@ -1008,7 +1019,7 @@ Partial Class characterSheetNew
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Times New Roman", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "characterSheet"
+        Me.Name = "characterSheetNew"
         Me.Text = "Character Sheet"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -1033,6 +1044,7 @@ Partial Class characterSheetNew
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -1121,4 +1133,5 @@ Partial Class characterSheetNew
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label16 As Label
 End Class

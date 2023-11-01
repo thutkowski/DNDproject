@@ -2,7 +2,6 @@
 
 Public Class spellSheet
     Private Sub spellSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         connection.Open()
 
         command.CommandText = "CREATE TABLE IF NOT EXISTS spells(spellID   INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,9 +37,6 @@ Public Class spellSheet
         MessageBox.Show(rdr.HasRows)
 
         MessageBox.Show(rdr.GetInt32(0))
-
-
-
 
         'Dim stren As Int32
         'stren = rdr.GetInt32(0)

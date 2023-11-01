@@ -73,9 +73,11 @@ Module codeModule
             connection.Close()
             Return True
         End If
+        connection.Close()
+        Return False
     End Function
 
-    Public Function loginActionFunction(username)
+    Public Function loginActionFunction(username) As Boolean
         'Check if the connection is open and if not open it
         If connection.State = ConnectionState.Closed Then
             connection.Open()
@@ -88,15 +90,16 @@ Module codeModule
         If rdr.Read() Then
             rdr.Close()
             connection.Close()
-            characterSheet.Show()
+            Return True
+
         Else
             MessageBox.Show("That character does not exist")
             rdr.Close()
             connection.Close()
+            Return False
         End If
+        Return False
     End Function
 
-    Public Function saveFunction()
 
-    End Function
 End Module

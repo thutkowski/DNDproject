@@ -345,9 +345,21 @@ Public Class characterSheet
 
     End Sub
 
+    Public Function AreAnyTextBoxesEmpty() As Boolean
+        ' Loop through all of the text boxes and check if any of them are empty.
+        For Each textBox As TextBox In Me.Controls
+            If textBox.Text = "" Then
+                Return True
+            End If
+        Next
+
+        ' If none of the text boxes are empty, return False.
+        Return False
+    End Function
     Private Sub characterSheet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim stren, dex, con, intel, wisdom, charisma As Integer
         Dim characterName As String
+
         stren = Convert.ToInt16(strenTextBox.Text)
         wisdom = Convert.ToInt16(wisdomTextBox.Text)
         dex = Convert.ToInt16(dexTextBox.Text)

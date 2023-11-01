@@ -120,7 +120,6 @@ C:\Users\hutkowt\Source\Repos\DNDproject\DNDproject-master\DNDproject-master\dNd
 C:\Users\hutkowt\Source\Repos\DNDproject\DNDproject-master\DNDproject-master\dNdProject\dNdProject\obj\Debug\dNdProject.vbproj.CopyComplete
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\x86\sqlite3.dll
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\x64\sqlite3.dll
-C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\Database2.accdb
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\dNdProject.exe.config
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\dNdProject.exe
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\dNdProject.pdb

@@ -9,7 +9,11 @@ Public Class login
     Public Sub loginActionButton_Click(sender As Object, e As EventArgs) Handles loginActionButton.Click
         characterUser = characterTextBox.Text
 
-        loginActionFunction(characterUser)
+        If loginActionFunction(characterUser) = True Then
+            characterSheet.Show()
+        Else
+            MessageBox.Show("Character not found!")
+        End If
     End Sub
 
     Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
