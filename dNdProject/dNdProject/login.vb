@@ -44,7 +44,7 @@ Public Class login
             wisdom        INTEGER,
             charisma      INTEGER
             );"
-        'command.CommandText = " CREATE TABLE IF NOT EXISTS characters(ID INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT)"
+
         command.ExecuteNonQuery()
         command.CommandText = "SELECT * FROM characters"
 
