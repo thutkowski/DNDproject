@@ -160,7 +160,6 @@ C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\EntityFrame
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\bin\Debug\System.Data.SQLite.xml
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.vbproj.AssemblyReference.cache
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheet.resources
-C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheetNew.resources
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.login.resources
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.Resources.resources
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.vbproj.GenerateResource.cache
@@ -172,3 +171,4 @@ C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheetNew.resources
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellSheet.resources
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellSheet.resources
+C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheetNew.resources

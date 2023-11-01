@@ -1,19 +1,14 @@
 ﻿Imports System.Data.SQLite
 
 Module codeModule
-
-
     Public dbCommand As String = ""
     Public bindingSrc As BindingSource
-
     Public dbName As String = "DND.db"
     Public dbPath As String = Application.StartupPath & "\" & dbName
     Public consString As String = "Data Source=" & dbPath & ";Version=3"
-
     Public connection As New SQLiteConnection(consString)
     Public command As New SQLiteCommand("", connection)
     Public rdr As SQLiteDataReader
-
 
     Public characterUser As String
     Public characterID As Int32
@@ -24,8 +19,6 @@ Module codeModule
     Public intelligenceStat As Int32
     Public wisdomStat As Int32
     Public charismaStat As Int32
-
-
 
     Public Function characterStatsFunction(characterUser As String) As Boolean
         connection.Open()
@@ -56,16 +49,10 @@ Module codeModule
 
         command.CommandText = "SELECT * FROM characters"
 
-        rdr = command.ExecuteReader()
-
-        If rdr.Read() Then
-            rdr.Close()
-            connection.Close()
-            Return True
-            Exit Function
-        End If
-
-        command.CommandText = "CREATE TABLE characters(characterID   INTEGER PRIMARY KEY AUTOINCREMENT,
+        Try
+            rdr = command.ExecuteReader()
+        Catch ex As Exception
+            command.CommandText = "CREATE TABLE characters(characterID   INTEGER PRIMARY KEY AUTOINCREMENT,
             characterName TEXT,
             stren         INTEGER,
             dex           INTEGER,
@@ -75,11 +62,41 @@ Module codeModule
             charisma      INTEGER
             );"
 
-        command.ExecuteNonQuery()
-        rdr.Close()
-        connection.Close()
-        Return False
+            command.ExecuteNonQuery()
+            connection.Close()
+            Return False
+            Exit Function
+        End Try
+
+        If rdr.Read() Then
+            rdr.Close()
+            connection.Close()
+            Return True
+        End If
     End Function
 
+    Public Function loginActionFunction(username)
+        'Check if the connection is open and if not open it
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
 
+        command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
+        command.Parameters.AddWithValue("@Username", username)
+        rdr = command.ExecuteReader()
+
+        If rdr.Read() Then
+            rdr.Close()
+            connection.Close()
+            characterSheet.Show()
+        Else
+            MessageBox.Show("That character does not exist")
+            rdr.Close()
+            connection.Close()
+        End If
+    End Function
+
+    Public Function saveFunction()
+
+    End Function
 End Module

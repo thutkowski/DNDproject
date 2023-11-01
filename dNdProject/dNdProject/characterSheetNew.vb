@@ -4,20 +4,20 @@ Option Strict On
 Imports System.Data.SqlClient
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class characterSheetNew
     Private profBonus As Integer
 
     'Skill Scores to update modifer scores
-    Private Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
-        Dim modifer As Integer
-
+    Public Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
+        Dim strenModifer As Integer
         If strenTextBox.Text = "" Then
             Exit Sub
         End If
 
         Try
-            modifer = Convert.ToInt32(strenTextBox.Text)
+            strenModifer = Convert.ToInt32(strenTextBox.Text)
         Catch fe As FormatException
             MessageBox.Show("Invalid format enter only integers")
             Exit Sub
@@ -26,8 +26,8 @@ Public Class characterSheetNew
             Exit Sub
         End Try
 
-        modifer = (modifer - 10) \ 2
-        strenModiferLabel.Text = Convert.ToString(modifer)
+        strenModifer = (strenModifer - 10) \ 2
+        strenModiferLabel.Text = Convert.ToString(strenModifer)
     End Sub
     Private Sub dexTextBox_TextChanged(sender As Object, e As EventArgs) Handles dexTextBox.TextChanged
         Dim modifer As Integer
@@ -176,8 +176,20 @@ Public Class characterSheetNew
 
     End Function
     'Profiency Bonus
-    Private Sub profTextBox_TextChanged(sender As Object, e As EventArgs)
-        profBonus = Convert.ToInt32(profTextBox.Text)
+    Private Sub profTextBox_TextChanged(sender As Object, e As EventArgs) Handles profTextBox.TextChanged
+        If profTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        Try
+            profBonus = Convert.ToInt32(profTextBox.Text)
+        Catch fe As FormatException
+            MessageBox.Show("Invalid format enter only integers")
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+            Exit Sub
+        End Try
     End Sub
     'Skill Checks
     Private Sub acrobacticsButton_Click(sender As Object, e As EventArgs) Handles acrobacticsButton.Click
@@ -321,6 +333,58 @@ Public Class characterSheetNew
     End Sub
 
     Private Sub characterSheetNew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MessageBox.Show("Hi")
+        characterNameTextBox.Text = characterUser
+    End Sub
+
+    Public Sub characterSheetNew_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Dim stren, dex, con, intel, wisdom, charisma As Integer
+        Dim characterName As String
+        stren = Convert.ToInt16(strenTextBox.Text)
+        If strenTextBox.Text = "" Then
+            Exit Sub
+        End If
+        wisdom = Convert.ToInt16(wisdomTextBox.Text)
+        dex = Convert.ToInt16(dexTextBox.Text)
+        con = Convert.ToInt16(conTextBox.Text)
+        intel = Convert.ToInt16(intelTextBox.Text)
+        charisma = Convert.ToInt16(charismaTextBox.Text)
+        characterName = characterNameTextBox.Text
+
+        'Check if the connection is open and if not open it
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+
+        command.CommandText = "SELECT * FROM characters WHERE characterName = @characterName"
+
+        command.Parameters.AddWithValue("@characterName", characterName)
+
+        If command.ExecuteScalar() Is Nothing Then
+            command.CommandText = "INSERT INTO characters (characterName,stren,dex,con,intel,wisdom,charisma) VALUES (@characterName,@stren,@dex,@con,@intel,@wisdom,@charisma)"
+            command.Parameters.AddWithValue("@characterName", characterName)
+            command.Parameters.AddWithValue("@stren", stren)
+            command.Parameters.AddWithValue("@dex", dex)
+            command.Parameters.AddWithValue("@con", con)
+            command.Parameters.AddWithValue("@intel", intel)
+            command.Parameters.AddWithValue("@wisdom", wisdom)
+            command.Parameters.AddWithValue("@charisma", charisma)
+            command.ExecuteNonQuery()
+        Else
+            command.CommandText = "UPDATE characters SET characterName = @characterName,stren=@stren,dex=@dex,con=@con,intel=@intel,wisdom=@wisdom,charisma=@charisma WHERE characterID=@characterID"
+            command.Parameters.AddWithValue("@characterName", characterName)
+            command.Parameters.AddWithValue("@stren", stren)
+            command.Parameters.AddWithValue("@dex", dex)
+            command.Parameters.AddWithValue("@con", con)
+            command.Parameters.AddWithValue("@intel", intel)
+            command.Parameters.AddWithValue("@wisdom", wisdom)
+            command.Parameters.AddWithValue("@charisma", charisma)
+            command.Parameters.AddWithValue("@characterID", characterID)
+            command.ExecuteNonQuery()
+        End If
+        connection.Close()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        spellSheet.Show()
     End Sub
 End Class
