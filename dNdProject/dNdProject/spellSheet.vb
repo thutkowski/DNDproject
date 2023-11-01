@@ -23,11 +23,8 @@ Public Class spellSheet
         connection.Close()
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         spellAttackBonusTextBox.Text = ComboBox1.SelectedItem
+
     End Sub
 End Class
