@@ -337,7 +337,7 @@ Public Class characterSheet
         connection.Open()
         command.CommandText = "SELECT * from characters WHERE characterName = @characterUser"
         command.Parameters.AddWithValue("@characterUser", characterUser)
-        rdr = command.ExecuteReader
+        rdr = command.ExecuteReader()
         rdr.Read()
         characterID = rdr.GetInt32(0)
         characterNameTextBox.Text = rdr.GetString(1)

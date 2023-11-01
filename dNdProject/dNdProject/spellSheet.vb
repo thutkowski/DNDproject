@@ -25,16 +25,27 @@ Public Class spellSheet
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Dim selection As String
+
         selection = ComboBox1.SelectedText
         connection.Open()
-        command.CommandText = "SELECT @attackModifer from characters WHERE characterName = @characterUser"
+        command.CommandText = "SELECT @attackModifer FROM characters WHERE characterName = 'tim'"
         command.Parameters.AddWithValue("@attackModifer", selection)
-        command.Parameters.AddWithValue("@characterUser", characterUser)
-        rdr = command.ExecuteReader
-        MessageBox.Show(rdr.FieldCount, rdr.HasRows)
-        rdr.Read()
-        MessageBox.Show(rdr.FieldCount, rdr.HasRows)
-        spellAttackBonusTextBox.Text = rdr.GetInt32(0).ToString
 
+
+        rdr = command.ExecuteReader
+        rdr.Read()
+
+        MessageBox.Show(rdr.HasRows)
+
+        MessageBox.Show(rdr.GetInt32(0))
+
+
+
+
+        'Dim stren As Int32
+        'stren = rdr.GetInt32(0)
+        'spellAttackBonusTextBox.Text = stren.ToString
+        'rdr.Close()
+        'connection.Close()
     End Sub
 End Class
