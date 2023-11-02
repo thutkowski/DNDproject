@@ -47,11 +47,11 @@ Partial Class characterSheet
         Me.dexTextBox = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.rollTextBox = New System.Windows.Forms.TextBox()
         Me.survivalButton = New System.Windows.Forms.Button()
         Me.Buttonstealth = New System.Windows.Forms.Button()
         Me.sleightButton = New System.Windows.Forms.Button()
         Me.religiomButton = New System.Windows.Forms.Button()
-        Me.rollTextBox = New System.Windows.Forms.TextBox()
         Me.persuasionButton = New System.Windows.Forms.Button()
         Me.performanceButton = New System.Windows.Forms.Button()
         Me.perceptionButton = New System.Windows.Forms.Button()
@@ -363,11 +363,11 @@ Partial Class characterSheet
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.Linen
+        Me.Panel7.Controls.Add(Me.rollTextBox)
         Me.Panel7.Controls.Add(Me.survivalButton)
         Me.Panel7.Controls.Add(Me.Buttonstealth)
         Me.Panel7.Controls.Add(Me.sleightButton)
         Me.Panel7.Controls.Add(Me.religiomButton)
-        Me.Panel7.Controls.Add(Me.rollTextBox)
         Me.Panel7.Controls.Add(Me.persuasionButton)
         Me.Panel7.Controls.Add(Me.performanceButton)
         Me.Panel7.Controls.Add(Me.perceptionButton)
@@ -402,6 +402,15 @@ Partial Class characterSheet
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(157, 554)
         Me.Panel7.TabIndex = 6
+        '
+        'rollTextBox
+        '
+        Me.rollTextBox.Font = New System.Drawing.Font("Times New Roman", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rollTextBox.Location = New System.Drawing.Point(45, 503)
+        Me.rollTextBox.Name = "rollTextBox"
+        Me.rollTextBox.Size = New System.Drawing.Size(66, 41)
+        Me.rollTextBox.TabIndex = 34
+        Me.rollTextBox.Text = " "
         '
         'survivalButton
         '
@@ -438,14 +447,6 @@ Partial Class characterSheet
         Me.religiomButton.Size = New System.Drawing.Size(19, 19)
         Me.religiomButton.TabIndex = 30
         Me.religiomButton.UseVisualStyleBackColor = True
-        '
-        'rollTextBox
-        '
-        Me.rollTextBox.Font = New System.Drawing.Font("Times New Roman", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rollTextBox.Location = New System.Drawing.Point(45, 503)
-        Me.rollTextBox.Name = "rollTextBox"
-        Me.rollTextBox.Size = New System.Drawing.Size(66, 41)
-        Me.rollTextBox.TabIndex = 7
         '
         'persuasionButton
         '
@@ -981,7 +982,7 @@ Partial Class characterSheet
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(706, 265)
+        Me.Button1.Location = New System.Drawing.Point(598, 181)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 22
@@ -1095,7 +1096,6 @@ Partial Class characterSheet
     Friend WithEvents athleticsButton As Button
     Friend WithEvents arcanaButton As Button
     Friend WithEvents animalButton As Button
-    Friend WithEvents rollTextBox As TextBox
     Friend WithEvents Panel8 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Label6 As Label
@@ -1121,4 +1121,5 @@ Partial Class characterSheet
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents rollTextBox As TextBox
 End Class

@@ -308,6 +308,7 @@ Public Class characterSheet
             rollTextBox.Text = Convert.ToString(roll)
         End If
     End Sub
+
     Private Sub sleightButton_Click(sender As Object, e As EventArgs) Handles sleightButton.Click
         Dim roll As Integer = dexD20roll()
         If acrobacticsCheckBox.Checked = True Then
@@ -342,7 +343,6 @@ Public Class characterSheet
         wisdomTextBox.Text = wisdomStat.ToString
         intelTextBox.Text = intelligenceStat.ToString
         charismaTextBox.Text = charismaStat.ToString
-
     End Sub
 
     Public Function AreAnyTextBoxesEmpty() As Boolean
@@ -360,6 +360,10 @@ Public Class characterSheet
         Dim stren, dex, con, intel, wisdom, charisma As Integer
         Dim characterName As String
 
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+
         stren = Convert.ToInt16(strenTextBox.Text)
         wisdom = Convert.ToInt16(wisdomTextBox.Text)
         dex = Convert.ToInt16(dexTextBox.Text)
@@ -367,8 +371,6 @@ Public Class characterSheet
         intel = Convert.ToInt16(intelTextBox.Text)
         charisma = Convert.ToInt16(charismaTextBox.Text)
         characterName = characterNameTextBox.Text
-
-        connection.Open()
 
         command.CommandText = "SELECT * FROM characters WHERE characterName = @characterName"
 

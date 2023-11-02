@@ -29,6 +29,7 @@ Public Class login
     End Sub
 
     Private Sub createUserButton_Click(sender As Object, e As EventArgs) Handles createUserButton.Click
+        characterUser = characterTextBox.Text
         characterSheetNew.Show()
     End Sub
 End Class

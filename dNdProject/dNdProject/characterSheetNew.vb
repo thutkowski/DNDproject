@@ -357,7 +357,6 @@ Public Class characterSheetNew
     Public Sub characterSheetNew_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim stren, dex, con, intel, wisdom, charisma As Integer
 
-
         stren = Convert.ToInt16(strenTextBox.Text)
         wisdom = Convert.ToInt16(wisdomTextBox.Text)
         dex = Convert.ToInt16(dexTextBox.Text)

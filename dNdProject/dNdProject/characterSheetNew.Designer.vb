@@ -447,6 +447,7 @@ Partial Class characterSheetNew
         Me.rollTextBox.Name = "rollTextBox"
         Me.rollTextBox.Size = New System.Drawing.Size(66, 41)
         Me.rollTextBox.TabIndex = 7
+        Me.rollTextBox.Text = " "
         '
         'persuasionButton
         '

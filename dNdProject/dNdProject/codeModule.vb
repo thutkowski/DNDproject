@@ -38,6 +38,7 @@ Module codeModule
         intelligenceStat = rdr.GetInt32(5).ToString
         wisdomStat = rdr.GetInt32(6).ToString
         charismaStat = rdr.GetInt32(7).ToString
+        rdr.Close()
         Return True
     End Function
 
@@ -100,6 +101,4 @@ Module codeModule
         End If
         Return False
     End Function
-
-
 End Module
