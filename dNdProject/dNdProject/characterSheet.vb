@@ -339,7 +339,7 @@ Public Class characterSheet
         characterStatsFunction(characterUser)
         characterNameTextBox.Text = characterName
         strenTextBox.Text = strengthStat.ToString
-        dexTextBox.Text = dexerityStat.ToString
+        dexTextBox.Text = dexterityStat.ToString
         conTextBox.Text = constitutionStat.ToString
         wisdomTextBox.Text = wisdomStat.ToString
         intelTextBox.Text = intelligenceStat.ToString

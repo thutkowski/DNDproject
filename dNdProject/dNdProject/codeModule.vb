@@ -14,7 +14,7 @@ Module codeModule
     Public characterID As Int32
     Public characterName As String
     Public strengthStat As Int32
-    Public dexerityStat As Int32
+    Public dexterityStat As Int32
     Public constitutionStat As Int32
     Public intelligenceStat As Int32
     Public wisdomStat As Int32
@@ -33,7 +33,7 @@ Module codeModule
         characterID = rdr.GetInt32(0)
         characterName = rdr.GetString(1)
         strengthStat = rdr.GetInt32(2).ToString
-        dexerityStat = rdr.GetInt32(3).ToString
+        dexterityStat = rdr.GetInt32(3).ToString
         constitutionStat = rdr.GetInt32(4).ToString
         intelligenceStat = rdr.GetInt32(5).ToString
         wisdomStat = rdr.GetInt32(6).ToString

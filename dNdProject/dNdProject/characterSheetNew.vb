@@ -399,13 +399,6 @@ Public Class characterSheetNew
         connection.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Label16.Text = AreAnyTextBoxesEmpty().ToString
-
-
-        'spellSheet.Show()
-    End Sub
-
     Private Sub characterSheetNew_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If AreAnyTextBoxesEmpty() = True Then
             MessageBox.Show("One or more text boxes are empty. Cannot save character unless all are filled.")

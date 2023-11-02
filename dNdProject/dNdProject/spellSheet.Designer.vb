@@ -28,7 +28,7 @@ Partial Class spellSheet
         Me.spellSaveDCTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.spellAttackBonusTextBox = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.spellAbilityComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.spellDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -81,21 +81,21 @@ Partial Class spellSheet
         Me.spellAttackBonusTextBox.Size = New System.Drawing.Size(36, 20)
         Me.spellAttackBonusTextBox.TabIndex = 7
         '
-        'ComboBox1
+        'spellAbilityComboBox
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"stren", "Dexterity" & Global.Microsoft.VisualBasic.ChrW(9), "Constitution", "Charisma", "Wisdom", "Intelligence"})
-        Me.ComboBox1.Location = New System.Drawing.Point(104, 10)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(104, 21)
-        Me.ComboBox1.TabIndex = 8
+        Me.spellAbilityComboBox.FormattingEnabled = True
+        Me.spellAbilityComboBox.Items.AddRange(New Object() {"stren", "Dexterity" & Global.Microsoft.VisualBasic.ChrW(9), "Constitution", "Charisma", "Wisdom", "Intelligence"})
+        Me.spellAbilityComboBox.Location = New System.Drawing.Point(104, 10)
+        Me.spellAbilityComboBox.Name = "spellAbilityComboBox"
+        Me.spellAbilityComboBox.Size = New System.Drawing.Size(104, 21)
+        Me.spellAbilityComboBox.TabIndex = 8
         '
         'spellSheet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(603, 281)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.spellAbilityComboBox)
         Me.Controls.Add(Me.spellAttackBonusTextBox)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.spellSaveDCTextBox)
@@ -116,5 +116,5 @@ Partial Class spellSheet
     Friend WithEvents spellSaveDCTextBox As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents spellAttackBonusTextBox As TextBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents spellAbilityComboBox As ComboBox
 End Class
