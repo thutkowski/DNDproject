@@ -1,6 +1,7 @@
 ﻿Option Explicit On
 Option Strict On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
@@ -347,10 +348,12 @@ Public Class characterSheet
 
     Public Function AreAnyTextBoxesEmpty() As Boolean
         ' Loop through all of the text boxes and check if any of them are empty.
-        For Each textBox As TextBox In Me.Controls
-            If textBox.Text = "" Then
-                Return True
-            End If
+        For Each Panel As Panel In Me.Controls.OfType(Of Panel)
+            For Each textBox As Control In Panel.Controls.OfType(Of TextBox)
+                If textBox.Text = "" Then
+                    Return True
+                End If
+            Next
         Next
 
         ' If none of the text boxes are empty, return False.
@@ -403,5 +406,12 @@ Public Class characterSheet
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         spellSheet.Show()
+    End Sub
+
+    Private Sub characterSheet_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If AreAnyTextBoxesEmpty() = True Then
+            MessageBox.Show("One or more text boxes are empty. Cannot save character unless all are filled.")
+            e.Cancel = True
+        End If
     End Sub
 End Class
