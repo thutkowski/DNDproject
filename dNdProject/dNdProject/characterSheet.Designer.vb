@@ -106,6 +106,7 @@ Partial Class characterSheet
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.spellSheetButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -980,12 +981,21 @@ Partial Class characterSheet
         Me.Label15.TabIndex = 0
         Me.Label15.Text = "Speed"
         '
+        'spellSheetButton
+        '
+        Me.spellSheetButton.Location = New System.Drawing.Point(531, 150)
+        Me.spellSheetButton.Name = "spellSheetButton"
+        Me.spellSheetButton.Size = New System.Drawing.Size(101, 52)
+        Me.spellSheetButton.TabIndex = 22
+        Me.spellSheetButton.Text = "Show Spell Sheet"
+        Me.spellSheetButton.UseVisualStyleBackColor = True
+        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(598, 181)
+        Me.Button1.Location = New System.Drawing.Point(288, 277)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 22
+        Me.Button1.Size = New System.Drawing.Size(132, 54)
+        Me.Button1.TabIndex = 23
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -996,6 +1006,7 @@ Partial Class characterSheet
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1077, 590)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.spellSheetButton)
         Me.Controls.Add(Me.Panel11)
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.Panel9)
@@ -1120,6 +1131,7 @@ Partial Class characterSheet
     Friend WithEvents Panel11 As Panel
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label15 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents spellSheetButton As Button
     Friend WithEvents rollTextBox As TextBox
+    Friend WithEvents Button1 As Button
 End Class

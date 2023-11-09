@@ -21,12 +21,12 @@ Module codeModule
     Public charismaStat As Int32
 
     Public Function characterStatsFunction(characterUser As String) As Boolean
-        connection.Open()
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
 
         command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
-
         command.Parameters.AddWithValue("@Username", characterUser)
-
         rdr = command.ExecuteReader()
 
         rdr.Read()
@@ -65,6 +65,7 @@ Module codeModule
 
             command.ExecuteNonQuery()
             connection.Close()
+            rdr.Close()
             Return False
             Exit Function
         End Try
@@ -99,6 +100,20 @@ Module codeModule
             connection.Close()
             Return False
         End If
+    End Function
+
+    Public Function TableExists(tableName As String) As Boolean
+        command.CommandText = "Select Name FROM sqlite_master WHERE type='table'"
+
+        rdr = command.ExecuteReader()
+
+        While rdr.Read()
+            If String.Compare(rdr.GetString(0), tableName, True) = 0 Then
+                rdr.Close()
+                Return True
+            End If
+        End While
+        rdr.Close()
         Return False
     End Function
 End Module
