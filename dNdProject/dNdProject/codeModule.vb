@@ -85,15 +85,16 @@ Module codeModule
             connection.Open()
         End If
 
+        'Queries character list 
         command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
         command.Parameters.AddWithValue("@Username", username)
         rdr = command.ExecuteReader()
 
+        'Checks if the query returned any rows
         If rdr.Read() Then
             rdr.Close()
             connection.Close()
             Return True
-
         Else
             MessageBox.Show("That character does not exist")
             rdr.Close()
@@ -102,18 +103,5 @@ Module codeModule
         End If
     End Function
 
-    Public Function TableExists(tableName As String) As Boolean
-        command.CommandText = "Select Name FROM sqlite_master WHERE type='table'"
 
-        rdr = command.ExecuteReader()
-
-        While rdr.Read()
-            If String.Compare(rdr.GetString(0), tableName, True) = 0 Then
-                rdr.Close()
-                Return True
-            End If
-        End While
-        rdr.Close()
-        Return False
-    End Function
 End Module

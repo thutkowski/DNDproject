@@ -9,39 +9,12 @@ Public Class spellSheet
         If connection.State = ConnectionState.Closed Then
             connection.Open()
         End If
-        Const spellsAttack As String = "spellsAttack"
-        Const spellsNotAttack As String = "spellsNotAttack"
-        If TableExists(spellsAttack) = False Then
 
-            command.CommandText = "CREATE TABLE IF Not EXISTS spellsAttack(
-            spellID INTEGER PRIMARY KEY AUTOINCREMENT,
-            spellName TEXT NOT NULL,
-            spellType TEXT NOT NULL,
-            spellLevel INTEGER NOT NULL,
-            spellAttack TEXT,
-            range INTEGER NOT NULL,
-            duration INTEGER NOT NULL
-            );"
-            command.ExecuteNonQuery()
-        End If
 
-        If TableExists(spellsNotAttack) = False Then
-            command.CommandText = "CREATE TABLE IF NOT EXISTS spellsNotAttack(
-            spellID INTEGER PRIMARY KEY AUTOINCREMENT,
-            spellName TEXT NOT NULL,
-            spellType TEXT NOT NULL,
-            spellLevel INTEGER NOT NULL,
-            spellAttack TEXT,
-            range INTEGER NOT NULL,
-            duration INTEGER NOT NULL
-            );"
-            command.ExecuteNonQuery()
-        End If
 
-        command.ExecuteNonQuery()
         command.CommandText = "SELECT * FROM spellsNonAttack"
         If rdr.IsClosed Then
-
+            rdr.
         Else
             command.CommandText = "SELECT * FROM spellsNonAttack"
             Dim da As New SQLiteDataAdapter()
