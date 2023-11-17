@@ -339,19 +339,7 @@ Public Class characterSheetNew
 
 
 
-    Public Function AreAnyTextBoxesEmpty() As Boolean
-        ' Loop through all of the text boxes and check if any of them are empty.
-        For Each Panel As Panel In Me.Controls.OfType(Of Panel)
-            For Each textBox As Control In Panel.Controls.OfType(Of TextBox)
-                If textBox.Text = "" Then
-                    Return True
-                End If
-            Next
-        Next
 
-        ' If none of the text boxes are empty, return False.
-        Return False
-    End Function
 
 
     Public Sub characterSheetNew_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -400,7 +388,7 @@ Public Class characterSheetNew
     End Sub
 
     Private Sub characterSheetNew_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If AreAnyTextBoxesEmpty() = True Then
+        If AreAnyTextBoxesEmpty(Me.Controls) = True Then
             MessageBox.Show("One or more text boxes are empty. Cannot save character unless all are filled.")
             e.Cancel = True
         End If

@@ -415,10 +415,4 @@ Public Class characterSheet
         spellSheet.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim characters As String = "characters"
-        If TableExists(characters) Then
-            MessageBox.Show("Exists")
-        End If
-    End Sub
 End Class

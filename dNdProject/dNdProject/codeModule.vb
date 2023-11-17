@@ -21,10 +21,12 @@ Module codeModule
     Public charismaStat As Int32
 
     Public Function characterStatsFunction(characterUser As String) As Boolean
+        'Check if connection is open
         If connection.State = ConnectionState.Closed Then
             connection.Open()
         End If
 
+        'Query character list with character name
         command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
         command.Parameters.AddWithValue("@Username", characterUser)
         rdr = command.ExecuteReader()
@@ -103,5 +105,16 @@ Module codeModule
         End If
     End Function
 
+    Public Function AreAnyTextBoxesEmpty(controls As Control.ControlCollection) As Boolean
+        ' Loop through all of the text boxes and check if any of them are empty.
 
+        For Each textBox As Control In controls.OfType(Of TextBox)
+            If textBox.Text = "" Then
+                Return True
+            End If
+        Next
+
+        ' If none of the text boxes are empty, return False.
+        Return False
+    End Function
 End Module

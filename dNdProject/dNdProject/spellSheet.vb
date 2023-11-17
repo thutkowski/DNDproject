@@ -1,31 +1,26 @@
-﻿Imports System.Data.SQLite
+﻿Option Explicit On
+Option Strict On
+
+Imports System.Data.SQLite
 Imports System.Diagnostics.Eventing
 Imports System.Windows.Input
 
 Public Class spellSheet
-
     Private Sub spellSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'Check if the connection is open and if not open it
         If connection.State = ConnectionState.Closed Then
             connection.Open()
         End If
 
+        command.CommandText = "SELECT * FROM allSpells WHERE known=1"
+        Dim da As New SQLiteDataAdapter()
 
-
-        command.CommandText = "SELECT * FROM spellsNonAttack"
-        If rdr.IsClosed Then
-            rdr.
-        Else
-            command.CommandText = "SELECT * FROM spellsNonAttack"
-            Dim da As New SQLiteDataAdapter()
-
-            da.SelectCommand = command
-            Dim dt As New DataTable
-            da.Fill(dt)
-            spellDataGridView.DataSource = dt
-            spellDataGridView.AutoGenerateColumns = True
-            connection.Close()
-            End If
+        da.SelectCommand = command
+        Dim dt As New DataTable
+        da.Fill(dt)
+        spellDataGridView.DataSource = dt
+        spellDataGridView.AutoGenerateColumns = True
+        connection.Close()
     End Sub
 
     Private Sub spellAbilityComboBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles spellAbilityComboBox.SelectedIndexChanged
@@ -51,32 +46,27 @@ Public Class spellSheet
 
     End Sub
 
-    Public Function AreAnyTextBoxesEmpty() As Boolean
-        ' Loop through all of the text boxes and check if any of them are empty.
 
-        For Each textBox As Control In Me.Controls.OfType(Of TextBox)
-            If textBox.Text = "" Then
-                Return True
-            End If
-        Next
-
-        ' If none of the text boxes are empty, return False.
-        Return False
-    End Function
     Private Sub addSpellButton_Click(sender As Object, e As EventArgs) Handles addSpellButton.Click
-        If AreAnyTextBoxesEmpty() Then
-            MessageBox.Show("One or more text boxes are empty. Cannot save character unless all are filled.")
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
         End If
-        Dim spellName, spellType, spellLevel, spellAttack As String
-        Dim range, duration As Integer
+
+        Dim spellName As String
+        Dim results As String
 
         spellName = spellNameTextBox.Text
-        spellType = spellTypeTextBox.Text
-        spellLevel = spellLevelTextBox.Text
-        spellAttack = spellAttackTextBox.Text
-        range = Convert.ToInt32(spellRangeTextBox.Text)
-        duration = Convert.ToInt32(spellDurationTextBox.Text)
-
+        command.CommandText = "SELECT spellID FROM allSpells WHERE spellName=@spellName"
+        command.Parameters.AddWithValue("@spellName", spellName)
+        If command.ExecuteScalar() Is Nothing Then
+            MessageBox.Show("Spell name not found in list from 5e", "Spell not found")
+        End If
+        results = Convert.ToString(command.ExecuteScalar())
+        MessageBox.Show(results)
+        command.CommandText = "UPDATE allSpells SET known =1 
+        WHERE spellID=@spellID"
+        command.Parameters.AddWithValue("@spellID", results)
+        command.ExecuteNonQuery()
     End Sub
 
 End Class
