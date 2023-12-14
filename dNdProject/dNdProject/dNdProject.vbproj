@@ -95,6 +95,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="characterCreation.Designer.vb">
+      <DependentUpon>characterCreation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="characterCreation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="characterSheet.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="spellQueryForm.Designer.vb">
+      <DependentUpon>spellQueryForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="spellQueryForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="spellSheet.Designer.vb">
       <DependentUpon>spellSheet.vb</DependentUpon>
     </Compile>
@@ -139,6 +151,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="characterCreation.resx">
+      <DependentUpon>characterCreation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="characterSheet.resx">
       <DependentUpon>characterSheet.vb</DependentUpon>
     </EmbeddedResource>
@@ -154,12 +169,14 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="spellQueryForm.resx">
+      <DependentUpon>spellQueryForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="spellSheet.resx">
       <DependentUpon>spellSheet.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

@@ -10,6 +10,7 @@ Module codeModule
     Public command As New SQLiteCommand("", connection)
     Public rdr As SQLiteDataReader
 
+    'What actually needs to be a global variable
     Public characterUser As String
     Public characterID As Int32
     Public characterName As String
@@ -19,44 +20,139 @@ Module codeModule
     Public intelligenceStat As Int32
     Public wisdomStat As Int32
     Public charismaStat As Int32
+    Public characterClass As String
 
-    Public Function characterStatsFunction(characterUser As String) As Boolean
-        'Check if connection is open
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+    Public spellIDQuery As Integer
 
-        'Query character list with character name
-        command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
-        command.Parameters.AddWithValue("@Username", characterUser)
-        rdr = command.ExecuteReader()
+    Public Function checkTableCharactersExist() As Boolean
+        openDB()
+        command.CommandText = "SELECT * FROM characterInfo"
 
-        rdr.Read()
-        characterID = rdr.GetInt32(0)
-        characterName = rdr.GetString(1)
-        strengthStat = rdr.GetInt32(2).ToString
-        dexterityStat = rdr.GetInt32(3).ToString
-        constitutionStat = rdr.GetInt32(4).ToString
-        intelligenceStat = rdr.GetInt32(5).ToString
-        wisdomStat = rdr.GetInt32(6).ToString
-        charismaStat = rdr.GetInt32(7).ToString
+        Try
+            rdr = command.ExecuteReader()
+        Catch ex As Exception
+            command.CommandText = "CREATE TABLE characters (
+                characterID INTEGER  PRIMARY KEY AUTOINCREMENT,
+                characterName TEXT
+            );"
+
+            command.ExecuteNonQuery()
+            connection.Close()
+
+            Return False
+        End Try
         rdr.Close()
         Return True
     End Function
-
-    Public Function checkTableCharactersExistFunction()
+    Public Function checkTableCharacterInfoExist() As Boolean
         'Check if the connection is open and if not open it
         If connection.State = ConnectionState.Closed Then
             connection.Open()
         End If
 
-        command.CommandText = "SELECT * FROM characters"
+        command.CommandText = "SELECT * FROM characterInfo"
 
         Try
             rdr = command.ExecuteReader()
         Catch ex As Exception
-            command.CommandText = "CREATE TABLE characters(characterID   INTEGER PRIMARY KEY AUTOINCREMENT,
-            characterName TEXT,
+
+            command.CommandText = "CREATE TABLE characterInfo (
+                characterID INTEGER,
+                characterName TEXT,
+                proficiency INTEGER,
+                characterClass TEXT,
+                background TEXT,
+                alignment TEXT,
+                initiative INTEGER,
+                armorClass INTEGER,
+                currentHp INTEGER,
+                hpMax INTEGER,
+                level INTEGER,
+                speed INTEGER
+            );
+            "
+
+            command.ExecuteNonQuery()
+            connection.Close()
+
+            Return False
+            Exit Function
+        End Try
+
+        If rdr.Read() Then
+            rdr.Close()
+            connection.Close()
+            Return True
+        End If
+        rdr.Close()
+        connection.Close()
+        Return False
+    End Function
+
+    Public Function checkTableCharacterSkillsExist() As Boolean
+        'Check if the connection is open and if not open it
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+
+        command.CommandText = "SELECT * FROM characterSkills"
+
+        Try
+            rdr = command.ExecuteReader()
+        Catch ex As Exception
+
+            command.CommandText = "CREATE TABLE characterSkills (
+                characterID INTEGER ,
+                Survival INTEGER,
+                Stealth INTEGER,
+                Sleight INTEGER,
+                Religion INTEGER,
+                Persuasion INTEGER,
+                Performance INTEGER,
+                Perception INTEGER,
+                Nature INTEGER,
+                Medicine INTEGER,
+                Investigation INTEGER,
+                Intimidation INTEGER,
+                History INTEGER,
+                Deception INTEGER,
+                Athletics INTEGER,
+                Arcana INTEGER,
+                Animal INTEGER,
+                Acrobatics INTEGER
+            );
+            "
+
+            command.ExecuteNonQuery()
+            connection.Close()
+
+            Return False
+            Exit Function
+        End Try
+
+        If rdr.Read() Then
+            rdr.Close()
+            connection.Close()
+            Return True
+        End If
+        rdr.Close()
+        connection.Close()
+        Return False
+    End Function
+
+    Public Function checkTableCharacterStatsExist() As Boolean
+        'Check if the connection is open and if not open it
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+
+        command.CommandText = "SELECT * FROM characterStats"
+
+        Try
+            rdr = command.ExecuteReader()
+        Catch ex As Exception
+
+            command.CommandText = "CREATE TABLE characterStats(characterID  INTEGER ,
             stren         INTEGER,
             dex           INTEGER,
             con           INTEGER,
@@ -67,7 +163,7 @@ Module codeModule
 
             command.ExecuteNonQuery()
             connection.Close()
-            rdr.Close()
+
             Return False
             Exit Function
         End Try
@@ -77,23 +173,21 @@ Module codeModule
             connection.Close()
             Return True
         End If
+        rdr.Close()
         connection.Close()
         Return False
     End Function
 
     Public Function loginActionFunction(username) As Boolean
-        'Check if the connection is open and if not open it
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
 
         'Queries character list 
-        command.CommandText = "SELECT * FROM characters WHERE characterName = @Username"
+        command.CommandText = "SELECT characterID FROM characters WHERE characterName = @Username"
         command.Parameters.AddWithValue("@Username", username)
-        rdr = command.ExecuteReader()
+        characterID = command.ExecuteScalar()
 
         'Checks if the query returned any rows
-        If rdr.Read() Then
+        If characterID Then
             rdr.Close()
             connection.Close()
             Return True
@@ -117,4 +211,10 @@ Module codeModule
         ' If none of the text boxes are empty, return False.
         Return False
     End Function
+
+    Public Sub openDB()
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+    End Sub
 End Module

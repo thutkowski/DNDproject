@@ -17,19 +17,19 @@ Public Class login
     End Sub
 
     Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        'Check if the table exists and enables the login button if so
-        Dim characterTableExists As Boolean
-        characterTableExists = Convert.ToBoolean(checkTableCharactersExistFunction())
-
-        If characterTableExists = True Then
+        If Not checkTableCharactersExist() Then
+            characterTextBox.ReadOnly = True
+        Else
             loginActionButton.Enabled = True
         End If
+        checkTableCharacterStatsExist()
+        checkTableCharacterSkillsExist()
+        checkTableCharacterInfoExist()
 
     End Sub
 
     Private Sub createUserButton_Click(sender As Object, e As EventArgs) Handles createUserButton.Click
-        characterUser = characterTextBox.Text
-        characterSheetNew.Show()
+        characterCreation.Show()
+        Me.Close()
     End Sub
 End Class

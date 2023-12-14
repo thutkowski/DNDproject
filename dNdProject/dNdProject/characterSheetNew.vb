@@ -338,13 +338,9 @@ Public Class characterSheetNew
     End Sub
 
 
-
-
-
-
     Public Sub characterSheetNew_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Dim stren, dex, con, intel, wisdom, charisma As Integer
-
+        Dim charClass As String
         stren = Convert.ToInt16(strenTextBox.Text)
         wisdom = Convert.ToInt16(wisdomTextBox.Text)
         dex = Convert.ToInt16(dexTextBox.Text)
@@ -352,18 +348,22 @@ Public Class characterSheetNew
         intel = Convert.ToInt16(intelTextBox.Text)
         charisma = Convert.ToInt16(charismaTextBox.Text)
         characterName = characterNameTextBox.Text
+        charClass = classTextBox.Text
+
 
         'Check if the connection is open and if not open it
         If connection.State = ConnectionState.Closed Then
             connection.Open()
         End If
 
-        command.CommandText = "SELECT * FROM characters WHERE characterName = @characterName"
+        command.CommandText = "SELECT * FROM characterInfo WHERE characterName = @characterName"
 
         command.Parameters.AddWithValue("@characterName", characterName)
 
         If command.ExecuteScalar() Is Nothing Then
-            command.CommandText = "INSERT INTO characters (characterName,stren,dex,con,intel,wisdom,charisma) VALUES (@characterName,@stren,@dex,@con,@intel,@wisdom,@charisma)"
+            command.CommandText = "INSERT INTO characters (characterName,stren,dex,
+            con,intel,wisdom,charisma,class) VALUES (@characterName,@stren,@dex,@con,
+            @intel,@wisdom,@charisma,@class)"
             command.Parameters.AddWithValue("@characterName", characterName)
             command.Parameters.AddWithValue("@stren", stren)
             command.Parameters.AddWithValue("@dex", dex)
@@ -371,6 +371,7 @@ Public Class characterSheetNew
             command.Parameters.AddWithValue("@intel", intel)
             command.Parameters.AddWithValue("@wisdom", wisdom)
             command.Parameters.AddWithValue("@charisma", charisma)
+            command.Parameters.AddWithValue("@class", charClass)
             command.ExecuteNonQuery()
         Else
             command.CommandText = "UPDATE characters SET characterName = @characterName,stren=@stren,dex=@dex,con=@con,intel=@intel,wisdom=@wisdom,charisma=@charisma WHERE characterID=@characterID"
@@ -381,6 +382,7 @@ Public Class characterSheetNew
             command.Parameters.AddWithValue("@intel", intel)
             command.Parameters.AddWithValue("@wisdom", wisdom)
             command.Parameters.AddWithValue("@charisma", charisma)
+            command.Parameters.AddWithValue("@class", charClass)
             command.Parameters.AddWithValue("@characterID", characterID)
             command.ExecuteNonQuery()
         End If

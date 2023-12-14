@@ -90,6 +90,8 @@ Partial Class characterSheet
         Me.Label4 = New System.Windows.Forms.Label()
         Me.classTextBox = New System.Windows.Forms.TextBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.levelTextBox = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.backgroundTextBox = New System.Windows.Forms.TextBox()
         Me.alignmentTextBox = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -104,10 +106,10 @@ Partial Class characterSheet
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel11 = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.speedTextBox = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.spellSheetButton = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.spellDataGridView = New System.Windows.Forms.DataGridView()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -119,6 +121,7 @@ Partial Class characterSheet
         Me.Panel9.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel11.SuspendLayout()
+        CType(Me.spellDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -783,7 +786,7 @@ Partial Class characterSheet
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.0!)
-        Me.Label6.Location = New System.Drawing.Point(10, 10)
+        Me.Label6.Location = New System.Drawing.Point(4, 12)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(87, 15)
         Me.Label6.TabIndex = 15
@@ -803,9 +806,9 @@ Partial Class characterSheet
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label4.Location = New System.Drawing.Point(10, 35)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(85, 15)
+        Me.Label4.Size = New System.Drawing.Size(36, 15)
         Me.Label4.TabIndex = 17
-        Me.Label4.Text = "Class and Level:"
+        Me.Label4.Text = "Class:"
         '
         'classTextBox
         '
@@ -818,6 +821,8 @@ Partial Class characterSheet
         'Panel9
         '
         Me.Panel9.BackColor = System.Drawing.Color.RosyBrown
+        Me.Panel9.Controls.Add(Me.levelTextBox)
+        Me.Panel9.Controls.Add(Me.Label16)
         Me.Panel9.Controls.Add(Me.backgroundTextBox)
         Me.Panel9.Controls.Add(Me.alignmentTextBox)
         Me.Panel9.Controls.Add(Me.Label8)
@@ -832,8 +837,25 @@ Partial Class characterSheet
         Me.Panel9.Controls.Add(Me.Label6)
         Me.Panel9.Location = New System.Drawing.Point(183, 12)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(486, 60)
+        Me.Panel9.Size = New System.Drawing.Size(524, 60)
         Me.Panel9.TabIndex = 19
+        '
+        'levelTextBox
+        '
+        Me.levelTextBox.Location = New System.Drawing.Point(492, 32)
+        Me.levelTextBox.Name = "levelTextBox"
+        Me.levelTextBox.Size = New System.Drawing.Size(29, 23)
+        Me.levelTextBox.TabIndex = 24
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(453, 37)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(33, 14)
+        Me.Label16.TabIndex = 23
+        Me.Label16.Text = "Level"
         '
         'backgroundTextBox
         '
@@ -958,19 +980,19 @@ Partial Class characterSheet
         'Panel11
         '
         Me.Panel11.BackColor = System.Drawing.Color.PeachPuff
-        Me.Panel11.Controls.Add(Me.TextBox1)
+        Me.Panel11.Controls.Add(Me.speedTextBox)
         Me.Panel11.Controls.Add(Me.Label15)
         Me.Panel11.Location = New System.Drawing.Point(411, 144)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(92, 60)
         Me.Panel11.TabIndex = 21
         '
-        'TextBox1
+        'speedTextBox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(25, 27)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(50, 23)
-        Me.TextBox1.TabIndex = 1
+        Me.speedTextBox.Location = New System.Drawing.Point(25, 27)
+        Me.speedTextBox.Name = "speedTextBox"
+        Me.speedTextBox.Size = New System.Drawing.Size(50, 23)
+        Me.speedTextBox.TabIndex = 1
         '
         'Label15
         '
@@ -990,22 +1012,22 @@ Partial Class characterSheet
         Me.spellSheetButton.Text = "Show Spell Sheet"
         Me.spellSheetButton.UseVisualStyleBackColor = True
         '
-        'Button1
+        'spellDataGridView
         '
-        Me.Button1.Location = New System.Drawing.Point(288, 277)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(132, 54)
-        Me.Button1.TabIndex = 23
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.spellDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.spellDataGridView.Location = New System.Drawing.Point(713, 20)
+        Me.spellDataGridView.Name = "spellDataGridView"
+        Me.spellDataGridView.RowHeadersWidth = 62
+        Me.spellDataGridView.Size = New System.Drawing.Size(230, 194)
+        Me.spellDataGridView.TabIndex = 23
         '
         'characterSheet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1077, 590)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(1174, 590)
+        Me.Controls.Add(Me.spellDataGridView)
         Me.Controls.Add(Me.spellSheetButton)
         Me.Controls.Add(Me.Panel11)
         Me.Controls.Add(Me.Panel10)
@@ -1044,6 +1066,7 @@ Partial Class characterSheet
         Me.Panel10.PerformLayout()
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
+        CType(Me.spellDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1129,9 +1152,11 @@ Partial Class characterSheet
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Panel11 As Panel
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents speedTextBox As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents spellSheetButton As Button
     Friend WithEvents rollTextBox As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents spellDataGridView As DataGridView
+    Friend WithEvents levelTextBox As TextBox
+    Friend WithEvents Label16 As Label
 End Class
