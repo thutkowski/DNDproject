@@ -21,12 +21,20 @@ Module codeModule
     Public wisdomStat As Int32
     Public charismaStat As Int32
     Public characterClass As String
-
+    Public profBonus As Integer
+    Public background As String
+    Public alignment As String
+    Public initiative As Int32
+    Public armorClass As Int32
+    Public currentHp As Int32
+    Public hpMax As Int32
+    Public level As Int32
+    Public speed As Int32
     Public spellIDQuery As Integer
 
     Public Function checkTableCharactersExist() As Boolean
         openDB()
-        command.CommandText = "SELECT * FROM characterInfo"
+        command.CommandText = "SELECT * FROM characters"
 
         Try
             rdr = command.ExecuteReader()
@@ -38,17 +46,14 @@ Module codeModule
 
             command.ExecuteNonQuery()
             connection.Close()
-
             Return False
         End Try
         rdr.Close()
+        connection.Close()
         Return True
     End Function
     Public Function checkTableCharacterInfoExist() As Boolean
-        'Check if the connection is open and if not open it
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
 
         command.CommandText = "SELECT * FROM characterInfo"
 
@@ -76,24 +81,15 @@ Module codeModule
             connection.Close()
 
             Return False
-            Exit Function
         End Try
 
-        If rdr.Read() Then
-            rdr.Close()
-            connection.Close()
-            Return True
-        End If
         rdr.Close()
         connection.Close()
-        Return False
+        Return True
     End Function
 
     Public Function checkTableCharacterSkillsExist() As Boolean
-        'Check if the connection is open and if not open it
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
 
         command.CommandText = "SELECT * FROM characterSkills"
 
@@ -120,31 +116,20 @@ Module codeModule
                 Arcana INTEGER,
                 Animal INTEGER,
                 Acrobatics INTEGER
-            );
-            "
+            );"
 
             command.ExecuteNonQuery()
             connection.Close()
-
             Return False
-            Exit Function
         End Try
 
-        If rdr.Read() Then
-            rdr.Close()
-            connection.Close()
-            Return True
-        End If
         rdr.Close()
         connection.Close()
-        Return False
+        Return True
     End Function
 
     Public Function checkTableCharacterStatsExist() As Boolean
-        'Check if the connection is open and if not open it
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
 
         command.CommandText = "SELECT * FROM characterStats"
 
@@ -165,39 +150,14 @@ Module codeModule
             connection.Close()
 
             Return False
-            Exit Function
         End Try
 
-        If rdr.Read() Then
-            rdr.Close()
-            connection.Close()
-            Return True
-        End If
         rdr.Close()
         connection.Close()
-        Return False
+        Return True
     End Function
 
-    Public Function loginActionFunction(username) As Boolean
-        openDB()
 
-        'Queries character list 
-        command.CommandText = "SELECT characterID FROM characters WHERE characterName = @Username"
-        command.Parameters.AddWithValue("@Username", username)
-        characterID = command.ExecuteScalar()
-
-        'Checks if the query returned any rows
-        If characterID Then
-            rdr.Close()
-            connection.Close()
-            Return True
-        Else
-            MessageBox.Show("That character does not exist")
-            rdr.Close()
-            connection.Close()
-            Return False
-        End If
-    End Function
 
     Public Function AreAnyTextBoxesEmpty(controls As Control.ControlCollection) As Boolean
         ' Loop through all of the text boxes and check if any of them are empty.

@@ -6,13 +6,9 @@ Imports System.Data.Entity.Core
 Imports System.Data.SqlClient
 Imports System.Data.SQLite
 Imports System.Security.Cryptography
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+
 
 Public Class characterSheet
-    Private profBonus As Integer
-
-
-
     'Skill Scores to update modifer scores
     Private Sub strenTextBox_TextChanged(sender As Object, e As EventArgs) Handles strenTextBox.TextChanged
         Dim modifer As Integer
@@ -457,42 +453,6 @@ Public Class characterSheet
         saveCharacterInfo()
     End Sub
 
-    Private Sub saveCharacterStats()
-        Dim stren, dex, con, intel, wisdom, charisma As Integer
-        openDB()
-
-        stren = Convert.ToInt16(strenTextBox.Text)
-        wisdom = Convert.ToInt16(wisdomTextBox.Text)
-        dex = Convert.ToInt16(dexTextBox.Text)
-        con = Convert.ToInt16(conTextBox.Text)
-        intel = Convert.ToInt16(intelTextBox.Text)
-        charisma = Convert.ToInt16(charismaTextBox.Text)
-
-        If Not checkCharacterStatsExists(characterName) Then
-            openDB()
-            command.CommandText = "INSERT INTO characterStats (characterID,stren,dex,con,intel,wisdom,charisma) VALUES (@ID,@stren,@dex,@con,@intel,@wisdom,@charisma)"
-            command.Parameters.AddWithValue("@stren", stren)
-            command.Parameters.AddWithValue("@dex", dex)
-            command.Parameters.AddWithValue("@con", con)
-            command.Parameters.AddWithValue("@intel", intel)
-            command.Parameters.AddWithValue("@wisdom", wisdom)
-            command.Parameters.AddWithValue("@charisma", charisma)
-            command.Parameters.AddWithValue("@ID", characterID)
-            command.ExecuteNonQuery()
-        Else
-            openDB()
-            command.CommandText = "UPDATE characterStats SET stren=@stren,dex=@dex,con=@con,intel=@intel,wisdom=@wisdom,charisma=@charisma WHERE characterID=@characterID"
-            command.Parameters.AddWithValue("@stren", stren)
-            command.Parameters.AddWithValue("@dex", dex)
-            command.Parameters.AddWithValue("@con", con)
-            command.Parameters.AddWithValue("@intel", intel)
-            command.Parameters.AddWithValue("@wisdom", wisdom)
-            command.Parameters.AddWithValue("@charisma", charisma)
-            command.Parameters.AddWithValue("@characterID", characterID)
-            command.ExecuteNonQuery()
-        End If
-        connection.Close()
-    End Sub
 
     Private Sub characterSheet_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If AreAnyTextBoxesEmpty() = True Then
@@ -502,6 +462,7 @@ Public Class characterSheet
     End Sub
 
     Private Sub spellSheetButton_Click(sender As Object, e As EventArgs) Handles spellSheetButton.Click
+        characterClass = classTextBox.Text
         spellSheet.Show()
     End Sub
 
@@ -543,7 +504,26 @@ Public Class characterSheet
             Return True
         End If
     End Function
+
+    Private Function checkCharacterInfoExists(ByVal charName As String) As Boolean
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+
+        command.CommandText = "SELECT * FROM characterInfo WHERE characterID = @characterID"
+        command.Parameters.AddWithValue("@characterID", characterID)
+
+        If command.ExecuteScalar Is Nothing Then
+            connection.Close()
+            Return False
+        Else
+            connection.Close()
+            Return True
+        End If
+    End Function
+
     Private Sub saveSkills()
+        openDB()
         Dim survival As Boolean = survivalCheckBox.Checked
         Dim stealth As Boolean = stealthCheckBox.Checked
         Dim sleight As Boolean = sleightCheckBox.Checked
@@ -564,125 +544,129 @@ Public Class characterSheet
 
 
         If checkCharacterSkillsExists(characterName) Then
-            openDB()
-            command.CommandText = "UPDATE characterSkills SET Survival = @Survival,Stealth = @Stealth, Sleight = @Sleight,Religion = @Religion,Persuasion = @Persuasion,Performance = @Performance,Perception = @Perception,Nature = @Nature,Medicine = @Medicine,Investigation = @Investigation,Intimidation = @Intimidation,Deception = @Deception,History = @History,Arcana = @Arcana,Animal = @Animal,Acrobatics = @Acrobatics WHERE characterID = @ID;"
-            command.Parameters.AddWithValue("@Survival", Convert.ToInt16(survival))
-            command.Parameters.AddWithValue("@Stealth", Convert.ToInt16(stealth))
-            command.Parameters.AddWithValue("@Sleight", Convert.ToInt16(stealth))
-            command.Parameters.AddWithValue("@Religion", Convert.ToInt16(religion))
-            command.Parameters.AddWithValue("@Persuasion", Convert.ToInt16(persuasion))
-            command.Parameters.AddWithValue("@Performance", Convert.ToInt16(performance))
-            command.Parameters.AddWithValue("@Perception", Convert.ToInt16(perception))
-            command.Parameters.AddWithValue("@Nature", Convert.ToInt16(nature))
-            command.Parameters.AddWithValue("@Medicine", Convert.ToInt16(medicine))
-            command.Parameters.AddWithValue("@Investigation", Convert.ToInt16(investigation))
-            command.Parameters.AddWithValue("@Intimidation", Convert.ToInt16(intimidation))
-            command.Parameters.AddWithValue("@History", Convert.ToInt16(history))
-            command.Parameters.AddWithValue("@Deception", Convert.ToInt16(deception))
-            command.Parameters.AddWithValue("@Athletics", Convert.ToInt16(athletics))
-            command.Parameters.AddWithValue("@Arcana", Convert.ToInt16(arcana))
-            command.Parameters.AddWithValue("@Animal", Convert.ToInt16(animal))
-            command.Parameters.AddWithValue("@Acrobatics", Convert.ToInt16(acrobatics))
-            command.Parameters.AddWithValue("@ID", characterID)
-            command.ExecuteNonQuery()
+            command.CommandText = "UPDATE characterSkills SET Survival = @Survival,Stealth = @Stealth,
+            Sleight = @Sleight,Religion = @Religion,Persuasion = @Persuasion,Performance = @Performance,
+            Perception = @Perception,Nature = @Nature,Medicine = @Medicine,Investigation = @Investigation,
+            Intimidation = @Intimidation,Deception = @Deception,History = @History,Arcana = @Arcana,Animal = @Animal,
+            Acrobatics = @Acrobatics WHERE characterID = @characterID;"
         Else
             openDB()
-            command.CommandText = "INSERT INTO characterSkills (characterID,Survival,Stealth,Sleight,Religion,Persuasion,Performance,Perception,Nature,Medicine,Investigation,Intimidation,History,Deception,Athletics,Arcana,Animal,Acrobatics) VALUES (@characterID,@Survival,@Stealth,@Sleight,@Religion,@Persuasion,@Performance,@Perception,@Nature,@Medicine,@Investigation,@Intimidation,@History,@Deception,@Athletics,@Arcana,@Animal,@Acrobatics);"
-            command.Parameters.AddWithValue("@Survival", survival)
-            command.Parameters.AddWithValue("@Stealth", stealth)
-            command.Parameters.AddWithValue("@Sleight", stealth)
-            command.Parameters.AddWithValue("@Religion", religion)
-            command.Parameters.AddWithValue("@Persuasion", persuasion)
-            command.Parameters.AddWithValue("@Performance", performance)
-            command.Parameters.AddWithValue("@Perception", perception)
-            command.Parameters.AddWithValue("@Nature", nature)
-            command.Parameters.AddWithValue("@Medicine", medicine)
-            command.Parameters.AddWithValue("@Investigation", investigation)
-            command.Parameters.AddWithValue("@Intimidation", intimidation)
-            command.Parameters.AddWithValue("@History", history)
-            command.Parameters.AddWithValue("@Deception", deception)
-            command.Parameters.AddWithValue("@Athletics", athletics)
-            command.Parameters.AddWithValue("@Arcana", arcana)
-            command.Parameters.AddWithValue("@Animal", animal)
-            command.Parameters.AddWithValue("@Acrobatics", acrobatics)
-            command.Parameters.AddWithValue("@characterID", characterID)
-            command.ExecuteNonQuery()
+            command.CommandText = "INSERT INTO characterSkills (characterID,Survival,Stealth,Sleight,Religion,
+            Persuasion,Performance,Perception,Nature,Medicine,Investigation,Intimidation,History,Deception,Athletics,
+            Arcana,Animal,Acrobatics) VALUES (@characterID,@Survival,@Stealth,@Sleight,@Religion,@Persuasion,
+            @Performance,@Perception,@Nature,@Medicine,@Investigation,@Intimidation,@History,@Deception,@Athletics,
+            @Arcana,@Animal,@Acrobatics);"
         End If
+        command.Parameters.AddWithValue("@Survival", survival)
+        command.Parameters.AddWithValue("@Stealth", stealth)
+        command.Parameters.AddWithValue("@Sleight", stealth)
+        command.Parameters.AddWithValue("@Religion", religion)
+        command.Parameters.AddWithValue("@Persuasion", persuasion)
+        command.Parameters.AddWithValue("@Performance", performance)
+        command.Parameters.AddWithValue("@Perception", perception)
+        command.Parameters.AddWithValue("@Nature", nature)
+        command.Parameters.AddWithValue("@Medicine", medicine)
+        command.Parameters.AddWithValue("@Investigation", investigation)
+        command.Parameters.AddWithValue("@Intimidation", intimidation)
+        command.Parameters.AddWithValue("@History", history)
+        command.Parameters.AddWithValue("@Deception", deception)
+        command.Parameters.AddWithValue("@Athletics", athletics)
+        command.Parameters.AddWithValue("@Arcana", arcana)
+        command.Parameters.AddWithValue("@Animal", animal)
+        command.Parameters.AddWithValue("@Acrobatics", acrobatics)
+        command.Parameters.AddWithValue("@characterID", characterID)
+        openDB()
+        command.ExecuteNonQuery()
         connection.Close()
     End Sub
+    Private Sub saveCharacterStats()
+        Dim stren, dex, con, intel, wisdom, charisma As Integer
+        openDB()
 
-    Private Function checkCharacterInfoExists(ByVal charName As String) As Boolean
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        stren = Convert.ToInt16(strenTextBox.Text)
+        wisdom = Convert.ToInt16(wisdomTextBox.Text)
+        dex = Convert.ToInt16(dexTextBox.Text)
+        con = Convert.ToInt16(conTextBox.Text)
+        intel = Convert.ToInt16(intelTextBox.Text)
+        charisma = Convert.ToInt16(charismaTextBox.Text)
 
-        command.CommandText = "SELECT * FROM characterInfo WHERE characterID = @characterID"
-        command.Parameters.AddWithValue("@characterID", characterID)
-
-        If command.ExecuteScalar Is Nothing Then
-            connection.Close()
-            Return False
+        If checkCharacterStatsExists(characterName) Then
+            command.CommandText = "UPDATE characterStats SET stren=@stren,dex=@dex,con=@con,intel=@intel,
+            wisdom=@wisdom,charisma=@charisma WHERE characterID=@characterID"
         Else
-            connection.Close()
-            Return True
+            command.CommandText = "INSERT INTO characterStats (characterID,stren,dex,con,intel,wisdom,charisma) 
+            VALUES (@characterID,@stren,@dex,@con,@intel,@wisdom,@charisma)"
         End If
-    End Function
+        command.Parameters.AddWithValue("@stren", stren)
+        command.Parameters.AddWithValue("@dex", dex)
+        command.Parameters.AddWithValue("@con", con)
+        command.Parameters.AddWithValue("@intel", intel)
+        command.Parameters.AddWithValue("@wisdom", wisdom)
+        command.Parameters.AddWithValue("@charisma", charisma)
+        command.Parameters.AddWithValue("@characterID", characterID)
+        openDB()
+        command.ExecuteNonQuery()
+        connection.Close()
+    End Sub
     Private Sub saveCharacterInfo()
-
-        Dim proficiency As String = profTextBox.Text
-        Dim characterName As String = characterNameTextBox.Text
-        Dim background As String = backgroundTextBox.Text
-        Dim alignment As String = alignmentTextBox.Text
-        Dim initiative As Integer = Convert.ToInt32(iniativeTextBox.Text)
-        Dim armorClass As Integer = Convert.ToInt32(armorClassTextBox.Text)
-        Dim currentHp As Integer = Convert.ToInt32(currentHpTextBox.Text)
-        Dim hpMax As Integer = Convert.ToInt32(hpMaxTextBox.Text)
-        Dim level As Integer = Convert.ToInt32(levelTextBox.Text)
-        Dim characterClass As String = classTextBox.Text
-        Dim speed As Integer = Convert.ToInt32(speedTextBox.Text)
+        openDB()
+        profBonus = Convert.ToInt32(profTextBox.Text)
+        characterName = characterNameTextBox.Text
+        background = backgroundTextBox.Text
+        alignment = alignmentTextBox.Text
+        initiative = Convert.ToInt32(iniativeTextBox.Text)
+        armorClass = Convert.ToInt32(armorClassTextBox.Text)
+        currentHp = Convert.ToInt32(currentHpTextBox.Text)
+        hpMax = Convert.ToInt32(hpMaxTextBox.Text)
+        level = Convert.ToInt32(levelTextBox.Text)
+        characterClass = classTextBox.Text
+        speed = Convert.ToInt32(speedTextBox.Text)
 
         If checkCharacterInfoExists(characterName) Then
-            openDB()
             command.CommandText = "UPDATE characterInfo SET proficiency = @proficiency,
             characterName = @characterName,characterClass=@characterClass,background = @background,alignment = @alignment,
             initiative = @initiative,armorClass = @armorClass,currentHp = @currentHp,
-            hpMax = @hpMax,level = @level,speed = @speed WHERE characterID = @ID;"
-            command.Parameters.AddWithValue("@proficiency", proficiency)
-            command.Parameters.AddWithValue("@characterName", characterName)
-            command.Parameters.AddWithValue("@characterClass", characterClass)
-            command.Parameters.AddWithValue("@background", background)
-            command.Parameters.AddWithValue("@alignment", alignment)
-            command.Parameters.AddWithValue("@initiative", initiative)
-            command.Parameters.AddWithValue("@armorClass", armorClass)
-            command.Parameters.AddWithValue("@currentHp", currentHp)
-            command.Parameters.AddWithValue("@hpMax", hpMax)
-            command.Parameters.AddWithValue("@level", level)
-            command.Parameters.AddWithValue("@speed", speed)
-            command.Parameters.AddWithValue("@ID", characterID)
-            command.ExecuteNonQuery()
+            hpMax = @hpMax,level = @level,speed = @speed WHERE characterID = @characterID;"
         Else
-            openDB()
             command.CommandText = "INSERT INTO characterInfo (characterID,proficiency, 
             characterName,characterClass,background, alignment, initiative, armorClass, 
-            currentHp, hpMax, level,speed)   VALUES (@ID,@proficiency,@characterName,
-            @characterClass, @Background, @Alignment,@Initiative,@ArmorClass, @CurrentHp, 
-            @HpMax, @Level,@speed);"
-
-            command.Parameters.AddWithValue("@proficiency", proficiency)
-            command.Parameters.AddWithValue("@characterName", characterName)
-            command.Parameters.AddWithValue("@characterClass", characterClass)
-            command.Parameters.AddWithValue("@Background", background)
-            command.Parameters.AddWithValue("@Alignment", alignment)
-            command.Parameters.AddWithValue("@Initiative", initiative)
-            command.Parameters.AddWithValue("@ArmorClass", armorClass)
-            command.Parameters.AddWithValue("@CurrentHp", currentHp)
-            command.Parameters.AddWithValue("@HpMax", hpMax)
-            command.Parameters.AddWithValue("@Level", level)
-            command.Parameters.AddWithValue("@speed", speed)
-            command.Parameters.AddWithValue("@ID", characterID)
-            command.ExecuteNonQuery()
+            currentHp, hpMax, level,speed)   VALUES (@characterID,@proficiency,@characterName,
+            @characterClass, @background, @alignment,@initiative,@armorClass, @currentHp, 
+            @hpMax, @level,@speed);"
         End If
+        command.Parameters.AddWithValue("@proficiency", profBonus)
+        command.Parameters.AddWithValue("@characterName", characterName)
+        command.Parameters.AddWithValue("@characterClass", characterClass)
+        command.Parameters.AddWithValue("@background", background)
+        command.Parameters.AddWithValue("@alignment", alignment)
+        command.Parameters.AddWithValue("@initiative", initiative)
+        command.Parameters.AddWithValue("@armorClass", armorClass)
+        command.Parameters.AddWithValue("@currentHp", currentHp)
+        command.Parameters.AddWithValue("@hpMax", hpMax)
+        command.Parameters.AddWithValue("@level", level)
+        command.Parameters.AddWithValue("@speed", speed)
+        command.Parameters.AddWithValue("@characterID", characterID)
+        openDB()
+        command.ExecuteNonQuery()
+        connection.Close()
+    End Sub
+
+    Private Sub classTextBox_TextChanged(sender As Object, e As EventArgs) Handles classTextBox.TextChanged
+        If classTextBox.Text = "" Then
+            Exit Sub
+        End If
+
+        validateOnlyCharacters(classTextBox)
 
     End Sub
 
+    Private Sub validateOnlyCharacters(ByVal textbox As TextBox)
+        Dim input As String = textbox.Text
+        If Not input.All(Function(c) Char.IsLetter(c)) Then
+            MessageBox.Show("Please enter only letters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            textbox.Focus()
+            textbox.SelectAll()
+        End If
+
+    End Sub
 End Class

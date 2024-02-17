@@ -13,9 +13,7 @@ Public Class spellSheet
     End Sub
 
     Private Sub spellSheet_Load(sender As Object, e As EventArgs) Handles Me.Load
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
 
         command.CommandText = "SELECT s.spellName FROM spells AS s INNER JOIN 
         spellAssociation ON s.spellName=spellAssociation.spellName 
@@ -50,5 +48,10 @@ Public Class spellSheet
         command.Parameters.AddWithValue("@spellName", selectedSpell)
         command.ExecuteNonQuery()
         connection.Close()
+    End Sub
+
+    Private Sub spellDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles spellDataGridView.CellContentClick
+        spellIDQuery = e.RowIndex
+        spellQueryForm.ShowDialog()
     End Sub
 End Class
