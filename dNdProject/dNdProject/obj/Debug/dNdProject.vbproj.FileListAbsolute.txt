@@ -169,7 +169,7 @@ C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.pdb
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheetNew.resources
 C:\Users\hutkowt\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellSheet.resources
-C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellSheet.resources
-C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterSheetNew.resources
 C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellQueryForm.resources
 C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterCreation.resources
+C:\Users\Tim\source\repos\DNDProject\dNdProject\dNdProject\obj\Debug\dNdProject.spellMenu.resources
+C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellCast.resources

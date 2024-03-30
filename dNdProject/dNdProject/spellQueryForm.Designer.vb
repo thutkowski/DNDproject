@@ -41,6 +41,7 @@ Partial Class spellQueryForm
         Me.schoolTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.rangeTextBox = New System.Windows.Forms.TextBox()
+        Me.prepareButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'spellNameLabel
@@ -50,7 +51,7 @@ Partial Class spellQueryForm
         Me.spellNameLabel.Location = New System.Drawing.Point(22, 20)
         Me.spellNameLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.spellNameLabel.Name = "spellNameLabel"
-        Me.spellNameLabel.Size = New System.Drawing.Size(0, 18)
+        Me.spellNameLabel.Size = New System.Drawing.Size(0, 29)
         Me.spellNameLabel.TabIndex = 0
         '
         'Label3
@@ -59,7 +60,7 @@ Partial Class spellQueryForm
         Me.Label3.Location = New System.Drawing.Point(24, 48)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 15)
+        Me.Label3.Size = New System.Drawing.Size(72, 22)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Source:"
         '
@@ -69,7 +70,7 @@ Partial Class spellQueryForm
         Me.Label5.Location = New System.Drawing.Point(24, 75)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(67, 15)
+        Me.Label5.Size = New System.Drawing.Size(98, 22)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Spell Level"
         '
@@ -79,7 +80,7 @@ Partial Class spellQueryForm
         Me.Label8.Location = New System.Drawing.Point(240, 105)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(57, 15)
+        Me.Label8.Size = New System.Drawing.Size(83, 22)
         Me.Label8.TabIndex = 10
         Me.Label8.Text = "Duration:"
         '
@@ -89,7 +90,7 @@ Partial Class spellQueryForm
         Me.Label9.Location = New System.Drawing.Point(24, 285)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(98, 15)
+        Me.Label9.Size = New System.Drawing.Size(147, 22)
         Me.Label9.TabIndex = 9
         Me.Label9.Text = "At Higher Levels:"
         '
@@ -99,7 +100,7 @@ Partial Class spellQueryForm
         Me.Label10.Location = New System.Drawing.Point(22, 129)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(80, 15)
+        Me.Label10.Size = New System.Drawing.Size(116, 22)
         Me.Label10.TabIndex = 8
         Me.Label10.Text = "Components:"
         '
@@ -109,7 +110,7 @@ Partial Class spellQueryForm
         Me.Label12.Location = New System.Drawing.Point(20, 102)
         Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(82, 15)
+        Me.Label12.Size = New System.Drawing.Size(121, 22)
         Me.Label12.TabIndex = 6
         Me.Label12.Text = "Casting Time:"
         '
@@ -119,7 +120,7 @@ Partial Class spellQueryForm
         Me.Label18.Location = New System.Drawing.Point(22, 170)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(72, 15)
+        Me.Label18.Size = New System.Drawing.Size(104, 22)
         Me.Label18.TabIndex = 12
         Me.Label18.Text = "Descripition"
         '
@@ -127,35 +128,35 @@ Partial Class spellQueryForm
         '
         Me.sourceTextBox.Location = New System.Drawing.Point(113, 45)
         Me.sourceTextBox.Name = "sourceTextBox"
-        Me.sourceTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.sourceTextBox.Size = New System.Drawing.Size(100, 28)
         Me.sourceTextBox.TabIndex = 19
         '
         'spellLevelTextBox
         '
         Me.spellLevelTextBox.Location = New System.Drawing.Point(113, 72)
         Me.spellLevelTextBox.Name = "spellLevelTextBox"
-        Me.spellLevelTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.spellLevelTextBox.Size = New System.Drawing.Size(100, 28)
         Me.spellLevelTextBox.TabIndex = 20
         '
         'castingTimeTextBox
         '
         Me.castingTimeTextBox.Location = New System.Drawing.Point(113, 99)
         Me.castingTimeTextBox.Name = "castingTimeTextBox"
-        Me.castingTimeTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.castingTimeTextBox.Size = New System.Drawing.Size(100, 28)
         Me.castingTimeTextBox.TabIndex = 21
         '
         'componentsTextBox
         '
         Me.componentsTextBox.Location = New System.Drawing.Point(113, 126)
         Me.componentsTextBox.Name = "componentsTextBox"
-        Me.componentsTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.componentsTextBox.Size = New System.Drawing.Size(100, 28)
         Me.componentsTextBox.TabIndex = 22
         '
         'durationTextBox
         '
         Me.durationTextBox.Location = New System.Drawing.Point(325, 105)
         Me.durationTextBox.Name = "durationTextBox"
-        Me.durationTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.durationTextBox.Size = New System.Drawing.Size(100, 28)
         Me.durationTextBox.TabIndex = 23
         '
         'descTextBox
@@ -179,7 +180,7 @@ Partial Class spellQueryForm
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(240, 78)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 15)
+        Me.Label1.Size = New System.Drawing.Size(70, 22)
         Me.Label1.TabIndex = 26
         Me.Label1.Text = "School:"
         '
@@ -187,7 +188,7 @@ Partial Class spellQueryForm
         '
         Me.schoolTextBox.Location = New System.Drawing.Point(325, 75)
         Me.schoolTextBox.Name = "schoolTextBox"
-        Me.schoolTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.schoolTextBox.Size = New System.Drawing.Size(100, 28)
         Me.schoolTextBox.TabIndex = 27
         '
         'Label2
@@ -195,7 +196,7 @@ Partial Class spellQueryForm
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(240, 54)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(47, 15)
+        Me.Label2.Size = New System.Drawing.Size(68, 22)
         Me.Label2.TabIndex = 28
         Me.Label2.Text = "Range:"
         '
@@ -203,14 +204,24 @@ Partial Class spellQueryForm
         '
         Me.rangeTextBox.Location = New System.Drawing.Point(325, 45)
         Me.rangeTextBox.Name = "rangeTextBox"
-        Me.rangeTextBox.Size = New System.Drawing.Size(100, 21)
+        Me.rangeTextBox.Size = New System.Drawing.Size(100, 28)
         Me.rangeTextBox.TabIndex = 29
+        '
+        'prepareButton
+        '
+        Me.prepareButton.Location = New System.Drawing.Point(479, 36)
+        Me.prepareButton.Name = "prepareButton"
+        Me.prepareButton.Size = New System.Drawing.Size(123, 39)
+        Me.prepareButton.TabIndex = 30
+        Me.prepareButton.Text = "Prepare Spell"
+        Me.prepareButton.UseVisualStyleBackColor = True
         '
         'spellQueryForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(615, 416)
+        Me.Controls.Add(Me.prepareButton)
         Me.Controls.Add(Me.rangeTextBox)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.schoolTextBox)
@@ -258,4 +269,5 @@ Partial Class spellQueryForm
     Friend WithEvents schoolTextBox As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents rangeTextBox As TextBox
+    Friend WithEvents prepareButton As Button
 End Class

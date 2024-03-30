@@ -30,5 +30,16 @@ Public Class spellQueryForm
 
     End Sub
 
+    Private Sub prepareButton_Click(sender As Object, e As EventArgs) Handles prepareButton.Click
 
+        If connection.State = ConnectionState.Closed Then
+            connection.Open()
+        End If
+
+        command.CommandText = "UPDATE spells SET known = 1 
+        WHERE spellID = @spellID"
+        command.Parameters.AddWithValue("@spellID", spellIDQuery)
+        command.ExecuteNonQuery()
+        connection.Close()
+    End Sub
 End Class

@@ -108,12 +108,6 @@
       <DependentUpon>characterSheet.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="characterSheetNew.Designer.vb">
-      <DependentUpon>characterSheetNew.vb</DependentUpon>
-    </Compile>
-    <Compile Include="characterSheetNew.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="codeModule.vb" />
     <Compile Include="login.Designer.vb">
       <DependentUpon>login.vb</DependentUpon>
@@ -137,16 +131,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="spellCast.Designer.vb">
+      <DependentUpon>spellCast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="spellCast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="spellMenu.Designer.vb">
+      <DependentUpon>spellMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="spellMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="spellQueryForm.Designer.vb">
       <DependentUpon>spellQueryForm.vb</DependentUpon>
     </Compile>
     <Compile Include="spellQueryForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="spellSheet.Designer.vb">
-      <DependentUpon>spellSheet.vb</DependentUpon>
-    </Compile>
-    <Compile Include="spellSheet.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -157,9 +157,6 @@
     <EmbeddedResource Include="characterSheet.resx">
       <DependentUpon>characterSheet.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="characterSheetNew.resx">
-      <DependentUpon>characterSheetNew.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.vb</DependentUpon>
     </EmbeddedResource>
@@ -169,11 +166,14 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="spellCast.resx">
+      <DependentUpon>spellCast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="spellMenu.resx">
+      <DependentUpon>spellMenu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="spellQueryForm.resx">
       <DependentUpon>spellQueryForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="spellSheet.resx">
-      <DependentUpon>spellSheet.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -349,7 +349,6 @@ Public Class characterSheet
             wisdomTextBox.Text = rdr.GetInt32(5).ToString
             intelTextBox.Text = rdr.GetInt32(4).ToString
             charismaTextBox.Text = rdr.GetInt32(6).ToString
-            rdr.Close()
         End If
         rdr.Close()
 
@@ -375,7 +374,6 @@ Public Class characterSheet
             hpMaxTextBox.Text = rdr.GetInt32(9).ToString
             levelTextBox.Text = rdr.GetInt32(10).ToString
             speedTextBox.Text = rdr.GetInt32(11).ToString
-            rdr.Close()
         End If
         rdr.Close()
     End Sub
@@ -410,16 +408,8 @@ Public Class characterSheet
         rdr.Close()
     End Sub
 
-    Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        characterNameTextBox.Text = characterName
-        getCharacterStats()
-        getCharacterInfo()
-        getCharacterSkills()
-        'Check if the connection is open and if not open it
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
-
+    Private Sub loadPreparedSpells()
+        openDB()
         command.CommandText = "SELECT spellName FROM spells WHERE known = 1 "
         Dim spellName As New DataSet()
 
@@ -432,6 +422,15 @@ Public Class characterSheet
         spellDataGridView.Columns(0).HeaderText = "Spell Name"
         spellDataGridView.RowHeadersVisible = False
         spellDataGridView.AutoResizeColumn(0, DataGridViewAutoSizeColumnMode.AllCells)
+    End Sub
+
+    Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        characterNameTextBox.Text = characterName
+        getCharacterStats()
+        getCharacterInfo()
+        getCharacterSkills()
+        loadPreparedSpells()
+
     End Sub
 
     Public Function AreAnyTextBoxesEmpty() As Boolean
@@ -463,7 +462,7 @@ Public Class characterSheet
 
     Private Sub spellSheetButton_Click(sender As Object, e As EventArgs) Handles spellSheetButton.Click
         characterClass = classTextBox.Text
-        spellSheet.Show()
+        spellMenu.Show()
     End Sub
 
     Private Sub spellDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles spellDataGridView.CellContentClick
@@ -579,6 +578,7 @@ Public Class characterSheet
         command.ExecuteNonQuery()
         connection.Close()
     End Sub
+
     Private Sub saveCharacterStats()
         Dim stren, dex, con, intel, wisdom, charisma As Integer
         openDB()
@@ -608,6 +608,7 @@ Public Class characterSheet
         command.ExecuteNonQuery()
         connection.Close()
     End Sub
+
     Private Sub saveCharacterInfo()
         openDB()
         profBonus = Convert.ToInt32(profTextBox.Text)
@@ -668,5 +669,16 @@ Public Class characterSheet
             textbox.SelectAll()
         End If
 
+    End Sub
+
+    Private Sub characterSheet_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        loadPreparedSpells()
+    End Sub
+
+    Private Sub castSpellButton_Click(sender As Object, e As EventArgs) Handles castSpellButton.Click
+        level = Convert.ToInt32(levelTextBox.Text)
+        characterClass = classTextBox.Text
+
+        spellCast.Show()
     End Sub
 End Class
