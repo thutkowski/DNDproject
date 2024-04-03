@@ -151,17 +151,19 @@ Public Class spellCast
         End If
         command.CommandText = sqlQuery
     End Sub
+
     Private Sub createSpellSlot()
         Dim command As New SQLiteCommand(connection)
         Dim yPosition As Integer = 10
         For Each kvp As KeyValuePair(Of String, Integer) In spellSlots
-            Dim slotX As Integer = 180
+            Dim slotX As Integer = 160
             If rdr IsNot Nothing AndAlso Not rdr.IsClosed Then
                 rdr.Close()
             End If
             spellQuery(kvp.Key, characterClass)
-            Command.CommandText = "SELECT spellName from spells where spellLevel = @spellLevel AND  known ='1'"
-            Command.Parameters.Clear() ' Clear any previous parameters
+            command.CommandText = "SELECT s.spellNAme FROM spells AS s 
+                     INNER JOIN users AS u ON s.spellID=u.spellID WHERE s.spellLevel = @spellLevel"
+            command.Parameters.Clear() ' Clear any previous parameters
             Command.Parameters.AddWithValue("@spellLevel", kvp.Key)
             rdr = Command.ExecuteReader()
             Dim label As New Label()
@@ -172,31 +174,28 @@ Public Class spellCast
 
             Dim comboBox As New ComboBox()
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList
-            comboBox.Location = New Point(40, yPosition)
+            comboBox.Location = New Point(30, yPosition)
             spellSlotPanel.Controls.Add(comboBox)
 
-            Dim castButton As New Button()
-            castButton.Text = "Cast spell"
-            castButton.Location = New Point(300, yPosition)
-            AddHandler castButton.Click, AddressOf CastButtonClick
-            spellSlotPanel.Controls.Add(castButton)
+            'Dim castButton As New Button()
+            'castButton.Text = "Cast spell"
+            'castButton.Location = New Point(300, yPosition)
+            'AddHandler castButton.Click, AddressOf CastButtonClick
+            'spellSlotPanel.Controls.Add(castButton)
             For i As Integer = 1 To kvp.Value
                 Dim checkBox As New CheckBox()
+                checkBox.Size = New Size(20, 20)
                 checkBox.Location = New Point(slotX, yPosition)
-                slotX += 30
+                slotX += 20
                 spellSlotPanel.Controls.Add(checkBox)
-            Next
-            For Each control As Control In spellSlotPanel.Controls
-                If TypeOf control Is CheckBox Then
-                    MessageBox.Show("one")
-                End If
-
             Next
 
             While rdr.Read()
                 comboBox.Items.Add(rdr.GetValue(0).ToString())
             End While
             yPosition += 30
+
+
         Next
         rdr.Close()
     End Sub

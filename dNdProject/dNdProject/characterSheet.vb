@@ -656,6 +656,6 @@ Public Class characterSheet
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         level = Convert.ToInt32(levelTextBox.Text)
         characterClass = classTextBox.Text
-        prepareSpells.Show()
+        spellPrepare.Show()
     End Sub
 End Class

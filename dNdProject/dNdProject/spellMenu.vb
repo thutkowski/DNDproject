@@ -74,7 +74,6 @@ Public Class spellMenu
         Else
             sqlQuery = "select spellName from spells"
         End If
-        MessageBox.Show(sqlQuery)
         Dim classSpells As New DataSet()
         Dim da As New SQLiteDataAdapter
         command.CommandText = sqlQuery

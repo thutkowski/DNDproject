@@ -132,10 +132,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="prepareSpells.Designer.vb">
-      <DependentUpon>prepareSpells.vb</DependentUpon>
+    <Compile Include="spellPrepare.Designer.vb">
+      <DependentUpon>spellPrepare.vb</DependentUpon>
     </Compile>
-    <Compile Include="prepareSpells.vb">
+    <Compile Include="spellPrepare.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="spell.vb" />
@@ -174,8 +174,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="prepareSpells.resx">
-      <DependentUpon>prepareSpells.vb</DependentUpon>
+    <EmbeddedResource Include="spellPrepare.resx">
+      <DependentUpon>spellPrepare.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="spellCast.resx">
       <DependentUpon>spellCast.vb</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SQLite
 Imports System.Text.RegularExpressions
 
-Public Class prepareSpells
+Public Class spellPrepare
     Private result As New List(Of KeyValuePair(Of String, Object))()
     Private columnNames As New List(Of String)()
     Private spellSlots As New List(Of KeyValuePair(Of Integer, Integer))()
@@ -176,6 +176,7 @@ Public Class prepareSpells
             MessageBox.Show("An error occurred: " & ex.Message)
         End Try
         connection.Close()
+        loadPossibleSpells()
         loadPreparedSpells()
     End Sub
 

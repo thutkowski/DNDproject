@@ -29,19 +29,17 @@ Partial Class spellCast
         '
         'displayTextBox
         '
-        Me.displayTextBox.Location = New System.Drawing.Point(116, 140)
-        Me.displayTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.displayTextBox.Location = New System.Drawing.Point(77, 91)
         Me.displayTextBox.Multiline = True
         Me.displayTextBox.Name = "displayTextBox"
-        Me.displayTextBox.Size = New System.Drawing.Size(558, 279)
+        Me.displayTextBox.Size = New System.Drawing.Size(373, 183)
         Me.displayTextBox.TabIndex = 0
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(831, 242)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Button1.Location = New System.Drawing.Point(554, 157)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(112, 35)
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
@@ -50,20 +48,21 @@ Partial Class spellCast
         '
         Me.spellSlotPanel.AutoScroll = True
         Me.spellSlotPanel.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.spellSlotPanel.Location = New System.Drawing.Point(0, 466)
+        Me.spellSlotPanel.Location = New System.Drawing.Point(0, 303)
+        Me.spellSlotPanel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.spellSlotPanel.Name = "spellSlotPanel"
-        Me.spellSlotPanel.Size = New System.Drawing.Size(1055, 181)
+        Me.spellSlotPanel.Size = New System.Drawing.Size(703, 118)
         Me.spellSlotPanel.TabIndex = 2
         '
         'spellCast
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1200, 692)
+        Me.AutoScroll = True
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.spellSlotPanel)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.displayTextBox)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "spellCast"
         Me.Text = "spellCast"
         Me.ResumeLayout(False)
