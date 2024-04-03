@@ -1,7 +1,10 @@
-﻿Public Class characterCreation
+﻿Imports System.Data.SQLite
+
+Public Class characterCreation
 
     Private Sub createCharacterButton_Click(sender As Object, e As EventArgs) Handles createCharacterButton.Click
         openDB()
+        Dim command As New SQLiteCommand(connection)
         characterName = charNameTextBox.Text
 
         If checkIfNameTaken(characterName) Then
@@ -19,9 +22,12 @@
         Me.Close()
     End Sub
     Private Function checkIfNameTaken(ByVal charName As String) As Boolean
+        Dim command As New SQLiteCommand(connection)
+
         command.CommandText = "SELECT * FROM characters WHERE characterName=@characterName"
         command.Parameters.AddWithValue("@characterName", charName)
-        If Not CInt(command.ExecuteScalar) = 0 Then
+
+        If Not CInt(Command.ExecuteScalar) = 0 Then
             MessageBox.Show("Character name already taken. Choose a new new name or login!", "Character Name Error")
             Return True
         End If

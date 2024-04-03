@@ -8,6 +8,7 @@ Imports System.Windows.Input
 Public Class spellMenu
     Private Sub spellSheet_Load(sender As Object, e As EventArgs) Handles Me.Load
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT spellID,spellName FROM spells  "
 
@@ -28,6 +29,7 @@ Public Class spellMenu
 
     Private Sub spellDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles spellDataGridView.CellContentClick
         openDB()
+        Dim command As New SQLiteCommand(connection)
         Dim cellValue As Object = spellDataGridView.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
 
         command.CommandText = "Select spellID from spells WHERE spellName=@cellValue"
@@ -44,19 +46,20 @@ Public Class spellMenu
     Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
         spellDataGridView.DataSource = Nothing
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         Dim conditions As New List(Of String)
 
         Dim sqlQuery As String = "SELECT s.spellName FROM spells AS s INNER JOIN 
-        spellAssociation as a ON s.spellName=a.spellName"
+        spellAssociation as a ON s.spellID=a.spellID"
 
         If Not String.IsNullOrEmpty(classTextBox.Text) Then
-            conditions.Add($"a.class ='{classTextBox.Text}'")
+            conditions.Add($"a.spellClass ='{classTextBox.Text}'")
             If Not String.IsNullOrEmpty(levelTextBox.Text) Then
                 conditions.Add($"s.spellLevel ='{levelTextBox.Text}'")
             End If
             sqlQuery = "SELECT s.spellName FROM spells AS s INNER JOIN 
-        spellAssociation as a ON s.spellName=a.spellName"
+        spellAssociation as a ON s.spellID=a.spellID"
         Else
             sqlQuery = "select spellName from spells"
             If Not String.IsNullOrEmpty(levelTextBox.Text) Then
@@ -86,12 +89,10 @@ Public Class spellMenu
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
-        Dim selectedSpell As String
-        'selectedSpell = selectedSpellTextBox.Text
+        Dim selectedSpell As String = ""
+        Dim command As New SQLiteCommand(connection)
+        openDB()
 
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
 
         command.CommandText = "UPDATE spells SET known = 1 
         WHERE spellName = @spellName"

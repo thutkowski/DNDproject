@@ -50,9 +50,9 @@ Partial Class spellCast
         '
         Me.spellSlotPanel.AutoScroll = True
         Me.spellSlotPanel.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.spellSlotPanel.Location = New System.Drawing.Point(235, 466)
+        Me.spellSlotPanel.Location = New System.Drawing.Point(0, 466)
         Me.spellSlotPanel.Name = "spellSlotPanel"
-        Me.spellSlotPanel.Size = New System.Drawing.Size(644, 181)
+        Me.spellSlotPanel.Size = New System.Drawing.Size(1055, 181)
         Me.spellSlotPanel.TabIndex = 2
         '
         'spellCast

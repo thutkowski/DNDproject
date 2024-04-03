@@ -112,6 +112,7 @@ Partial Class characterSheet
         Me.spellDataGridView = New System.Windows.Forms.DataGridView()
         Me.Panel12 = New System.Windows.Forms.Panel()
         Me.castSpellButton = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -133,7 +134,7 @@ Partial Class characterSheet
         Me.Label1.Location = New System.Drawing.Point(12, 2)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 15)
+        Me.Label1.Size = New System.Drawing.Size(69, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Strength"
         '
@@ -142,7 +143,7 @@ Partial Class characterSheet
         Me.strenTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.strenTextBox.Location = New System.Drawing.Point(15, 17)
         Me.strenTextBox.Name = "strenTextBox"
-        Me.strenTextBox.Size = New System.Drawing.Size(40, 21)
+        Me.strenTextBox.Size = New System.Drawing.Size(40, 28)
         Me.strenTextBox.TabIndex = 1
         Me.strenTextBox.Text = "1"
         '
@@ -163,7 +164,7 @@ Partial Class characterSheet
         Me.strenModiferLabel.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.strenModiferLabel.Location = New System.Drawing.Point(29, 38)
         Me.strenModiferLabel.Name = "strenModiferLabel"
-        Me.strenModiferLabel.Size = New System.Drawing.Size(13, 15)
+        Me.strenModiferLabel.Size = New System.Drawing.Size(18, 20)
         Me.strenModiferLabel.TabIndex = 2
         Me.strenModiferLabel.Text = "4"
         '
@@ -184,7 +185,7 @@ Partial Class characterSheet
         Me.conModiferLabel.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.conModiferLabel.Location = New System.Drawing.Point(29, 38)
         Me.conModiferLabel.Name = "conModiferLabel"
-        Me.conModiferLabel.Size = New System.Drawing.Size(13, 15)
+        Me.conModiferLabel.Size = New System.Drawing.Size(18, 20)
         Me.conModiferLabel.TabIndex = 2
         Me.conModiferLabel.Text = "4"
         '
@@ -193,7 +194,7 @@ Partial Class characterSheet
         Me.conTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.conTextBox.Location = New System.Drawing.Point(15, 17)
         Me.conTextBox.Name = "conTextBox"
-        Me.conTextBox.Size = New System.Drawing.Size(40, 21)
+        Me.conTextBox.Size = New System.Drawing.Size(40, 28)
         Me.conTextBox.TabIndex = 1
         Me.conTextBox.Text = "1"
         '
@@ -204,7 +205,7 @@ Partial Class characterSheet
         Me.Label3.Location = New System.Drawing.Point(1, 2)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 15)
+        Me.Label3.Size = New System.Drawing.Size(96, 20)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Constitution"
         '
@@ -225,7 +226,7 @@ Partial Class characterSheet
         Me.charModiferLabel.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.charModiferLabel.Location = New System.Drawing.Point(29, 38)
         Me.charModiferLabel.Name = "charModiferLabel"
-        Me.charModiferLabel.Size = New System.Drawing.Size(13, 15)
+        Me.charModiferLabel.Size = New System.Drawing.Size(18, 20)
         Me.charModiferLabel.TabIndex = 2
         Me.charModiferLabel.Text = "4"
         '
@@ -234,7 +235,7 @@ Partial Class characterSheet
         Me.charismaTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.charismaTextBox.Location = New System.Drawing.Point(15, 17)
         Me.charismaTextBox.Name = "charismaTextBox"
-        Me.charismaTextBox.Size = New System.Drawing.Size(40, 21)
+        Me.charismaTextBox.Size = New System.Drawing.Size(40, 28)
         Me.charismaTextBox.TabIndex = 1
         Me.charismaTextBox.Text = "1"
         '
@@ -245,7 +246,7 @@ Partial Class characterSheet
         Me.Label5.Location = New System.Drawing.Point(9, 2)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(52, 15)
+        Me.Label5.Size = New System.Drawing.Size(77, 20)
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Charisma"
         '
@@ -266,7 +267,7 @@ Partial Class characterSheet
         Me.intelModiferLabel.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.intelModiferLabel.Location = New System.Drawing.Point(29, 38)
         Me.intelModiferLabel.Name = "intelModiferLabel"
-        Me.intelModiferLabel.Size = New System.Drawing.Size(13, 15)
+        Me.intelModiferLabel.Size = New System.Drawing.Size(18, 20)
         Me.intelModiferLabel.TabIndex = 2
         Me.intelModiferLabel.Text = "4"
         '
@@ -275,7 +276,7 @@ Partial Class characterSheet
         Me.intelTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.intelTextBox.Location = New System.Drawing.Point(15, 17)
         Me.intelTextBox.Name = "intelTextBox"
-        Me.intelTextBox.Size = New System.Drawing.Size(40, 21)
+        Me.intelTextBox.Size = New System.Drawing.Size(40, 28)
         Me.intelTextBox.TabIndex = 1
         Me.intelTextBox.Text = "1"
         '
@@ -286,7 +287,7 @@ Partial Class characterSheet
         Me.Label7.Location = New System.Drawing.Point(5, 2)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(61, 15)
+        Me.Label7.Size = New System.Drawing.Size(90, 20)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Intelligence"
         '
@@ -307,7 +308,7 @@ Partial Class characterSheet
         Me.wisdomModiferLabel.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.wisdomModiferLabel.Location = New System.Drawing.Point(29, 38)
         Me.wisdomModiferLabel.Name = "wisdomModiferLabel"
-        Me.wisdomModiferLabel.Size = New System.Drawing.Size(13, 15)
+        Me.wisdomModiferLabel.Size = New System.Drawing.Size(18, 20)
         Me.wisdomModiferLabel.TabIndex = 2
         Me.wisdomModiferLabel.Text = "4"
         '
@@ -316,7 +317,7 @@ Partial Class characterSheet
         Me.wisdomTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.wisdomTextBox.Location = New System.Drawing.Point(15, 17)
         Me.wisdomTextBox.Name = "wisdomTextBox"
-        Me.wisdomTextBox.Size = New System.Drawing.Size(40, 21)
+        Me.wisdomTextBox.Size = New System.Drawing.Size(40, 28)
         Me.wisdomTextBox.TabIndex = 1
         Me.wisdomTextBox.Text = "1"
         '
@@ -327,7 +328,7 @@ Partial Class characterSheet
         Me.Label.Location = New System.Drawing.Point(12, 2)
         Me.Label.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label.Name = "Label"
-        Me.Label.Size = New System.Drawing.Size(47, 15)
+        Me.Label.Size = New System.Drawing.Size(68, 20)
         Me.Label.TabIndex = 0
         Me.Label.Text = "Wisdom"
         '
@@ -348,7 +349,7 @@ Partial Class characterSheet
         Me.dexModiferLabel.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.dexModiferLabel.Location = New System.Drawing.Point(29, 38)
         Me.dexModiferLabel.Name = "dexModiferLabel"
-        Me.dexModiferLabel.Size = New System.Drawing.Size(13, 15)
+        Me.dexModiferLabel.Size = New System.Drawing.Size(18, 20)
         Me.dexModiferLabel.TabIndex = 2
         Me.dexModiferLabel.Text = "4"
         '
@@ -357,7 +358,7 @@ Partial Class characterSheet
         Me.dexTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.dexTextBox.Location = New System.Drawing.Point(15, 17)
         Me.dexTextBox.Name = "dexTextBox"
-        Me.dexTextBox.Size = New System.Drawing.Size(40, 21)
+        Me.dexTextBox.Size = New System.Drawing.Size(40, 28)
         Me.dexTextBox.TabIndex = 1
         Me.dexTextBox.Text = "1"
         '
@@ -368,7 +369,7 @@ Partial Class characterSheet
         Me.Label11.Location = New System.Drawing.Point(9, 2)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(53, 15)
+        Me.Label11.Size = New System.Drawing.Size(75, 20)
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "Dexterity"
         '
@@ -420,7 +421,7 @@ Partial Class characterSheet
         Me.rollTextBox.Font = New System.Drawing.Font("Times New Roman", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rollTextBox.Location = New System.Drawing.Point(45, 503)
         Me.rollTextBox.Name = "rollTextBox"
-        Me.rollTextBox.Size = New System.Drawing.Size(66, 41)
+        Me.rollTextBox.Size = New System.Drawing.Size(66, 58)
         Me.rollTextBox.TabIndex = 34
         Me.rollTextBox.Text = " "
         '
@@ -583,7 +584,7 @@ Partial Class characterSheet
         Me.survivalCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.survivalCheckBox.Location = New System.Drawing.Point(10, 474)
         Me.survivalCheckBox.Name = "survivalCheckBox"
-        Me.survivalCheckBox.Size = New System.Drawing.Size(65, 19)
+        Me.survivalCheckBox.Size = New System.Drawing.Size(94, 24)
         Me.survivalCheckBox.TabIndex = 16
         Me.survivalCheckBox.Text = "Survival"
         Me.survivalCheckBox.UseVisualStyleBackColor = True
@@ -594,7 +595,7 @@ Partial Class characterSheet
         Me.stealthCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.stealthCheckBox.Location = New System.Drawing.Point(10, 445)
         Me.stealthCheckBox.Name = "stealthCheckBox"
-        Me.stealthCheckBox.Size = New System.Drawing.Size(59, 19)
+        Me.stealthCheckBox.Size = New System.Drawing.Size(84, 24)
         Me.stealthCheckBox.TabIndex = 15
         Me.stealthCheckBox.Text = "Stealth"
         Me.stealthCheckBox.UseVisualStyleBackColor = True
@@ -605,7 +606,7 @@ Partial Class characterSheet
         Me.sleightCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.sleightCheckBox.Location = New System.Drawing.Point(10, 416)
         Me.sleightCheckBox.Name = "sleightCheckBox"
-        Me.sleightCheckBox.Size = New System.Drawing.Size(100, 19)
+        Me.sleightCheckBox.Size = New System.Drawing.Size(147, 24)
         Me.sleightCheckBox.TabIndex = 14
         Me.sleightCheckBox.Text = "Sleight of Hand"
         Me.sleightCheckBox.UseVisualStyleBackColor = True
@@ -616,7 +617,7 @@ Partial Class characterSheet
         Me.religionCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.religionCheckBox.Location = New System.Drawing.Point(10, 387)
         Me.religionCheckBox.Name = "religionCheckBox"
-        Me.religionCheckBox.Size = New System.Drawing.Size(65, 19)
+        Me.religionCheckBox.Size = New System.Drawing.Size(93, 24)
         Me.religionCheckBox.TabIndex = 13
         Me.religionCheckBox.Text = "Religion"
         Me.religionCheckBox.UseVisualStyleBackColor = True
@@ -627,7 +628,7 @@ Partial Class characterSheet
         Me.persuasionCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.persuasionCheckBox.Location = New System.Drawing.Point(10, 358)
         Me.persuasionCheckBox.Name = "persuasionCheckBox"
-        Me.persuasionCheckBox.Size = New System.Drawing.Size(78, 19)
+        Me.persuasionCheckBox.Size = New System.Drawing.Size(113, 24)
         Me.persuasionCheckBox.TabIndex = 12
         Me.persuasionCheckBox.Text = "Persuasion"
         Me.persuasionCheckBox.UseVisualStyleBackColor = True
@@ -638,7 +639,7 @@ Partial Class characterSheet
         Me.performanceCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.performanceCheckBox.Location = New System.Drawing.Point(10, 329)
         Me.performanceCheckBox.Name = "performanceCheckBox"
-        Me.performanceCheckBox.Size = New System.Drawing.Size(86, 19)
+        Me.performanceCheckBox.Size = New System.Drawing.Size(128, 24)
         Me.performanceCheckBox.TabIndex = 11
         Me.performanceCheckBox.Text = "Performance"
         Me.performanceCheckBox.UseVisualStyleBackColor = True
@@ -649,7 +650,7 @@ Partial Class characterSheet
         Me.perceptionCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.perceptionCheckBox.Location = New System.Drawing.Point(10, 300)
         Me.perceptionCheckBox.Name = "perceptionCheckBox"
-        Me.perceptionCheckBox.Size = New System.Drawing.Size(78, 19)
+        Me.perceptionCheckBox.Size = New System.Drawing.Size(112, 24)
         Me.perceptionCheckBox.TabIndex = 10
         Me.perceptionCheckBox.Text = "Perception"
         Me.perceptionCheckBox.UseVisualStyleBackColor = True
@@ -660,7 +661,7 @@ Partial Class characterSheet
         Me.natureCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.natureCheckBox.Location = New System.Drawing.Point(10, 271)
         Me.natureCheckBox.Name = "natureCheckBox"
-        Me.natureCheckBox.Size = New System.Drawing.Size(59, 19)
+        Me.natureCheckBox.Size = New System.Drawing.Size(84, 24)
         Me.natureCheckBox.TabIndex = 9
         Me.natureCheckBox.Text = "Nature"
         Me.natureCheckBox.UseVisualStyleBackColor = True
@@ -671,7 +672,7 @@ Partial Class characterSheet
         Me.medicineCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.medicineCheckBox.Location = New System.Drawing.Point(10, 242)
         Me.medicineCheckBox.Name = "medicineCheckBox"
-        Me.medicineCheckBox.Size = New System.Drawing.Size(71, 19)
+        Me.medicineCheckBox.Size = New System.Drawing.Size(101, 24)
         Me.medicineCheckBox.TabIndex = 8
         Me.medicineCheckBox.Text = "Medicine"
         Me.medicineCheckBox.UseVisualStyleBackColor = True
@@ -682,7 +683,7 @@ Partial Class characterSheet
         Me.investigationCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.investigationCheckBox.Location = New System.Drawing.Point(10, 213)
         Me.investigationCheckBox.Name = "investigationCheckBox"
-        Me.investigationCheckBox.Size = New System.Drawing.Size(88, 19)
+        Me.investigationCheckBox.Size = New System.Drawing.Size(126, 24)
         Me.investigationCheckBox.TabIndex = 7
         Me.investigationCheckBox.Text = "Investigation"
         Me.investigationCheckBox.UseVisualStyleBackColor = True
@@ -693,7 +694,7 @@ Partial Class characterSheet
         Me.intimidationCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.intimidationCheckBox.Location = New System.Drawing.Point(10, 184)
         Me.intimidationCheckBox.Name = "intimidationCheckBox"
-        Me.intimidationCheckBox.Size = New System.Drawing.Size(85, 19)
+        Me.intimidationCheckBox.Size = New System.Drawing.Size(121, 24)
         Me.intimidationCheckBox.TabIndex = 6
         Me.intimidationCheckBox.Text = "Intimidation"
         Me.intimidationCheckBox.UseVisualStyleBackColor = True
@@ -704,7 +705,7 @@ Partial Class characterSheet
         Me.historyCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.historyCheckBox.Location = New System.Drawing.Point(10, 155)
         Me.historyCheckBox.Name = "historyCheckBox"
-        Me.historyCheckBox.Size = New System.Drawing.Size(64, 19)
+        Me.historyCheckBox.Size = New System.Drawing.Size(88, 24)
         Me.historyCheckBox.TabIndex = 5
         Me.historyCheckBox.Text = "History"
         Me.historyCheckBox.UseVisualStyleBackColor = True
@@ -715,7 +716,7 @@ Partial Class characterSheet
         Me.deceptionCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.deceptionCheckBox.Location = New System.Drawing.Point(10, 126)
         Me.deceptionCheckBox.Name = "deceptionCheckBox"
-        Me.deceptionCheckBox.Size = New System.Drawing.Size(76, 19)
+        Me.deceptionCheckBox.Size = New System.Drawing.Size(108, 24)
         Me.deceptionCheckBox.TabIndex = 4
         Me.deceptionCheckBox.Text = "Deception"
         Me.deceptionCheckBox.UseVisualStyleBackColor = True
@@ -726,7 +727,7 @@ Partial Class characterSheet
         Me.athleticsCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.athleticsCheckBox.Location = New System.Drawing.Point(10, 97)
         Me.athleticsCheckBox.Name = "athleticsCheckBox"
-        Me.athleticsCheckBox.Size = New System.Drawing.Size(70, 19)
+        Me.athleticsCheckBox.Size = New System.Drawing.Size(97, 24)
         Me.athleticsCheckBox.TabIndex = 3
         Me.athleticsCheckBox.Text = "Athletics"
         Me.athleticsCheckBox.UseVisualStyleBackColor = True
@@ -737,7 +738,7 @@ Partial Class characterSheet
         Me.arcanaCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.arcanaCheckBox.Location = New System.Drawing.Point(10, 68)
         Me.arcanaCheckBox.Name = "arcanaCheckBox"
-        Me.arcanaCheckBox.Size = New System.Drawing.Size(60, 19)
+        Me.arcanaCheckBox.Size = New System.Drawing.Size(86, 24)
         Me.arcanaCheckBox.TabIndex = 2
         Me.arcanaCheckBox.Text = "Arcana"
         Me.arcanaCheckBox.UseVisualStyleBackColor = True
@@ -748,7 +749,7 @@ Partial Class characterSheet
         Me.animalCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.animalCheckBox.Location = New System.Drawing.Point(10, 39)
         Me.animalCheckBox.Name = "animalCheckBox"
-        Me.animalCheckBox.Size = New System.Drawing.Size(107, 19)
+        Me.animalCheckBox.Size = New System.Drawing.Size(155, 24)
         Me.animalCheckBox.TabIndex = 1
         Me.animalCheckBox.Text = "Animal Handling"
         Me.animalCheckBox.UseVisualStyleBackColor = True
@@ -759,7 +760,7 @@ Partial Class characterSheet
         Me.acrobacticsCheckBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.acrobacticsCheckBox.Location = New System.Drawing.Point(10, 10)
         Me.acrobacticsCheckBox.Name = "acrobacticsCheckBox"
-        Me.acrobacticsCheckBox.Size = New System.Drawing.Size(83, 19)
+        Me.acrobacticsCheckBox.Size = New System.Drawing.Size(119, 24)
         Me.acrobacticsCheckBox.TabIndex = 0
         Me.acrobacticsCheckBox.Text = "Acrobactics"
         Me.acrobacticsCheckBox.UseVisualStyleBackColor = True
@@ -778,7 +779,7 @@ Partial Class characterSheet
         '
         Me.profTextBox.Location = New System.Drawing.Point(25, 27)
         Me.profTextBox.Name = "profTextBox"
-        Me.profTextBox.Size = New System.Drawing.Size(50, 23)
+        Me.profTextBox.Size = New System.Drawing.Size(50, 30)
         Me.profTextBox.TabIndex = 1
         Me.profTextBox.Text = "1"
         '
@@ -787,7 +788,7 @@ Partial Class characterSheet
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(14, 6)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(72, 16)
+        Me.Label2.Size = New System.Drawing.Size(101, 22)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Proficiency"
         '
@@ -797,7 +798,7 @@ Partial Class characterSheet
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label6.Location = New System.Drawing.Point(4, 12)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(87, 15)
+        Me.Label6.Size = New System.Drawing.Size(131, 20)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Character Name:"
         '
@@ -806,7 +807,7 @@ Partial Class characterSheet
         Me.characterNameTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.characterNameTextBox.Location = New System.Drawing.Point(97, 6)
         Me.characterNameTextBox.Name = "characterNameTextBox"
-        Me.characterNameTextBox.Size = New System.Drawing.Size(75, 21)
+        Me.characterNameTextBox.Size = New System.Drawing.Size(75, 28)
         Me.characterNameTextBox.TabIndex = 16
         Me.characterNameTextBox.Text = "t"
         '
@@ -816,7 +817,7 @@ Partial Class characterSheet
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label4.Location = New System.Drawing.Point(10, 35)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(36, 15)
+        Me.Label4.Size = New System.Drawing.Size(51, 20)
         Me.Label4.TabIndex = 17
         Me.Label4.Text = "Class:"
         '
@@ -825,7 +826,7 @@ Partial Class characterSheet
         Me.classTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.classTextBox.Location = New System.Drawing.Point(97, 33)
         Me.classTextBox.Name = "classTextBox"
-        Me.classTextBox.Size = New System.Drawing.Size(75, 21)
+        Me.classTextBox.Size = New System.Drawing.Size(75, 28)
         Me.classTextBox.TabIndex = 18
         Me.classTextBox.Text = "bard"
         '
@@ -855,7 +856,7 @@ Partial Class characterSheet
         '
         Me.levelTextBox.Location = New System.Drawing.Point(492, 32)
         Me.levelTextBox.Name = "levelTextBox"
-        Me.levelTextBox.Size = New System.Drawing.Size(29, 23)
+        Me.levelTextBox.Size = New System.Drawing.Size(29, 30)
         Me.levelTextBox.TabIndex = 24
         Me.levelTextBox.Text = "1"
         '
@@ -865,7 +866,7 @@ Partial Class characterSheet
         Me.Label16.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(453, 37)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(33, 14)
+        Me.Label16.Size = New System.Drawing.Size(47, 19)
         Me.Label16.TabIndex = 23
         Me.Label16.Text = "Level"
         '
@@ -874,7 +875,7 @@ Partial Class characterSheet
         Me.backgroundTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.backgroundTextBox.Location = New System.Drawing.Point(247, 33)
         Me.backgroundTextBox.Name = "backgroundTextBox"
-        Me.backgroundTextBox.Size = New System.Drawing.Size(77, 21)
+        Me.backgroundTextBox.Size = New System.Drawing.Size(77, 28)
         Me.backgroundTextBox.TabIndex = 22
         Me.backgroundTextBox.Text = "good"
         '
@@ -883,7 +884,7 @@ Partial Class characterSheet
         Me.alignmentTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.alignmentTextBox.Location = New System.Drawing.Point(247, 6)
         Me.alignmentTextBox.Name = "alignmentTextBox"
-        Me.alignmentTextBox.Size = New System.Drawing.Size(75, 21)
+        Me.alignmentTextBox.Size = New System.Drawing.Size(75, 28)
         Me.alignmentTextBox.TabIndex = 20
         Me.alignmentTextBox.Text = "bad"
         '
@@ -893,7 +894,7 @@ Partial Class characterSheet
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label8.Location = New System.Drawing.Point(180, 35)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(67, 15)
+        Me.Label8.Size = New System.Drawing.Size(100, 20)
         Me.Label8.TabIndex = 21
         Me.Label8.Text = "Background:"
         '
@@ -903,7 +904,7 @@ Partial Class characterSheet
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label9.Location = New System.Drawing.Point(180, 11)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(60, 15)
+        Me.Label9.Size = New System.Drawing.Size(86, 20)
         Me.Label9.TabIndex = 19
         Me.Label9.Text = "Alignment:"
         '
@@ -912,7 +913,7 @@ Partial Class characterSheet
         Me.iniativeTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.iniativeTextBox.Location = New System.Drawing.Point(396, 33)
         Me.iniativeTextBox.Name = "iniativeTextBox"
-        Me.iniativeTextBox.Size = New System.Drawing.Size(42, 21)
+        Me.iniativeTextBox.Size = New System.Drawing.Size(42, 28)
         Me.iniativeTextBox.TabIndex = 18
         Me.iniativeTextBox.Text = "1"
         '
@@ -922,7 +923,7 @@ Partial Class characterSheet
         Me.Label13.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label13.Location = New System.Drawing.Point(332, 35)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(46, 15)
+        Me.Label13.Size = New System.Drawing.Size(66, 20)
         Me.Label13.TabIndex = 17
         Me.Label13.Text = "Iniative:"
         '
@@ -931,7 +932,7 @@ Partial Class characterSheet
         Me.armorClassTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.armorClassTextBox.Location = New System.Drawing.Point(405, 8)
         Me.armorClassTextBox.Name = "armorClassTextBox"
-        Me.armorClassTextBox.Size = New System.Drawing.Size(44, 21)
+        Me.armorClassTextBox.Size = New System.Drawing.Size(44, 28)
         Me.armorClassTextBox.TabIndex = 16
         Me.armorClassTextBox.Text = "1"
         '
@@ -941,7 +942,7 @@ Partial Class characterSheet
         Me.Label14.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label14.Location = New System.Drawing.Point(332, 10)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(71, 15)
+        Me.Label14.Size = New System.Drawing.Size(103, 20)
         Me.Label14.TabIndex = 15
         Me.Label14.Text = "Armor Class:"
         '
@@ -962,7 +963,7 @@ Partial Class characterSheet
         Me.currentHpTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.currentHpTextBox.Location = New System.Drawing.Point(80, 33)
         Me.currentHpTextBox.Name = "currentHpTextBox"
-        Me.currentHpTextBox.Size = New System.Drawing.Size(26, 21)
+        Me.currentHpTextBox.Size = New System.Drawing.Size(26, 28)
         Me.currentHpTextBox.TabIndex = 22
         Me.currentHpTextBox.Text = "1"
         '
@@ -971,7 +972,7 @@ Partial Class characterSheet
         Me.hpMaxTextBox.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.hpMaxTextBox.Location = New System.Drawing.Point(80, 6)
         Me.hpMaxTextBox.Name = "hpMaxTextBox"
-        Me.hpMaxTextBox.Size = New System.Drawing.Size(26, 21)
+        Me.hpMaxTextBox.Size = New System.Drawing.Size(26, 28)
         Me.hpMaxTextBox.TabIndex = 20
         Me.hpMaxTextBox.Text = "1"
         '
@@ -981,7 +982,7 @@ Partial Class characterSheet
         Me.Label10.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label10.Location = New System.Drawing.Point(10, 35)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(66, 15)
+        Me.Label10.Size = New System.Drawing.Size(97, 20)
         Me.Label10.TabIndex = 21
         Me.Label10.Text = "Current HP:"
         '
@@ -991,7 +992,7 @@ Partial Class characterSheet
         Me.Label12.Font = New System.Drawing.Font("Times New Roman", 9.0!)
         Me.Label12.Location = New System.Drawing.Point(10, 10)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(51, 15)
+        Me.Label12.Size = New System.Drawing.Size(73, 20)
         Me.Label12.TabIndex = 19
         Me.Label12.Text = "HP Max:"
         '
@@ -1009,7 +1010,7 @@ Partial Class characterSheet
         '
         Me.speedTextBox.Location = New System.Drawing.Point(25, 27)
         Me.speedTextBox.Name = "speedTextBox"
-        Me.speedTextBox.Size = New System.Drawing.Size(50, 23)
+        Me.speedTextBox.Size = New System.Drawing.Size(50, 30)
         Me.speedTextBox.TabIndex = 1
         Me.speedTextBox.Text = "5"
         '
@@ -1018,7 +1019,7 @@ Partial Class characterSheet
         Me.Label15.AutoSize = True
         Me.Label15.Location = New System.Drawing.Point(22, 8)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(41, 16)
+        Me.Label15.Size = New System.Drawing.Size(59, 22)
         Me.Label15.TabIndex = 0
         Me.Label15.Text = "Speed"
         '
@@ -1056,12 +1057,22 @@ Partial Class characterSheet
         Me.castSpellButton.Text = "Cast Spells"
         Me.castSpellButton.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(269, 527)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 26
+        Me.Button1.Text = "prepare"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'characterSheet
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1174, 590)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.castSpellButton)
         Me.Controls.Add(Me.Panel12)
         Me.Controls.Add(Me.spellDataGridView)
@@ -1198,4 +1209,5 @@ Partial Class characterSheet
     Friend WithEvents Label16 As Label
     Friend WithEvents Panel12 As Panel
     Friend WithEvents castSpellButton As Button
+    Friend WithEvents Button1 As Button
 End Class

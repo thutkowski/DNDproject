@@ -7,9 +7,12 @@ Public Class spellCast
     Private result As New List(Of KeyValuePair(Of String, Object))()
     Private spellSlots As New List(Of KeyValuePair(Of String, Integer))()
 
+
     Private columnNames As New List(Of String)()
 
     Private Sub getColumns()
+        'MAKE GLOBAL
+        Dim command As New SQLiteCommand(connection)
         command.CommandText = $"PRAGMA table_info(spellSlots)"
 
         rdr = command.ExecuteReader()
@@ -28,6 +31,7 @@ Public Class spellCast
     Private Sub getKvp()
         Dim resultString As String = ""
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * from spellSlots WHERE class=@class AND level=@level"
         command.Parameters.AddWithValue("@class", characterClass)
@@ -130,13 +134,14 @@ Public Class spellCast
 
     Private Sub spellQuery(level As Integer, charClass As String)
         Dim conditions As New List(Of String)
+        Dim command As New SQLiteCommand(connection)
 
         Dim sqlQuery As String = "SELECT s.spellName FROM spells AS s INNER JOIN 
-        spellAssociation as a ON s.spellName=a.spellName"
-        conditions.Add($"a.class =" & charClass)
+        spellAssociation as a ON s.spellID=a.spellID"
+        conditions.Add($"a.spellClass =" & charClass)
         conditions.Add($"a.level =" & level.ToString())
         sqlQuery = "SELECT s.spellName FROM spells AS s INNER JOIN 
-        spellAssociation as a ON s.spellName=a.spellName"
+        spellAssociation as a ON s.spellID=a.spellID"
 
         If conditions.Count > 0 Then
             Dim whereQuery As String = String.Join(" AND ", conditions)
@@ -147,18 +152,18 @@ Public Class spellCast
         command.CommandText = sqlQuery
     End Sub
     Private Sub createSpellSlot()
+        Dim command As New SQLiteCommand(connection)
         Dim yPosition As Integer = 10
-        MessageBox.Show(command.CommandText)
         For Each kvp As KeyValuePair(Of String, Integer) In spellSlots
+            Dim slotX As Integer = 180
             If rdr IsNot Nothing AndAlso Not rdr.IsClosed Then
                 rdr.Close()
             End If
             spellQuery(kvp.Key, characterClass)
-            command.CommandText = "SELECT spellName from spells where spellLevel = @spellLevel AND  known ='1'"
-            command.Parameters.Clear() ' Clear any previous parameters
-            command.Parameters.AddWithValue("@spellLevel", kvp.Key)
-            MessageBox.Show(command.CommandText)
-            rdr = command.ExecuteReader()
+            Command.CommandText = "SELECT spellName from spells where spellLevel = @spellLevel AND  known ='1'"
+            Command.Parameters.Clear() ' Clear any previous parameters
+            Command.Parameters.AddWithValue("@spellLevel", kvp.Key)
+            rdr = Command.ExecuteReader()
             Dim label As New Label()
             label.Text = kvp.Key
             label.AutoSize = True
@@ -172,6 +177,22 @@ Public Class spellCast
 
             Dim castButton As New Button()
             castButton.Text = "Cast spell"
+            castButton.Location = New Point(300, yPosition)
+            AddHandler castButton.Click, AddressOf CastButtonClick
+            spellSlotPanel.Controls.Add(castButton)
+            For i As Integer = 1 To kvp.Value
+                Dim checkBox As New CheckBox()
+                checkBox.Location = New Point(slotX, yPosition)
+                slotX += 30
+                spellSlotPanel.Controls.Add(checkBox)
+            Next
+            For Each control As Control In spellSlotPanel.Controls
+                If TypeOf control Is CheckBox Then
+                    MessageBox.Show("one")
+                End If
+
+            Next
+
             While rdr.Read()
                 comboBox.Items.Add(rdr.GetValue(0).ToString())
             End While
@@ -179,6 +200,19 @@ Public Class spellCast
         Next
         rdr.Close()
     End Sub
+
+    Private Sub CastButtonClick(sender As Object, e As EventArgs)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        Dim parentPanel As Panel = DirectCast(clickedButton.Parent, Panel)
+        Dim comboBox As ComboBox = parentPanel.Controls.OfType(Of ComboBox)().FirstOrDefault()
+        If comboBox IsNot Nothing Then
+            Dim selectedSpell As String = comboBox.SelectedItem.ToString()
+            ' Perform actions based on the selected spell
+            ' For example:
+            MessageBox.Show($"Spell '{selectedSpell}' cast!")
+        End If
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         getColumns()
         getKvp()

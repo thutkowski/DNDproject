@@ -173,3 +173,4 @@ C:\Users\Tim\Source\Repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.
 C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.characterCreation.resources
 C:\Users\Tim\source\repos\DNDProject\dNdProject\dNdProject\obj\Debug\dNdProject.spellMenu.resources
 C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.spellCast.resources
+C:\Users\Tim\source\repos\DNDproject\dNdProject\dNdProject\obj\Debug\dNdProject.prepareSpells.resources

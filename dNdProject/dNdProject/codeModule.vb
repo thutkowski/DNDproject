@@ -7,7 +7,7 @@ Module codeModule
     Public dbPath As String = Application.StartupPath & "\" & dbName
     Public consString As String = "Data Source=" & dbPath & ";Version=3"
     Public connection As New SQLiteConnection(consString)
-    Public command As New SQLiteCommand("", connection)
+
     Public rdr As SQLiteDataReader
 
     'What actually needs to be a global variable
@@ -34,6 +34,7 @@ Module codeModule
 
     Public Function checkTableCharactersExist() As Boolean
         openDB()
+        Dim command As New SQLiteCommand(connection)
         command.CommandText = "SELECT * FROM characters"
 
         Try
@@ -48,12 +49,35 @@ Module codeModule
             connection.Close()
             Return False
         End Try
+        If rdr.HasRows Then
+            rdr.Close()
+            connection.Close()
+            Return True
+        End If
         rdr.Close()
         connection.Close()
-        Return True
+        Return False
     End Function
+    Public Sub createUsersTable()
+        openDB()
+        Dim command As New SQLiteCommand(connection)
+
+        command.CommandText = "SELECT * From users"
+        Try
+            rdr = command.ExecuteReader()
+            rdr.Close()
+        Catch ex As Exception
+            command.CommandText = "CREATE TABLE users (characterID INTEGER ,
+        spellID INTEGER,PRIMARY KEY (characterID,spellID))"
+            command.ExecuteNonQuery()
+            connection.Close()
+        End Try
+        connection.Close()
+
+    End Sub
     Public Function checkTableCharacterInfoExist() As Boolean
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * FROM characterInfo"
 
@@ -82,14 +106,19 @@ Module codeModule
 
             Return False
         End Try
-
+        If rdr.HasRows Then
+            rdr.Close()
+            connection.Close()
+            Return True
+        End If
         rdr.Close()
         connection.Close()
-        Return True
+        Return False
     End Function
 
     Public Function checkTableCharacterSkillsExist() As Boolean
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * FROM characterSkills"
 
@@ -130,6 +159,7 @@ Module codeModule
 
     Public Function checkTableCharacterStatsExist() As Boolean
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * FROM characterStats"
 
@@ -151,13 +181,15 @@ Module codeModule
 
             Return False
         End Try
-
+        If rdr.HasRows Then
+            rdr.Close()
+            connection.Close()
+            Return True
+        End If
         rdr.Close()
         connection.Close()
-        Return True
+        Return False
     End Function
-
-
 
     Public Function AreAnyTextBoxesEmpty(controls As Control.ControlCollection) As Boolean
         ' Loop through all of the text boxes and check if any of them are empty.

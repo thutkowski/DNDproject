@@ -336,7 +336,7 @@ Public Class characterSheet
 
     Private Sub getCharacterStats()
         openDB()
-
+        Dim command As New SQLiteCommand(connection)
         'Query character list with character name
         command.CommandText = "SELECT * FROM characterStats WHERE characterID = @characterID"
         command.Parameters.AddWithValue("@characterID", characterID)
@@ -356,7 +356,7 @@ Public Class characterSheet
 
     Private Sub getCharacterInfo()
         openDB()
-
+        Dim command As New SQLiteCommand(connection)
         'Query character list with character name
         command.CommandText = "SELECT * FROM characterInfo WHERE characterID = @characterID"
         command.Parameters.AddWithValue("@characterID", characterID)
@@ -380,6 +380,7 @@ Public Class characterSheet
 
     Private Sub getCharacterSkills()
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         'Query character list with character name
         command.CommandText = "SELECT * FROM characterSkills WHERE characterID = @characterID"
@@ -410,10 +411,15 @@ Public Class characterSheet
 
     Private Sub loadPreparedSpells()
         openDB()
-        command.CommandText = "SELECT spellName FROM spells WHERE known = 1 "
+        Dim command As New SQLiteCommand(connection)
+        command.CommandText = "SELECT s.spellName FROM spells AS s 
+            INNER JOIN users AS u ON u.spellID = s.spellID WHERE u.characterID = @characterID"
+        command.Parameters.AddWithValue("@characterID", characterID)
         Dim spellName As New DataSet()
 
-        Using da As New SQLiteDataAdapter(command.CommandText, connection)
+        Using da As New SQLiteDataAdapter()
+            da.SelectCommand = command
+            da.SelectCommand.Connection = connection
             ' Populate the DataSet with the data from the SQLite database
             da.Fill(spellName)
         End Using
@@ -421,17 +427,11 @@ Public Class characterSheet
         spellDataGridView.DataSource = spellName.Tables(0)
         spellDataGridView.Columns(0).HeaderText = "Spell Name"
         spellDataGridView.RowHeadersVisible = False
+        spellDataGridView.ReadOnly = True
         spellDataGridView.AutoResizeColumn(0, DataGridViewAutoSizeColumnMode.AllCells)
     End Sub
 
-    Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        characterNameTextBox.Text = characterName
-        getCharacterStats()
-        getCharacterInfo()
-        getCharacterSkills()
-        loadPreparedSpells()
 
-    End Sub
 
     Public Function AreAnyTextBoxesEmpty() As Boolean
         ' Loop through all of the text boxes and check if any of them are empty.
@@ -446,12 +446,6 @@ Public Class characterSheet
         ' If none of the text boxes are empty, return False.
         Return False
     End Function
-    Private Sub characterSheet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        saveCharacterStats()
-        saveSkills()
-        saveCharacterInfo()
-    End Sub
-
 
     Private Sub characterSheet_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If AreAnyTextBoxesEmpty() = True Then
@@ -462,6 +456,7 @@ Public Class characterSheet
 
     Private Sub spellSheetButton_Click(sender As Object, e As EventArgs) Handles spellSheetButton.Click
         characterClass = classTextBox.Text
+        level = Convert.ToInt32(levelTextBox.Text)
         spellMenu.Show()
     End Sub
 
@@ -471,9 +466,8 @@ Public Class characterSheet
     End Sub
 
     Private Function checkCharacterStatsExists(ByVal charName As String) As Boolean
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * FROM characterStats WHERE characterID = @characterID"
         command.Parameters.AddWithValue("@characterID", characterID)
@@ -488,9 +482,8 @@ Public Class characterSheet
     End Function
 
     Private Function checkCharacterSkillsExists(ByVal charName As String) As Boolean
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * FROM CharacterSkills WHERE characterID = @characterID"
         command.Parameters.AddWithValue("@characterID", characterID)
@@ -505,9 +498,8 @@ Public Class characterSheet
     End Function
 
     Private Function checkCharacterInfoExists(ByVal charName As String) As Boolean
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-        End If
+        openDB()
+        Dim command As New SQLiteCommand(connection)
 
         command.CommandText = "SELECT * FROM characterInfo WHERE characterID = @characterID"
         command.Parameters.AddWithValue("@characterID", characterID)
@@ -523,24 +515,7 @@ Public Class characterSheet
 
     Private Sub saveSkills()
         openDB()
-        Dim survival As Boolean = survivalCheckBox.Checked
-        Dim stealth As Boolean = stealthCheckBox.Checked
-        Dim sleight As Boolean = sleightCheckBox.Checked
-        Dim religion As Boolean = religionCheckBox.Checked
-        Dim persuasion As Boolean = performanceCheckBox.Checked
-        Dim performance As Boolean = performanceCheckBox.Checked
-        Dim perception As Boolean = perceptionCheckBox.Checked
-        Dim nature As Boolean = natureCheckBox.Checked
-        Dim medicine As Boolean = medicineCheckBox.Checked
-        Dim investigation As Boolean = investigationCheckBox.Checked
-        Dim intimidation As Boolean = intimidationCheckBox.Checked
-        Dim history As Boolean = historyCheckBox.Checked
-        Dim deception As Boolean = deceptionCheckBox.Checked
-        Dim athletics As Boolean = athleticsCheckBox.Checked
-        Dim arcana As Boolean = arcanaCheckBox.Checked
-        Dim animal As Boolean = animalCheckBox.Checked
-        Dim acrobatics As Boolean = acrobacticsCheckBox.Checked
-
+        Dim command As New SQLiteCommand(connection)
 
         If checkCharacterSkillsExists(characterName) Then
             command.CommandText = "UPDATE characterSkills SET Survival = @Survival,Stealth = @Stealth,
@@ -556,39 +531,32 @@ Public Class characterSheet
             @Performance,@Perception,@Nature,@Medicine,@Investigation,@Intimidation,@History,@Deception,@Athletics,
             @Arcana,@Animal,@Acrobatics);"
         End If
-        command.Parameters.AddWithValue("@Survival", survival)
-        command.Parameters.AddWithValue("@Stealth", stealth)
-        command.Parameters.AddWithValue("@Sleight", stealth)
-        command.Parameters.AddWithValue("@Religion", religion)
-        command.Parameters.AddWithValue("@Persuasion", persuasion)
-        command.Parameters.AddWithValue("@Performance", performance)
-        command.Parameters.AddWithValue("@Perception", perception)
-        command.Parameters.AddWithValue("@Nature", nature)
-        command.Parameters.AddWithValue("@Medicine", medicine)
-        command.Parameters.AddWithValue("@Investigation", investigation)
-        command.Parameters.AddWithValue("@Intimidation", intimidation)
-        command.Parameters.AddWithValue("@History", history)
-        command.Parameters.AddWithValue("@Deception", deception)
-        command.Parameters.AddWithValue("@Athletics", athletics)
-        command.Parameters.AddWithValue("@Arcana", arcana)
-        command.Parameters.AddWithValue("@Animal", animal)
-        command.Parameters.AddWithValue("@Acrobatics", acrobatics)
-        command.Parameters.AddWithValue("@characterID", characterID)
         openDB()
+        command.Parameters.AddWithValue("@Survival", survivalCheckBox.Checked)
+        command.Parameters.AddWithValue("@Stealth", stealthCheckBox.Checked)
+        command.Parameters.AddWithValue("@Sleight", sleightCheckBox.Checked)
+        command.Parameters.AddWithValue("@Religion", religionCheckBox.Checked)
+        command.Parameters.AddWithValue("@Persuasion", persuasionCheckBox.Checked)
+        command.Parameters.AddWithValue("@Performance", performanceCheckBox.Checked)
+        command.Parameters.AddWithValue("@Perception", perceptionCheckBox.Checked)
+        command.Parameters.AddWithValue("@Nature", natureCheckBox.Checked)
+        command.Parameters.AddWithValue("@Medicine", medicineCheckBox.Checked)
+        command.Parameters.AddWithValue("@Investigation", investigationCheckBox.Checked)
+        command.Parameters.AddWithValue("@Intimidation", intimidationCheckBox.Checked)
+        command.Parameters.AddWithValue("@History", historyCheckBox.Checked)
+        command.Parameters.AddWithValue("@Deception", deceptionCheckBox.Checked)
+        command.Parameters.AddWithValue("@Athletics", athleticsCheckBox.Checked)
+        command.Parameters.AddWithValue("@Arcana", arcanaCheckBox.Checked)
+        command.Parameters.AddWithValue("@Animal", animalCheckBox.Checked)
+        command.Parameters.AddWithValue("@Acrobatics", acrobacticsCheckBox.Checked)
+        command.Parameters.AddWithValue("@characterID", characterID)
         command.ExecuteNonQuery()
         connection.Close()
     End Sub
 
     Private Sub saveCharacterStats()
-        Dim stren, dex, con, intel, wisdom, charisma As Integer
         openDB()
-
-        stren = Convert.ToInt16(strenTextBox.Text)
-        wisdom = Convert.ToInt16(wisdomTextBox.Text)
-        dex = Convert.ToInt16(dexTextBox.Text)
-        con = Convert.ToInt16(conTextBox.Text)
-        intel = Convert.ToInt16(intelTextBox.Text)
-        charisma = Convert.ToInt16(charismaTextBox.Text)
+        Dim command As New SQLiteCommand(connection)
 
         If checkCharacterStatsExists(characterName) Then
             command.CommandText = "UPDATE characterStats SET stren=@stren,dex=@dex,con=@con,intel=@intel,
@@ -597,12 +565,12 @@ Public Class characterSheet
             command.CommandText = "INSERT INTO characterStats (characterID,stren,dex,con,intel,wisdom,charisma) 
             VALUES (@characterID,@stren,@dex,@con,@intel,@wisdom,@charisma)"
         End If
-        command.Parameters.AddWithValue("@stren", stren)
-        command.Parameters.AddWithValue("@dex", dex)
-        command.Parameters.AddWithValue("@con", con)
-        command.Parameters.AddWithValue("@intel", intel)
-        command.Parameters.AddWithValue("@wisdom", wisdom)
-        command.Parameters.AddWithValue("@charisma", charisma)
+        command.Parameters.AddWithValue("@stren", Convert.ToInt16(strenTextBox.Text))
+        command.Parameters.AddWithValue("@dex", Convert.ToInt16(dexTextBox.Text))
+        command.Parameters.AddWithValue("@con", Convert.ToInt16(conTextBox.Text))
+        command.Parameters.AddWithValue("@intel", Convert.ToInt16(intelTextBox.Text))
+        command.Parameters.AddWithValue("@wisdom", Convert.ToInt16(wisdomTextBox.Text))
+        command.Parameters.AddWithValue("@charisma", Convert.ToInt16(charismaTextBox.Text))
         command.Parameters.AddWithValue("@characterID", characterID)
         openDB()
         command.ExecuteNonQuery()
@@ -611,17 +579,7 @@ Public Class characterSheet
 
     Private Sub saveCharacterInfo()
         openDB()
-        profBonus = Convert.ToInt32(profTextBox.Text)
-        characterName = characterNameTextBox.Text
-        background = backgroundTextBox.Text
-        alignment = alignmentTextBox.Text
-        initiative = Convert.ToInt32(iniativeTextBox.Text)
-        armorClass = Convert.ToInt32(armorClassTextBox.Text)
-        currentHp = Convert.ToInt32(currentHpTextBox.Text)
-        hpMax = Convert.ToInt32(hpMaxTextBox.Text)
-        level = Convert.ToInt32(levelTextBox.Text)
-        characterClass = classTextBox.Text
-        speed = Convert.ToInt32(speedTextBox.Text)
+        Dim command As New SQLiteCommand(connection)
 
         If checkCharacterInfoExists(characterName) Then
             command.CommandText = "UPDATE characterInfo SET proficiency = @proficiency,
@@ -635,19 +593,19 @@ Public Class characterSheet
             @characterClass, @background, @alignment,@initiative,@armorClass, @currentHp, 
             @hpMax, @level,@speed);"
         End If
-        command.Parameters.AddWithValue("@proficiency", profBonus)
-        command.Parameters.AddWithValue("@characterName", characterName)
-        command.Parameters.AddWithValue("@characterClass", characterClass)
-        command.Parameters.AddWithValue("@background", background)
-        command.Parameters.AddWithValue("@alignment", alignment)
-        command.Parameters.AddWithValue("@initiative", initiative)
-        command.Parameters.AddWithValue("@armorClass", armorClass)
-        command.Parameters.AddWithValue("@currentHp", currentHp)
-        command.Parameters.AddWithValue("@hpMax", hpMax)
-        command.Parameters.AddWithValue("@level", level)
-        command.Parameters.AddWithValue("@speed", speed)
-        command.Parameters.AddWithValue("@characterID", characterID)
         openDB()
+        command.Parameters.AddWithValue("@proficiency", Convert.ToInt32(profTextBox.Text))
+        command.Parameters.AddWithValue("@characterName", characterNameTextBox.Text)
+        command.Parameters.AddWithValue("@characterClass", classTextBox.Text)
+        command.Parameters.AddWithValue("@background", backgroundTextBox.Text)
+        command.Parameters.AddWithValue("@alignment", alignmentTextBox.Text)
+        command.Parameters.AddWithValue("@initiative", Convert.ToInt32(iniativeTextBox.Text))
+        command.Parameters.AddWithValue("@armorClass", Convert.ToInt32(armorClassTextBox.Text))
+        command.Parameters.AddWithValue("@currentHp", Convert.ToInt32(currentHpTextBox.Text))
+        command.Parameters.AddWithValue("@hpMax", Convert.ToInt32(hpMaxTextBox.Text))
+        command.Parameters.AddWithValue("@level", Convert.ToInt32(levelTextBox.Text))
+        command.Parameters.AddWithValue("@speed", Convert.ToInt32(speedTextBox.Text))
+        command.Parameters.AddWithValue("@characterID", characterID)
         command.ExecuteNonQuery()
         connection.Close()
     End Sub
@@ -668,11 +626,6 @@ Public Class characterSheet
             textbox.Focus()
             textbox.SelectAll()
         End If
-
-    End Sub
-
-    Private Sub characterSheet_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        loadPreparedSpells()
     End Sub
 
     Private Sub castSpellButton_Click(sender As Object, e As EventArgs) Handles castSpellButton.Click
@@ -680,5 +633,29 @@ Public Class characterSheet
         characterClass = classTextBox.Text
 
         spellCast.Show()
+    End Sub
+
+    Private Sub characterSheet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        characterNameTextBox.Text = characterName
+        getCharacterStats()
+        getCharacterInfo()
+        getCharacterSkills()
+        loadPreparedSpells()
+    End Sub
+
+    Private Sub characterSheet_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        loadPreparedSpells()
+    End Sub
+
+    Private Sub characterSheet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        saveCharacterStats()
+        saveSkills()
+        saveCharacterInfo()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        level = Convert.ToInt32(levelTextBox.Text)
+        characterClass = classTextBox.Text
+        prepareSpells.Show()
     End Sub
 End Class

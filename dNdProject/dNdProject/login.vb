@@ -7,6 +7,7 @@ Public Class login
 
     Public Function loginActionFunction(ByVal username As String) As Boolean
         openDB()
+        Dim command As New SQLiteCommand(connection)
 
         'Queries character list 
         command.CommandText = "SELECT characterID FROM characters WHERE characterName = @Username"
@@ -46,11 +47,14 @@ Public Class login
     Private Sub login_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If Not checkTableCharactersExist() Then
             characterTextBox.ReadOnly = True
+            characterTextBox.TabStop = False
         Else
             loginActionButton.Enabled = True
+
         End If
         checkTableCharacterStatsExist()
         checkTableCharacterSkillsExist()
         checkTableCharacterInfoExist()
+        createUsersTable()
     End Sub
 End Class
