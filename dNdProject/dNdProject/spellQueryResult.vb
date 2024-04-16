@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SQLite
 
-Public Class spellQueryForm
+Public Class spellQueryResult
     Private Sub spellQueryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         openDB()
         Dim command As New SQLiteCommand(connection)

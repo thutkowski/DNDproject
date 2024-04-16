@@ -33,8 +33,6 @@ Public Class login
         If loginActionFunction(characterUser) = True Then
             characterSheet.Show()
             Me.Close()
-        Else
-            MessageBox.Show("Character not found!")
         End If
     End Sub
 

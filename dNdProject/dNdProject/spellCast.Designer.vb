@@ -29,10 +29,10 @@ Partial Class spellCast
         '
         'displayTextBox
         '
-        Me.displayTextBox.Location = New System.Drawing.Point(77, 91)
+        Me.displayTextBox.Location = New System.Drawing.Point(39, 12)
         Me.displayTextBox.Multiline = True
         Me.displayTextBox.Name = "displayTextBox"
-        Me.displayTextBox.Size = New System.Drawing.Size(373, 183)
+        Me.displayTextBox.Size = New System.Drawing.Size(465, 214)
         Me.displayTextBox.TabIndex = 0
         '
         'Button1
@@ -48,10 +48,10 @@ Partial Class spellCast
         '
         Me.spellSlotPanel.AutoScroll = True
         Me.spellSlotPanel.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.spellSlotPanel.Location = New System.Drawing.Point(0, 303)
+        Me.spellSlotPanel.Location = New System.Drawing.Point(8, 251)
         Me.spellSlotPanel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.spellSlotPanel.Name = "spellSlotPanel"
-        Me.spellSlotPanel.Size = New System.Drawing.Size(703, 118)
+        Me.spellSlotPanel.Size = New System.Drawing.Size(703, 174)
         Me.spellSlotPanel.TabIndex = 2
         '
         'spellCast

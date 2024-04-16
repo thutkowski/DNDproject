@@ -135,6 +135,7 @@ Public Class spellPrepare
         availableDGV.Columns(0).HeaderText = "Spell Name"
         availableDGV.RowHeadersVisible = False
         availableDGV.ReadOnly = True
+        availableDGV.AllowUserToAddRows = False
         availableDGV.AutoResizeColumn(0, DataGridViewAutoSizeColumnMode.AllCells)
     End Sub
 
@@ -195,11 +196,12 @@ Public Class spellPrepare
             da.Fill(spellName)
         End Using
 
-        preparedDVG.DataSource = spellName.Tables(0)
-        preparedDVG.Columns(0).HeaderText = "Spell Name"
-        preparedDVG.RowHeadersVisible = False
-        preparedDVG.ReadOnly = True
-        preparedDVG.AutoResizeColumn(0, DataGridViewAutoSizeColumnMode.AllCells)
+        preparedDGV.DataSource = spellName.Tables(0)
+        preparedDGV.Columns(0).HeaderText = "Spell Name"
+        preparedDGV.RowHeadersVisible = False
+        preparedDGV.ReadOnly = True
+        preparedDGV.AllowUserToAddRows = False
+        preparedDGV.AutoResizeColumn(0, DataGridViewAutoSizeColumnMode.AllCells)
     End Sub
 
     Private Sub prepareSpells_Load(sender As Object, e As EventArgs) Handles Me.Load

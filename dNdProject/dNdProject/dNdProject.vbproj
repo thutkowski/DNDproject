@@ -145,16 +145,16 @@
     <Compile Include="spellCast.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="spellMenu.Designer.vb">
-      <DependentUpon>spellMenu.vb</DependentUpon>
+    <Compile Include="spellLookUp.Designer.vb">
+      <DependentUpon>spellLookUp.vb</DependentUpon>
     </Compile>
-    <Compile Include="spellMenu.vb">
+    <Compile Include="spellLookUp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="spellQueryForm.Designer.vb">
-      <DependentUpon>spellQueryForm.vb</DependentUpon>
+    <Compile Include="spellQueryResult.Designer.vb">
+      <DependentUpon>spellQueryResult.vb</DependentUpon>
     </Compile>
-    <Compile Include="spellQueryForm.vb">
+    <Compile Include="spellQueryResult.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -180,11 +180,11 @@
     <EmbeddedResource Include="spellCast.resx">
       <DependentUpon>spellCast.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="spellMenu.resx">
-      <DependentUpon>spellMenu.vb</DependentUpon>
+    <EmbeddedResource Include="spellLookUp.resx">
+      <DependentUpon>spellLookUp.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="spellQueryForm.resx">
-      <DependentUpon>spellQueryForm.vb</DependentUpon>
+    <EmbeddedResource Include="spellQueryResult.resx">
+      <DependentUpon>spellQueryResult.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -412,7 +412,7 @@ Public Class characterSheet
     Private Sub loadPreparedSpells()
         openDB()
         Dim command As New SQLiteCommand(connection)
-        command.CommandText = "SELECT s.spellName FROM spells AS s 
+        command.CommandText = "SELECT s.spellName,s.spellID FROM spells AS s 
             INNER JOIN users AS u ON u.spellID = s.spellID WHERE u.characterID = @characterID"
         command.Parameters.AddWithValue("@characterID", characterID)
         Dim spellName As New DataSet()
@@ -426,8 +426,10 @@ Public Class characterSheet
 
         spellDataGridView.DataSource = spellName.Tables(0)
         spellDataGridView.Columns(0).HeaderText = "Spell Name"
+        spellDataGridView.Columns("spellID").Visible = False
         spellDataGridView.RowHeadersVisible = False
         spellDataGridView.ReadOnly = True
+        spellDataGridView.AllowUserToAddRows = False
         spellDataGridView.AutoResizeColumn(0, DataGridViewAutoSizeColumnMode.AllCells)
     End Sub
 
@@ -457,12 +459,16 @@ Public Class characterSheet
     Private Sub spellSheetButton_Click(sender As Object, e As EventArgs) Handles spellSheetButton.Click
         characterClass = classTextBox.Text
         level = Convert.ToInt32(levelTextBox.Text)
-        spellMenu.Show()
+        spellLookUp.Show()
     End Sub
 
     Private Sub spellDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles spellDataGridView.CellContentClick
         spellIDQuery = e.RowIndex
-        spellQueryForm.ShowDialog()
+
+        If e.RowIndex >= 0 And e.ColumnIndex >= 0 Then
+            spellIDQuery = Convert.ToInt32(spellDataGridView.Rows(e.RowIndex).Cells("spellID").Value)
+        End If
+        spellQueryResult.ShowDialog()
     End Sub
 
     Private Function checkCharacterStatsExists(ByVal charName As String) As Boolean

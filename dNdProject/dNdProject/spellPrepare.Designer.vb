@@ -27,10 +27,10 @@ Partial Class spellPrepare
         Me.Label1 = New System.Windows.Forms.Label()
         Me.availableDGV = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.preparedDVG = New System.Windows.Forms.DataGridView()
+        Me.preparedDGV = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.availableDGV, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.preparedDVG, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.preparedDGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -80,15 +80,15 @@ Partial Class spellPrepare
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Available Spells to Prepare"
         '
-        'preparedDVG
+        'preparedDGV
         '
-        Me.preparedDVG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.preparedDVG.Location = New System.Drawing.Point(577, 257)
-        Me.preparedDVG.Name = "preparedDVG"
-        Me.preparedDVG.RowHeadersWidth = 62
-        Me.preparedDVG.RowTemplate.Height = 28
-        Me.preparedDVG.Size = New System.Drawing.Size(256, 271)
-        Me.preparedDVG.TabIndex = 5
+        Me.preparedDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.preparedDGV.Location = New System.Drawing.Point(577, 257)
+        Me.preparedDGV.Name = "preparedDGV"
+        Me.preparedDGV.RowHeadersWidth = 62
+        Me.preparedDGV.RowTemplate.Height = 28
+        Me.preparedDGV.Size = New System.Drawing.Size(256, 271)
+        Me.preparedDGV.TabIndex = 5
         '
         'Label3
         '
@@ -99,23 +99,23 @@ Partial Class spellPrepare
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Prepared Spells"
         '
-        'prepareSpells
+        'spellPrepare
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1200, 692)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.preparedDVG)
+        Me.Controls.Add(Me.preparedDGV)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.availableDGV)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Name = "prepareSpells"
+        Me.Name = "spellPrepare"
         Me.Text = "prepare"
         CType(Me.availableDGV, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.preparedDVG, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.preparedDGV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -126,6 +126,6 @@ Partial Class spellPrepare
     Friend WithEvents Label1 As Label
     Friend WithEvents availableDGV As DataGridView
     Friend WithEvents Label2 As Label
-    Friend WithEvents preparedDVG As DataGridView
+    Friend WithEvents preparedDGV As DataGridView
     Friend WithEvents Label3 As Label
 End Class

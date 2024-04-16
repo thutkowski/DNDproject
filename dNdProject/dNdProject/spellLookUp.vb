@@ -5,7 +5,7 @@ Imports System.Data.SQLite
 Imports System.Diagnostics.Eventing
 Imports System.Windows.Input
 
-Public Class spellMenu
+Public Class spellLookUp
     Private Sub spellSheet_Load(sender As Object, e As EventArgs) Handles Me.Load
         openDB()
         Dim command As New SQLiteCommand(connection)
@@ -38,7 +38,7 @@ Public Class spellMenu
 
         spellIDQuery = Convert.ToInt32(result)
 
-        Dim newSpellQueryForm As New spellQueryForm() ' Assuming SpellQueryForm is the name of your form class
+        Dim newSpellQueryForm As New spellQueryResult() ' Assuming SpellQueryForm is the name of your form class
         newSpellQueryForm.Show()
 
     End Sub
